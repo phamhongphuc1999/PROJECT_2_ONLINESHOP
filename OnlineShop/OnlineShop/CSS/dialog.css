@@ -1,0 +1,214 @@
+﻿#dialog {
+    display: none;
+}
+#dialog-delete{
+    display:none;
+}
+#dialog-edit {
+    display: none;
+}
+
+.line{
+    height:24px;
+    width:100%;
+    display:flex;
+    margin-top:4px;
+    font-size:14px;
+}
+.line-of-line{
+    height:100%;
+    width:50%;
+    display:flex;
+}
+.input-half{
+    width:188px;
+    height:20px;
+    border:1px solid #b4a4a4;
+   
+}
+.input-one {
+    width: calc(100% - 133.7px);
+    height: 20px;
+    border: 1px solid #b4a4a4;
+}
+.input-cel {
+    width: 159px;
+    height: 22px;
+    border: 1px solid #b4a4a4;
+    border-right:none;
+}
+
+.line-label{
+    width:125px;
+    height:100%;
+    padding-left:6px;
+}
+.line-big {
+    height: 35px;
+    width: 100%;
+    display: flex;
+    margin-top: 4px;
+    font-size: 14px;
+}
+.input-one-big {
+    width: calc(100% - 133.7px);
+    height: 33px;
+    border: 1px solid #b4a4a4;
+}
+
+
+.bottom-dialog{
+    height:25px;
+    width:650px;;
+    display:flex;
+    position:absolute;
+    bottom:4px;
+      
+}
+.bottom-left{
+    width:50%;
+    height:100%;
+    display:flex;
+}
+.button-help {
+    height: 23px;
+    width: 80px;
+    border: solid 1px #c8c2c2;
+    display:flex;
+}
+.icon-bottom-help {
+    height: 18px;
+    width: 12px;
+    background: url('../Contents/images/iconHelp.png') center no-repeat;
+}
+.button-save {
+    height: 25px;
+    width: 85px;
+    display: flex;
+    margin-right: 10px;
+    border: solid 1px #c8c2c2;
+}
+.button-save-add {
+    height: 25px;
+    width: 125px;
+    display: flex;
+    margin-right: 10px;
+    border: solid 1px #c8c2c2;
+}
+.button-cal {
+    height: 25px;
+    width: 86px;
+    display: flex;
+    margin-right: 10px;
+    border: solid 1px #ffffff;
+}
+.icon-bottom-save {
+    height: 16px;
+    width: 16px;
+    padding-right:4px;
+    background: url('../Contents/images/Save16.png') center no-repeat;
+}
+.icon-bottom-save-add {
+    height: 16px;
+    width: 16px;
+    padding-right: 4px;
+    background: url('../Contents/images/SaveAdd16.png') center no-repeat;
+}
+.icon-bottom-cal {
+    height: 16px;
+    width: 16px;
+    padding-right: 4px;
+    background: url('../Contents/images/Disable16.png') center no-repeat;
+}
+#dialog button{
+    background:#ffffff;
+}
+#dialog-edit button{
+    background: #ffffff;
+}
+}
+.del-over {
+    height: 32px;
+    width: 100%;
+    display: flex;
+}
+.icon-ques {
+    height: 32px;
+    width: 45.75px;
+    background: url('../Contents/images/icon-question.png') center no-repeat;
+    margin-right:10px;
+}
+.del-bottom{
+    position:absolute;
+    bottom:4px;
+    left:57%;
+    height:24px;
+    width:43%;
+}
+.yes{
+    width:75px;
+    height:24px;
+    margin-right:2px;
+}
+.No {
+    width: 75px;
+    height: 24px;
+}
+.dateWrap {
+    display: flex;
+  
+    border: 1px solid #ccc;
+    height: 25px;
+}
+
+    .dateWrap input {
+        border: none !important;
+    }
+
+    .dateWrap:focus-within {
+        border: 1px solid #0071c1;
+    }
+
+.ui-datepicker-trigger {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    background: url('../Contents/images/date-trigger.png') center no-repeat;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 23px 23px 0 0;
+    cursor: pointer;
+    border-left: none;
+}
+.RefNo {
+    width: 155px;
+    border-color:red;
+}
+.warn1 {
+    height: 24px;
+    width: 26px;
+    background: url('../Contents/images/Disable16.png') center no-repeat;
+}
+.warn2 {
+    height: 24px;
+    width: 26px;
+    background: url('../Contents/images/Disable16.png') center no-repeat;
+}
+.warn2:hover + .hover-icon-warning{
+    display: block !important;
+}
+.warn3 {
+    height: 24px;
+    width: 26px;
+    background: url('../Contents/images/Disable16.png') center no-repeat;
+}
+.notify-warn{
+    width:100px;
+    height:25px;
+    z-index: 2px;
+}
+
+
+
+
+

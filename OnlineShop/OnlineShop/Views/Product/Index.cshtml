@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MODELS.EF.Product>
+
+@{
+    ViewBag.Title = "Kho";
+}
+
+<div class="maintain-content-list">
+    <div class="list-left">
+        <div id="list">Kho</div>
+        <p>
+
+        </p>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Thêm sản phẩm", "Create")
+    <table class="table">
+        <tr>
+            <th>Mã sản phẩm-Mã Lô</th>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Giá nhập</th>
+            <th>Lợi nhuận</th>
+            <th>Khuyến mãi</th>
+            <th>Bảo hành</th>
+            <th>Lựa chọn</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)-@Html.DisplayFor(modelItem => item.IdPackage)</td>
+                <td>@Html.DisplayFor(modelItem => item.NameProduct)</td>
+                <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                <td>@Html.DisplayFor(modelItem => item.ImportPrice)</td>
+                <td>@Html.DisplayFor(modelItem => item.Profix)%</td>
+                <td>@Html.DisplayFor(modelItem => item.Sale)%</td>
+                <td>@Html.DisplayFor(modelItem => item.Guarantee)</td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { MASP = item.Id, MALO = item.IdPackage }) |
+                    @Html.ActionLink("Xóa", "Delete", new { MASP = item.Id, MALO = item.IdPackage })|
+                    @Html.ActionLink("Thêm lô", "ViewAddLot", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>

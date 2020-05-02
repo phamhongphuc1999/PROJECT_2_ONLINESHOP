@@ -1,0 +1,42 @@
+﻿@model MODELS.EF.Customer
+
+@{
+    ViewBag.Title = "Xóa";
+}
+
+<h2 style="color:#026BB8">Xóa thông tin khách hàng</h2>
+
+<h3>Bạn có muốn xóa thông tin khách hàng này?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Họ tên</dt>
+        <dd>@Html.DisplayFor(model => model.Name)</dd>
+
+        <dt>Giới tính</dt>
+        <dd>@Html.DisplayFor(model => model.Sex)</dd>
+
+        <dt>Sinh nhật</dt>
+        <dd>@Html.DisplayFor(model => model.Birthday)</dd>
+
+        <dt>Địa chỉ</dt>
+        <dd>@Html.DisplayFor(model => model.Address)</dd>
+
+        <dt>Số điện thoại</dt>
+        <dd>@Html.DisplayFor(model => model.Phone)</dd>
+
+        <dt>Loại</dt>
+        <dd>@Html.DisplayFor(model => model.Type)</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Hủy", "Index")
+        </div>
+    }
+</div>

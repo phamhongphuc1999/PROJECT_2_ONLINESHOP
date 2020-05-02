@@ -1,0 +1,138 @@
+﻿
+.header {
+    height: 55px;
+    position: absolute;
+    background: #026BB8;
+    display: flex;
+    top: 0px;
+    width: 100%;
+}
+.header-left-left {
+    height: 100%;
+    width: 230px;
+    border-bottom: 1px inset #808080;
+}
+
+.left-content
+{
+    width:100%;
+    height:25px;
+    position:relative;
+    top:10px;
+    display:flex;
+}
+.left-content-img {
+    background: url('../Contents/images/iconMenu.png') -4px -421px;
+    background-repeat:no-repeat;
+    margin-top:7px;
+    margin-left:14px;
+    width: 25px;
+}
+.header-left {
+    height: 100%;
+    width: 370px;
+    position:absolute;
+    left:230px;
+}
+.header-left select{
+    position:relative;
+    width:200px;
+    height:32px;
+    top:10px;
+    margin-left:10px;
+}
+ .header-left select {
+        color: #ffffff;
+        background: #1a1f6b;
+ }
+    .header-right select {
+        color: #ffffff;
+        background: #1a1f6b;
+    }
+.header-right{
+    height:100%;
+    width:1400px;
+    position:absolute;
+    right:0px;
+    overflow:hidden;
+   
+}
+.user-center {
+    width:270px;
+    height:100%;
+    
+    display:flex;
+    position:absolute;
+    right:0px;
+  
+}
+.header-user{
+    height:100%;
+    width:100%;
+    display:flex;
+    position:relative;
+   
+   
+   
+}
+.header-user-image {
+    width: 28px;
+    height: 28px;
+    position:relative;
+    top:10px;
+    background: url('../Contents/images/EmployeeImage.png') center no-repeat;
+    background-color:#ffffff;
+    border-radius:12.5px;
+   
+}
+.user-content {
+    width:100%;
+    height: 20px;
+    position: relative;
+    top: 15px;
+    display: flex;
+    padding-left: 5px;
+}
+.user-name{
+    color:#ffffff;
+    height:100%;
+    width:150px;
+    text-align:center;
+
+}
+#user-arrow {
+ 
+    width: 5px;
+    background: url('../Contents/images/default-small-arrow.png') center no-repeat;
+    height: 100%;
+}
+
+
+.header-contact {
+    width: 65px;
+    height: 55px;
+    background: url('../Contents/images/ic_support.svg') center no-repeat;
+    margin-right:5px;
+}
+
+.notify-image {
+    width: 28px;
+    height: 28px;
+    margin-top: 13px;
+    background: url('../Contents/images/744480.svg') center no-repeat;
+    float: right;
+    margin-left: 5px;
+}
+.header-right select{
+    position:relative;
+    width:170px;
+    height:32px;
+    top:10px;
+  
+}
+.logout {
+    background: #026BB8;
+    color: white;
+    border: 1px solid #026BB8;
+    padding-right:10px;
+}

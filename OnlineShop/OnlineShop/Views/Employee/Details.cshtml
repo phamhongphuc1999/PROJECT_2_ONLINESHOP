@@ -1,0 +1,40 @@
+﻿@model MODELS.EF.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="color:#026BB8">Thông tin cá nhân</h2>
+
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Họ tên</dt>
+        <dd>@Html.TextBoxFor(model => model.Name)</dd>
+
+        <dt>Giới tính</dt>
+        <dd>@Html.TextBoxFor(model => model.Sex)</dd>
+
+        <dt>Số điện thoại</dt>
+        <dd>@Html.TextBoxFor(model => model.Phone)</dd>
+
+        <dt>Sinh nhật</dt>
+        <dd>@Html.TextBoxFor(model => model.Birthday, "{0:dd/MM/yyyy}")</dd>
+
+        <dt>Địa chỉ</dt>
+        <dd>@Html.TextBoxFor(model => model.Address)</dd>
+        
+        <dt>Tên tài khoản</dt>
+        <dd>@Html.TextBoxFor(model => model.Username)</dd>
+        
+        <dt>Mật khẩu</dt>
+        <dd>@Html.TextBoxFor(model => model.Password)</dd>
+    </dl>
+</div>
+<hr />
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Quay lại", "Index", "Home")
+</p>

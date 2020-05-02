@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/CSS/css")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Contents/CSS/css")
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="header">
+            <div class="header-left-left">
+                <div class="left-content">
+                    <div class="left-content-img"></div>
+                    <div style="font-size:25px;color:#ffffff;position:relative;top:3px;margin-left:10px;">10office</div>
+                </div>
+            </div>
+            <div class="header-left">
+                <select>
+                    <option>Thế giới mới</option>
+                </select>
+            </div>
+            <div class="header-right">
+                <div class="user-center">
+                    <div class="header-contact"></div>
+                    <div class="header-user">
+                        <div class="user-content">
+                            <div class="user-name">@ViewBag.UserName</div>
+                            @using (Html.BeginForm("Logout", "Login", new { @class = "user-name" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="submit" value="Đăng xuất" class="logout" />
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div style="height:100%;width:230px;position:absolute;right:270px;">
+                    <div class="notify-image"></div>
+                    <div">
+                        <select>
+                            <option>Tiếng Việt</option>
+                        </select>
+                </div>
+            </div>
+            <div class="menu">
+                @Html.ActionLink("Trang chủ", "Index", "Home", null, new { @class = "link-text" })
+                <a class="menu-icon"><span class="icon icon-report"></span></a>
+                <a class="link-text" href="/nhan-vien/thong-tin-ca-nhan">Thông tin cá nhân</a>
+
+                <a class="menu-icon"><span class="icon icon-partner"></span></a>
+                <a class="link-text" href="/nhan-vien/danh-sach">Nhân viên</a>
+
+                <a class="menu-icon"><span class="icon icon-purchar"></span></a>
+                <a class="link-text" href="/khach-hang/danh-sach">Khách hàng</a>
+
+                <a class="menu-icon stock"><span class="icon icon-stock"></span></a>
+                <a class="link-text" href="/san-pham/danh-sach">Quản lý kho</a>
+
+                <a class="menu-icon cash"><span class="icon icon-cash"></span></a>
+                <a class="link-text" href="/hoa-don/danh-sach">Quản lý hóa đơn</a>
+
+                <a class="menu-icon charge"><span class="icon icon-charge"></span></a>
+                <a class="link-text" href="/hoa-don/tao-moi-hoa-don">Tạo mới hóa đơn</a>
+
+                <a class="menu-icon promotion-group"><span class="icon icon-promotion-group"></span></a>
+                <a class="link-text" href="/chi-tiet/thong-ke">Thống kê cửa hàng</a>
+
+                <a class="menu-icon"><span class="icon icon-report"></span></a>
+                <a class="link-text" href="/chi-tiet/thong-ke/san-pham">Thống kê theo sản phẩm</a>
+
+                <a class="menu-icon">
+                    <span class="icon icon-report"></span>
+                </a>
+            </div>
+            <div class="maintain-content" style="height: 510px">
+                @RenderBody()
+            </div>
+
+            <div class="bottom-table">
+                <div class="content-bottom">
+                    <div style="text-align:center">&copy; @DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year - Copyright by PHP</div>
+                    <div style="text-align:center">
+                        <b>Hotline:</b>0772368898<b style="margin-left:8px"> Email:</b>phuc.ph173303@sis.hust.edu.vn
+                    </div>
+                </div>
+            </div>
+            <script src="/Scripts/jquery-3.4.1.min.js"></script>
+            <script src="~/Scripts/bootstrap.min.js"></script>
+            <script src="~/Scripts/style.js"></script>
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+        </div>
+    </div>
+</body>
+</html>

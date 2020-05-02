@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MODELS.EF.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="maintain-content-list">
+    <div class="list-left">
+        <div id="list">Khách hàng</div>
+        <div id="arrow-right"></div>
+
+    </div>
+
+</div>
+<p> @Html.ActionLink("Thêm khách hàng", "Create")</p>
+
+<table class="table">
+    <tr>
+        <th>Tên khách hàng</th>
+        <th>Giới tính</th>
+        <th>Sinh nhật</th>
+        <th>Địa chỉ</th>
+        <th>Số điện thoại</th>
+        <th>Loại</th>
+        <th>Lựa chọn</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.Sex)</td>
+            <td>@Html.DisplayFor(modelItem => item.Birthday)</td>
+            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+            <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+            <td>@Html.DisplayFor(modelItem => item.Type)</td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

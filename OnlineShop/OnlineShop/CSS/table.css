@@ -1,0 +1,197 @@
+﻿table.table{
+    width:100% !important;
+    height:100px !important;
+
+}
+p{
+    margin-top:16px;
+    font-size:20px;
+}
+table a {
+    color: #337ab7;
+    border-collapse: collapse;
+}
+.table-container {
+    width: 100%;
+    height: 488px;
+    overflow: auto;
+    border-collapse: collapse;
+}
+ 
+#main-table thead th {
+    position: sticky;
+    top: 0px;
+    background-color: #f0f0f0;
+    height: 53px;
+    border: 1px solid #d0d0d0;
+}
+#main-table th {
+    border: 1px solid #d0d0d0;
+    border-left: none;
+    border-top: none;
+}
+#main-table thead .filter-type {
+    position: absolute;
+    display: block;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #d0d0d0;
+    background-color: #ffffff;
+    text-align: center;
+    /*padding: 7px 0px;*/
+    font-family: 'Cambria Math';
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 24px;
+    cursor: pointer;
+}
+#main-table thead .title {
+    text-align: center;
+    font-family: Roboto-Bold;
+    font-size: 13px;
+    padding-top: 6px;
+    padding-left:8px;
+    position:absolute;
+    top:0px;
+}
+#main-table thead .filter-value {
+    height: 22px;
+    width: calc(100% - 28px);
+    position: absolute;
+    left: 26px;
+    border:none;
+}
+#main-table thead .filter-select {
+    height: 22px;
+    width: calc(100% - 26px);
+    position: absolute;
+    left: 2px;
+    font-size: 12px;
+    border:none;
+   
+}
+.filter{
+    position:relative;
+    bottom:3px;
+}
+.arrow-down {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    display: block;
+   
+    border:none;
+    background: url('../Contents/images/trigger.png') -7px -7px #ffffff;
+    background-position:center;
+    right:1px;
+   
+}
+.bottom-table {
+    height: 60px;
+    width: 1305px;
+    position: fixed;
+    left: 228px;
+    bottom: 0px;
+    border: 1px solid #d0d0d0;
+    margin-left: 2px;
+    background: #026BB8;
+    color:white;
+}
+.content-bottom{
+   
+    margin-top:4px;
+}
+.icon-bottom{
+    width:20px;
+    height:20px;
+    margin-left:20px;
+    border:none;
+   
+}
+.arrow-left-left {
+    background: url('../Contents/images/page-first.png') no-repeat center;
+   
+}
+.arrow-left {
+    background: url('../Contents/images/page-prev.png') no-repeat center;
+}
+.page-index {
+    width: 36px;
+    height: 18px;
+    border: 1px solid #d0d0d0;
+    position:relative;
+    bottom:3px;
+}
+.arrow-right {
+    background: url('../Contents/images/page-next.png') no-repeat center;
+}
+.arrow-right-right {
+    background: url('../Contents/images/page-last.png') no-repeat center;
+}
+.arrow-undo {
+    background: url('../Contents/images/refresh.png') no-repeat center;
+}
+.page-size {
+    width: 60px;
+    height: 24px;
+    margin-left: 30px;
+    border: 1px solid #d0d0d0;
+    background:#ffffff;
+    color:#000000;
+    position:relative;
+    bottom:4px;
+}
+#page-info{
+    position:absolute;
+    right:5px;
+}
+tbody {
+    border: 1px solid #d0d0d0;
+    line-height: 22.2px;
+    font-size: 13px;
+}
+#main-table td {
+    border: 1px solid #d0d0d0;
+    padding-left:8px;
+}
+#main-table tbody tr:nth-child(even) {
+    background: #ffffff;
+}
+#main-table tbody tr:nth-child(odd) {
+    background: #fafafa;
+}
+.selected {
+    background: #d7e9f4 !important;
+}
+.center{
+    text-align:center;
+    height:22.2px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg fill="%23000" fill-opacity=".54" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/%3E%3Cpath d="M0 0h24v24H0z" fill="none"/%3E%3C/svg%3E');
+    width: 14px;
+    height: 18px;
+    cursor: pointer;
+    /*border-radius: 50%;
+    margin-left: 4px;*/
+}
+input[type=date]:required:invalid::-webkit-datetime-edit {
+    color: transparent;
+}
+
+/*input[type=date]:focus::-webkit-datetime-edit {
+    color: black !important;
+}*/
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+}
+
+
