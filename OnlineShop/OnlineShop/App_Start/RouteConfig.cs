@@ -11,6 +11,7 @@ namespace OnlineShop
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            #region Employee
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
                 name: "Employee_Details",
@@ -27,6 +28,9 @@ namespace OnlineShop
                 url: "nhan-vien/chinh-sua/{Id}",
                 defaults: new { controller = "Employee", action = "Edit", id = UrlParameter.Optional }
             );
+            #endregion
+
+            #region Customer
             routes.MapRoute(
                 name: "Customer_Index",
                 url: "khach-hang/danh-sach",
@@ -37,6 +41,9 @@ namespace OnlineShop
                 url: "khach-hang/them-khach-hang",
                 defaults: new { controller = "Customer", action = "Create", id = UrlParameter.Optional }
             );
+            #endregion
+
+            #region Product
             routes.MapRoute(
                 name: "Product_Index",
                 url: "san-pham/danh-sach",
@@ -53,6 +60,14 @@ namespace OnlineShop
                 defaults: new { controller = "Product", action = "Edit", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Product_DElete",
+                url: "san-pham/xoa/{Id}-{IdPackage}",
+                defaults: new { controller = "Product", action = "Delete", id = UrlParameter.Optional }
+            );
+            #endregion
+
+            #region Invoice
+            routes.MapRoute(
                 name: "Invoice_Index",
                 url: "hoa-don/danh-sach",
                 defaults: new { controller = "Invoice", action = "Index", id = UrlParameter.Optional }
@@ -63,6 +78,19 @@ namespace OnlineShop
                 defaults: new { controller = "Invoice", action = "Create", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Invoice_Edit",
+                url: "hoa-don/chinh-sua/{id}",
+                defaults: new { controller = "Invoice", action = "Edit", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Invoice_Delete",
+                url: "hoa-don/xoa/{id}",
+                defaults: new { controller = "Invoice", action = "Delete", id = UrlParameter.Optional }
+            );
+            #endregion
+
+            #region Detail
+            routes.MapRoute(
                 name: "Detail_Search",
                 url: "chi-tiet/thong-ke",
                 defaults: new { controller = "Detail", action = "Search", id = UrlParameter.Optional }
@@ -72,6 +100,8 @@ namespace OnlineShop
                 url: "chi-tiet/thong-ke/san-pham",
                 defaults: new { controller = "Detail", action = "SearchItem", id = UrlParameter.Optional }
             );
+            #endregion
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
