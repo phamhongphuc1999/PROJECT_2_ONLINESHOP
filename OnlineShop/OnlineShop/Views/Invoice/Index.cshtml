@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MODELS.EF.Invoice>
+﻿@model IEnumerable<OnlineShop.Models.InvoiceModel>
 
 @{
     ViewBag.Title = "Hóa đơn";
@@ -16,17 +16,17 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.IdCustomer)</td>
+            <td>@Html.DisplayFor(modelItem => item.CustomerName)</td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdEmployee)
+                @Html.DisplayFor(modelItem => item.EmployeeName)
             </td>
             <td>
                 @Html.ValueFor(modelItem => item.DaySell, "{0:dd/MM/yyyy}")
             </td>
             <td>
-                @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Xóa", "Delete", new { id = item.Id })|
-                @Html.ActionLink("Xem phiếu thu", "Index", "Detail", new { id = item.Id }, null)
+                @Html.ActionLink("Sửa", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ID })|
+                @Html.ActionLink("Xem phiếu thu", "Index", "Detail", new { id = item.ID }, null)
             </td>
         </tr>
     }

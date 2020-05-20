@@ -2,6 +2,8 @@
 using OnlineShop.Common;
 using MODELS.EF;
 using MODELS.Dao;
+using OnlineShop.Models;
+using System.Collections.Generic;
 
 namespace OnlineShop.Controllers
 {
@@ -11,10 +13,21 @@ namespace OnlineShop.Controllers
 
         public ActionResult Index()
         {
-            var invoiceList = invoiceDao.invoiceList;
+            List<Invoice> invoiceList = invoiceDao.invoiceList;
+            List<InvoiceModel> invoiceModels = new List<InvoiceModel>();
+            foreach(Invoice item in invoiceList)
+            {
+                invoiceModels.Add(new InvoiceModel()
+                {
+                    ID = item.Id,
+                    EmployeeName = invoiceDao.DB.Employees.Find(item.IdEmployee).Name,
+                    CustomerName = invoiceDao.DB.Customers.Find(item.IdCustomer).Name,
+                    DaySell = item.DaySell
+                });
+            }
             var user = (UserLogin)Session[CommonConstants.USER_SEESION];
             ViewBag.UserName = user.Name;
-            return View(invoiceList);
+            return View(invoiceModels);
         }
 
         public ActionResult Details(int id)
@@ -44,7 +57,7 @@ namespace OnlineShop.Controllers
                 invoiceDao.Add(invoice);
                 ViewBag.MAHD = invoice.Id;
                 ViewBag.NGAYBAN = invoice.DaySell;
-                //ViewBag.MASP = db.Products;
+                ViewBag.MASP = invoiceDao.DB.Products;
                 ViewBag.Model = invoiceDao.ListDetail(invoice.Id);
                 return View();
             }

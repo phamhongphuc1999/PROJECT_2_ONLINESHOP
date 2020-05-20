@@ -8,7 +8,7 @@ namespace MODELS.Dao
     {
         public List<Invoice> invoiceList;
 
-        public InvoiceDao() : base()
+        public InvoiceDao() : base() 
         {
             invoiceList = db.Invoices.ToList();
         }

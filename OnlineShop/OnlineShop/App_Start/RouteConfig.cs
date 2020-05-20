@@ -78,6 +78,11 @@ namespace OnlineShop
                 defaults: new { controller = "Invoice", action = "Create", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Invoice_Add",
+                url: "hoa-don/them-moi-hoa-don",
+                defaults: new { controller = "Invoice", action = "Add", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Invoice_Edit",
                 url: "hoa-don/chinh-sua/{id}",
                 defaults: new { controller = "Invoice", action = "Edit", id = UrlParameter.Optional }
@@ -104,6 +109,11 @@ namespace OnlineShop
                 name: "Detail_SearchItem",
                 url: "chi-tiet/thong-ke/san-pham",
                 defaults: new { controller = "Detail", action = "SearchItem", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Detail_CREATEADD",
+                url: "chi-tiet/tao-moi",
+                defaults: new { controller = "Detail", action = "CREATEADD", id = UrlParameter.Optional }
             );
             #endregion
 
