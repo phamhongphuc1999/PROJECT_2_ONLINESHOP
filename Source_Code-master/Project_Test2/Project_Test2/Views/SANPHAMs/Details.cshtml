@@ -1,0 +1,42 @@
+﻿@model Project_Test2.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SANPHAM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TENSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DONGIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONGIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BAOHANH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BAOHANH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MASP }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

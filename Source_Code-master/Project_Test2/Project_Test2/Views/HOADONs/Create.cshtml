@@ -1,0 +1,87 @@
+﻿@model Project_Test2.Models.HOADON
+
+@{
+    ViewBag.Title = "Tạo hóa đơn";
+
+}
+<link href="~/Content/themes/StyleSheet1.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="/resources/demos/style.css">
+<h2 style="color:#026BB8;">Thêm hóa đơn</h2>
+<hr />
+
+
+@using (Html.BeginForm("ADD", "HOADONs"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h3>Chi tiết</h3>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("MANV", "Tên nhân viên", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label class="control-label col-md-2">@ViewBag.UserName</label>
+            
+                <script>
+                    debugger
+                    var ob = document.getElementById("TENNV");
+                    ob.value = @ViewBag.UserName;
+                </script>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("MAKH", "Tên khách hàng", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MAKH", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MAKH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Ngày bán", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NGAYBAN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NGAYBAN, "", new { @class = "text-danger" })
+
+
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+
+
+    <script src="~/Content/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#NGAYBAN").datepicker({
+
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+
+
+    </script>
+
+
+
+}
+
+

@@ -1,0 +1,23 @@
+﻿.box {
+    border: solid 1px #808080;
+    left: 150px;
+    height: 25px;
+    position: absolute;
+    width: 250px;
+    border-radius: 3px;
+}
+
+.add1 {
+    padding: 10px;
+}
+
+.button {
+    position: absolute;
+    background-color: aqua;
+    left: 180px;
+    top: 300px;
+    border: 1px solid #b6ff00;
+    height: 40px;
+    width: 150px;
+}
+

@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Doanh thu";
+}
+
+<h2 style="color:#026BB8">Thống kê</h2>
+<hr />
+@{ DateTime start = ViewBag.Start;
+    string start_ = start.ToString("dd/MM/yyyy");
+    DateTime end = ViewBag.End;
+    string end_ = end.ToString("dd/MM/yyyy");
+
+
+}
+<h4 style="color:#026BB8">Từ ngày @start_  đến ngày @end_</h4>
+<hr />
+<table class="table">
+    <tr>
+
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.Model)
+    {
+
+        <tr>
+
+            <td>
+                @item.TENSANPHAM
+            </td>
+            <td>
+                @item.SL
+            </td>
+         
+
+        </tr>
+    }
+
+</table>
+

@@ -1,0 +1,49 @@
+﻿@model Project_Test2.Models.HOADON
+
+@{
+    ViewBag.Title = "Xóa";
+}
+
+<h2 style="color:#026BB8">Xóa hóa đơn</h2>
+<hr />
+
+<h3>Bạn có muốn xóa  hóa đơn này?</h3>
+<div>
+    <h4>Chi tiết</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên khách hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHACHHANG.TENKH)
+        </dd>
+
+        <dt>
+            Tên nhân viên tạo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NV.HOTEN)
+        </dd>
+
+        <dt>
+            Ngày bán
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYBAN)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Hủy", "Index")
+        </div>
+    }
+</div>

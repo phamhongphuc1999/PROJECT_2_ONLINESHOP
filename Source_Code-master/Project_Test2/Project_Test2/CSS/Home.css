@@ -1,0 +1,52 @@
+﻿.intro {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+  
+}
+.overview{
+    width:100%;
+    height:430px;
+    display:flex;
+
+    padding-left:90px;
+    padding-right:90px;
+}
+.box {
+        width: 27%;
+    max-height: 310px;
+    border: 1px solid rgba(0,0,0,.2);
+    margin-left: 30px;
+    margin-top: 40px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.2);
+    text-align: center;
+ 
+}
+    .box:hover {
+        box-shadow: 5px 5px 10px 5px rgba(0,0,0,.2);
+    }
+
+.cir{
+    width:140px;
+    height:140px;
+    border-radius:70px;
+    margin-bottom:20px;
+    margin-top:20px;
+    background: #ff0000;
+   
+   
+   
+}
+.buy {
+    background: url('../Contents/images/suno2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.stock1 {
+    background: url('../Contents/images/suno1.jpg');
+    background-size: cover;
+}
+.cus {
+    background: url('../Contents/images/suno5.png');
+    background-size: cover;
+}

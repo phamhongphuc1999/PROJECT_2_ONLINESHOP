@@ -1,0 +1,58 @@
+﻿@model Project_Test2.Models.DETAIL
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DETAIL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MAHD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAHD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOLUONG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOLUONG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MASP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MASP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DONGIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONGIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIEN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MADT }) |
+    @Html.ActionLink("Back to List", "Index",new { id = Model.MAHD })
+</p>

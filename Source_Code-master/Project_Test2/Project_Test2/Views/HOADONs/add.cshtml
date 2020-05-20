@@ -1,0 +1,143 @@
+﻿
+@model Project_Test2.Models.DETAIL
+
+@{
+    ViewBag.Title = "Phiếu thu";
+}
+
+
+<h2>Phiếu thu của khách hàng</h2>
+@using (Html.BeginForm("CREATEADD", "DETAILs"))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Chi tiết</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.Label("MAHD", "Mã Hóa Đơn", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+
+            @Html.EditorFor(model => model.MAHD, new { htmlAttributes = new { @class = "form-control", id = "MAHD" } })
+
+
+
+
+            <script>
+                    debugger
+                    var ob = document.getElementById("MAHD");
+                    ob.value = @ViewBag.MAHD;
+            </script>
+
+
+
+
+
+            @Html.ValidationMessageFor(model => model.MAHD, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Tên Sản Phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select class="form-control" id="MASP" name="MASP">
+                @foreach (var item in ViewBag.MASP)
+                {
+                    <option value="@item.MASP@item.MALO">@item.TENSP-@item.MALO</option>
+                }
+            </select>
+
+            @*@Html.DropDownListFor(x => x.MASP, null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MASP, "", new { @class = "text-danger" })*@
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("SOLUONG", "Số lượng", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SOLUONG, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SOLUONG, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+    <table class="table">
+        <tr>
+            <th>
+                Mã Hóa Đơn
+            </th>
+            <th>
+                Số lượng
+            <th>
+                Mã sản phẩm
+            </th>
+            <th>
+                Đơn giá
+            </th>
+            <th>
+                Thành tiền
+            </th>
+            <th>
+                Ngày bán
+            </th>
+            <th></th>
+        </tr>
+        @{
+            var s = 0;
+        }
+        @foreach (var item in ViewBag.Model)
+        {
+    <tr>
+        <td>
+            @item.MAHD
+        </td>
+        <td>
+            @item.SOLUONG
+        </td>
+        <td>
+            @item.MASP
+        </td>
+        <td>
+            @item.DONGIA
+        </td>
+        <td>
+            @item.TIEN
+        </td>
+        <td>
+            @item.NGAYBAN.ToString("dd/MM/yyyy")
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.MADT }) |
+            @Html.ActionLink("Details", "Details", new { id = item.MADT }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MADT })
+        </td>
+    </tr>
+
+
+            { s = s + (int)(item.TIEN); }
+
+
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Tổng tiền</td>
+            <td>@s VND</td>
+        </tr>
+
+    </table>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+}
+
+

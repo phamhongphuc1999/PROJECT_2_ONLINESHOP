@@ -1,0 +1,74 @@
+﻿@model Project_Test2.Models.NV
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="color:#026BB8">Thông tin cá nhân</h2>
+
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Họ tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOTEN)
+        </dd>
+
+        <dt>
+            Giới tính
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIOITINH)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            Ngày sinh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYSINH, "{0:dd/MM/yyyy}")
+        </dd>
+
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIACHI)
+        </dd>
+        <dt>
+            Tên tài khoản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USERNAME)
+        </dd>
+        <dt>
+            Mật khẩu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PASSWORD)
+        </dd>
+
+    </dl>
+</div>
+<hr />
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MANV }) |
+    @Html.ActionLink("Quay lại", "Index","Home")
+</p>

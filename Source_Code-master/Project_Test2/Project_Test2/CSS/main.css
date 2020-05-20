@@ -1,0 +1,220 @@
+﻿.maintain-content {
+    position: absolute;
+    left: 250px;
+    top: 55px;
+    width: calc(100% - 230px);
+    height: 600px;
+   margin-left:2px;
+   overflow:hidden;
+   overflow-y:scroll;
+}
+/*
+   List
+*/
+.maintain-content-list {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    border-bottom: solid 1px #d8d5d5;
+   
+}
+
+.list-left{
+    height:100%;
+    width:50%;
+    display:flex;
+    margin-left:10px;
+}
+.list-right {
+    width: 300px;
+    height: 28px;
+    margin-top: 10px;
+    display: flex;
+    position: absolute;
+    right: 0px;
+}
+
+#redo {
+    width: 175px;
+    height: 25px;
+    border: solid 1px #d8d5d5;
+    padding-left: 4px;
+    padding-top:4px;
+}
+
+#feedback {
+    width: 98px;
+    height: 26px;
+    display: flex;
+    border: solid 1px #d8d5d5;
+    margin-left: 10px;
+   
+}
+
+#icon-speaker {
+    width: 18px;
+    height: 18px;
+    margin-top: 5px;
+    padding-left:10px;
+    background: url('../Content/images/viewEmail.png') center no-repeat;
+}
+#feedback span{
+    padding-top:5px;
+    margin-left:5px;
+}
+
+
+
+
+
+#list {
+    height: 80%;
+    width: 150px;
+    text-align: center;
+    margin-top: 3px;
+    color: #026BB8;
+    font-size: 28px;
+}
+#arrow-right {
+    height: 28px;
+    width: 28px;
+    position: relative;
+    top: 10px;
+    background: url('../Content/images/page-next.png') center no-repeat;
+}
+#custumer {
+    height: 100%;
+    width: 100px;
+    color: #026BB8;
+    font-size:17px;
+    padding-top:13px;
+}
+/*
+    Toolbar
+*/
+.toolbar {
+    width: 100%;
+    height: 25px;
+    border: solid 1px #d8d5d5;
+    background:#e5e1e1;
+}
+.toolbar-content{
+    height:27px;
+    width:100%;
+    display:flex;
+   
+}
+.menu-toolbar{
+    
+    margin-left:10px;
+    display:flex;
+    cursor:pointer;
+
+}
+.toolbar button {
+    height: 25px;
+    min-width:62px;
+    background: #e5e1e1;
+    border:none;
+    position:relative;
+    top:0px;
+}
+
+.icon-toolbar {
+    width: 16px;
+    height: 16px;
+    background: url('../Content/images/IconSprite.png');
+   
+}
+.menu-add {
+    height: 16px;
+    width: 100px;
+}
+
+.icon-add {
+    background-position: 1px 81px;
+   
+}
+.menu-mul {
+    height: 16px;
+    width: 100px;
+}
+.icon-mul {
+    background-position:1px 3362px;
+}
+.menu-edit {
+    height: 16px;
+    width: 50px;
+}
+
+.icon-edit {
+    background: url('../Content/images/Edit16.png') center no-repeat;
+}
+.menu-del {
+    height: 16px;
+    width: 50px;
+}
+
+.icon-del {
+    background-position: 0px 49px;
+}
+.menu-fill {
+    height: 16px;
+    width: 50px;
+}
+
+.icon-fill {
+    background-position: 0px 144px;
+}
+.menu-import {
+    height: 16px;
+    width: 105px;
+}
+
+.icon-import {
+    background: url('../Content/images/Import16.png') center no-repeat;
+}
+.menu-export {
+    height: 16px;
+    width: 100px;
+}
+
+.icon-export {
+    background: url('../Content/images/excel_97_24.png') center no-repeat;
+}
+.menu-merge {
+    height: 16px;
+    width: 150px;
+}
+
+.icon-merge {
+    background: url('../Content/images/ic_GopKhachHang.png') center no-repeat;
+}
+.menu-help {
+    height: 16px;
+    width: 100px;
+}
+
+.icon-help-toolbar {
+   background-position: 0px -1600px;
+}
+.menu-toolbar span{
+    margin-left:5px;
+}
+.wall{
+    height:16px;
+    width:1px;
+    background:#c6baba;
+}
+.menu-toolbar:disabled {
+    cursor: default;
+    opacity: 0.5;
+}
+.toolbar-item:disabled {
+    cursor: default;
+    opacity: 0.5;
+}
+.icon-bottom:disabled {
+    cursor: default;
+    opacity: 0.5;
+}

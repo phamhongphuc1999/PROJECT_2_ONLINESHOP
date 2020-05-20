@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Doanh thu";
+}
+
+<h2 style="color:#026BB8">Thống kê mặt hàng @ViewBag.Pro</h2>
+<hr />
+@{ DateTime start = ViewBag.Start;
+    string start_ = start.ToString("dd/MM/yyyy");
+    DateTime end = ViewBag.End;
+    string end_ = end.ToString("dd/MM/yyyy");
+
+
+}
+<h4 style="color:#026BB8">Từ ngày @start_  đến ngày @end_</h4>
+<hr />
+<table class="table">
+    <tr>
+
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Giá nhập
+        </th>
+        <th>
+            Giá bán
+        </th>
+        <th>
+            Lợi nhuận
+        </th>
+        <th>
+            Ngày bán
+        </th>
+        <th></th>
+    </tr>
+    @{ var s = 0; var money = 0;}
+    @foreach (var item in ViewBag.Model)
+    {
+        money= (@item.GIABAN - @item.GIANHAP) * @item.SOLUONG;
+
+        <tr>
+
+            <td>
+                @item.TENSP-@item.MALO
+            </td>
+            <td>
+                @item.SOLUONG
+            </td>
+            <td>
+                @item.GIANHAP
+            </td>
+            <td>
+                @item.GIABAN
+            </td>
+            <td>
+               @money
+            </td>
+            <td>
+                @item.NGAYBAN.ToString("dd/MM/yyyy")
+            </td>
+
+        </tr>
+        { s = s + (int)((item.GIABAN - item.GIANHAP) * item.SOLUONG); }
+
+
+    }
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Tổng lợi nhuận</td>
+        <td>@s VND</td>
+    </tr>
+
+</table>
+

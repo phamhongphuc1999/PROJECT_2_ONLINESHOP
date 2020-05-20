@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Project_Test2.Models.NV>
+
+@{
+    ViewBag.Title = "Nhân viên";
+}
+
+    <div class="maintain-content-list">
+        <div class="list-left">
+            <div id="list">Nhân viên</div>
+
+        </div>
+
+    </div>
+        <p>
+            @Html.ActionLink("Thêm nhân viên", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                  Họ tên
+                </th>
+                <th>
+                    Giới tính
+                </th>
+                <th>
+                   Số điện thoại
+                </th>
+                <th>
+                    Ngày sinh
+                </th>
+                <th>
+                   Địa chỉ
+                </th>
+                <th> Lựa chọn</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HOTEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GIOITINH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SDT)
+                    </td>
+                    <td>
+                        @Html.ValueFor(modelItem => item.NGAYSINH, "{0:dd/MM/yyyy}")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIACHI)
+                    </td>
+                    <td>
+                      
+                       
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.MANV })
+                    </td>
+                </tr>
+            }
+            
+
+        </table>
+        <script>
+    if (@ViewBag.Flag == 0)
+    {
+        debugger
+         alert("Tên tài khoản đã tồn tại");
+    }
+        </script>

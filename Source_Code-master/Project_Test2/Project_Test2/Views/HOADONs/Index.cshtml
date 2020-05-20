@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Project_Test2.Models.HOADON>
+
+@{
+    ViewBag.Title = "Hóa đơn";
+}
+
+<h2 style="color:#026BB8">Danh sách các hóa đơn</h2>
+<hr/>
+
+
+<table class="table">
+    <tr>
+        <th>
+           Tên khách hàng
+        </th>
+        <th>
+           Nhân viên tạo
+        </th>
+        <th>
+          Ngày tạo
+        </th>
+        <th>Lựa chọn</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KHACHHANG.TENKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NV.HOTEN)
+        </td>
+        <td>
+            @Html.ValueFor(modelItem => item.NGAYBAN, "{0:dd/MM/yyyy}")
+        </td>
+        <td>
+            
+            @Html.ActionLink("Sửa", "Edit", new { id = item.MAHD }) |
+            @Html.ActionLink("Xóa", "Delete", new { id = item.MAHD })|
+            @Html.ActionLink("Xem phiếu thu", "Index","DETAILs" ,new { id = item.MAHD },null)
+
+        </td>
+    </tr>
+}
+
+</table>

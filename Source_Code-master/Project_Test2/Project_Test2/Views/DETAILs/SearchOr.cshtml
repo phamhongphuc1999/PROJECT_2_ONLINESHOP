@@ -1,0 +1,32 @@
+﻿@model Project_Test2.Models.Search
+
+@{
+    ViewBag.Title = "Tìm kiếm hóa đơn";
+}
+@using (Html.BeginForm("Search1", "DETAILs"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.Label("start", "Từ ngày", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("start", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.start, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("end", "Đến ngày", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("end", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.start, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+        }

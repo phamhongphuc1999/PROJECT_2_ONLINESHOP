@@ -1,0 +1,148 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Contents/CSS/css")
+
+    <link href="/CSS/header.css" rel="stylesheet" />
+    <link href="/CSS/menu.css" rel="stylesheet" />
+    <link href="/CSS/main.css" rel="stylesheet" />
+    <link href="/CSS/table.css" rel="stylesheet" />
+    <link href="/CSS/dialog.css" rel="stylesheet" />
+    <link href="/CSS/Home.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="header">
+            <div class="header-left-left">
+                <div class="left-content">
+                    <div class="left-content-img"></div>
+                    <div style="font-size:25px;color:#ffffff;position:relative;top:3px;margin-left:10px;">CUKCUK</div>
+                </div>
+            </div>
+            <div class="header-left">
+                <select>
+                    <option>Đại dương xanh</option>
+                </select>
+            </div>
+            <div class="header-right">
+                <div class="user-center">
+                    <div class="header-contact"></div>
+                    <div class="header-user">
+                        
+                        <div class="user-content">
+
+                            <div class="user-name">@ViewBag.UserName</div>
+                           
+                            @using (Html.BeginForm("Logout", "Login", new { @class = "user-name" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="submit" value="Đăng xuất"  class="logout"/>
+                            }
+
+                            </div>
+                    </div>
+
+                </div>
+
+                <div style="height:100%;width:230px;position:absolute;right:270px;">
+
+                    <div class="notify-image"></div>
+
+                    <div">
+                        <select>
+                            <option>Tiếng Việt(Tiếng Việt)</option>
+                        </select>
+                </div>
+
+
+            </div>
+            <div class="menu">
+
+                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "link-text" })
+                <a class="menu-icon">
+                    <span class="icon icon-report"></span>
+                    @Html.ActionLink("Thông tin cá nhân", "Details", "NVs", null, new { @class = "link-text" })
+                </a>
+                <a class="menu-icon">
+                    <span class="icon icon-partner"></span>
+                    @Html.ActionLink("Nhân viên", "Index", "NVs", null, new { @class = "link-text" })
+                </a>
+                <a class="menu-icon">
+                    <span class="icon icon-purchar"></span>
+                    @Html.ActionLink("Khách hàng", "Index", "KHACHHANGs", null, new { @class = "link-text" })
+                </a>
+
+                <a class="menu-icon stock">
+                    <span class="icon icon-stock"></span>
+                    @Html.ActionLink("Quản lý kho", "Index", "SANPHAMs", null, new { @class = "link-text" })
+
+                </a>
+                <a class="menu-icon cash">
+                    <span class="icon icon-cash"></span>
+
+                    @Html.ActionLink("Quản lý hóa đơn", "Index", "HOADONs", null, new { @class = "link-text" })
+                </a>
+                <a class="menu-icon charge">
+                    <span class="icon icon-charge"></span>
+                    @Html.ActionLink("Tạo mới hóa đơn", "Create", "HOADONs", null, new { @class = "link-text" })
+                </a>
+                <a class="menu-icon promotion-group">
+                    <span class="icon icon-promotion-group"></span>
+                    @Html.ActionLink("Thống kê cửa hàng", "Search", "DETAILs", null, new { @class = "link-text" })
+
+                </a>
+                <a class="menu-icon">
+                    <span class="icon icon-report"></span>
+                    @Html.ActionLink("Thống kê theo sản phẩm", "SearchItem", "DETAILs", null, new { @class = "link-text" })
+                </a>
+                <a class="menu-icon">
+                <span class="icon icon-report"></span>
+                </a>
+
+
+
+
+
+
+
+            </div>
+            <div class="maintain-content">
+
+                @RenderBody()
+
+
+            </div>
+
+            <div class="bottom-table">
+                <div class="content-bottom">
+                    <div style="text-align:center">&copy; @DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year - Copyright by DVL</div>
+                    <div style="text-align:center">
+                        <b>Hotline:</b>0393339026 <b style="margin-left:8px"> Email:</b>loi.dv173241@sis.hust.edu.vn
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <script src="/Scripts/jquery-3.4.1.min.js"></script>
+            <script src="~/Scripts/bootstrap.min.js"></script>
+            <script src="~/Scripts/style.js"></script>
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+
+            @RenderSection("scripts", required: false)
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@model Project_Test2.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Xóa";
+}
+
+<h2 style="color:#026BB8">Xóa thông tin sản phẩm</h2>
+<hr/>
+
+<h3>Bạn muốn xóa sản phẩm này khỏi kho?</h3>
+<div>
+    <h4>Chi tiết</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sản phấm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENSP)
+        </dd>
+
+        <dt>
+            Giá nhập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIANHAP)
+        </dd>
+        <dt>
+            Lợi nhuận
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOINHUAN)
+        </dd>
+
+        <dt>
+            Bảo hành
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BAOHANH)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>
