@@ -26,12 +26,12 @@
                 <td>@item.ExportPrice</td>
                 <td>@item.Money</td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MADT }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.MADT }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MADT })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>
             </tr>
-            { s = s +(int) (item.TIEN); }
+            { s = s +(int) (item.Money); }
         }
         <tr>
             <td></td>

@@ -1,41 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using MODELS.EF;
+using MODELS.Dao;
 
 namespace OnlineShop.Controllers
 {
     public class DetailController : Controller
     {
-        private DatabaseOnlineShop db = new DatabaseOnlineShop();
+        private DetailDao detailDao = new DetailDao();
 
-        public ActionResult Index(int? id)
+        public ActionResult Index(int id)
         {
-            ViewBag.Model = db.Details.Where(x => x.IdInvoice == id);
-            ViewBag.MASP = new SelectList(db.Products, "Id", "NameProduct");
+            ViewBag.Model = detailDao.ListDetail(id);
+            ViewBag.MASP = new SelectList(detailDao.DB.Products, "Id", "NameProduct");
             ViewBag.MAHD = id;
             return View();
         }
 
-        public ActionResult IndexADD(int? id, int flag)
+        public ActionResult IndexADD(int id, int flag)
         {
-            ViewBag.Model = db.Details.Where(x => x.IdInvoice == id);
-            ViewBag.MASP = db.Products;
+            ViewBag.Model = detailDao.ListDetail(id);
+            ViewBag.MASP = detailDao.DB.Products;
             ViewBag.MAHD = id;
             ViewBag.Flag = flag;
             return View();
         }
 
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            Detail detail = db.Details.Find(id);
+            Detail detail = detailDao.GetByID(id);
             if (detail == null) return HttpNotFound();
             return View(detail);
         }
@@ -44,13 +39,7 @@ namespace OnlineShop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,IdInvoice,Amount,IdProduct,NameProduct,ImportPrice,ExportPrice,Money,DaySell")] Detail detail)
         {
-            Product product = db.Products.Find(detail.IdProduct);
-            detail.ImportPrice = product.ImportPrice;
-            detail.ExportPrice = product.ImportPrice * product.Profix / 100;
-            detail.Money = detail.ExportPrice * detail.Amount;
-            detail.NameProduct = product.NameProduct;
-            db.Details.Add(detail);
-            db.SaveChanges();
+            detailDao.AddByProduct(detail);
             return RedirectToAction("Index", new { id = detail.IdInvoice });
         }
 
@@ -60,7 +49,7 @@ namespace OnlineShop.Controllers
         {
             detail.IdPackage = detail.IdProduct.Substring(6);
             detail.IdProduct = detail.IdProduct.Substring(0, 6);
-            var listProduct = db.Products.Where(x => (x.Id == detail.IdProduct) && (x.IdPackage == detail.IdPackage));
+            var listProduct = detailDao.ListProduct(detail.IdProduct, detail.IdPackage);
             Product product = listProduct.FirstOrDefault();
 
             if (product.Amount < detail.Amount)
@@ -70,25 +59,15 @@ namespace OnlineShop.Controllers
             }
             else
             {
-                Invoice invoice = db.Invoices.Find(detail.IdInvoice);
-                detail.DaySell = invoice.DaySell;
-                detail.ImportPrice = product.ImportPrice;
-                detail.ExportPrice = (((product.ImportPrice * (product.Profix + 100)) / 100) * ((100 - product.Sale))) / 100;
-                detail.Money = detail.ExportPrice * detail.Amount;
-                detail.NameProduct = product.NameProduct;
-                product.Amount = product.Amount - detail.Amount;
-                db.Details.Add(detail);
-                db.SaveChanges();
+                detailDao.AddByInvoice(detail, product);
                 int flag = 1;
                 return RedirectToAction("IndexADD", new { id = detail.IdInvoice, flag });
             }
         }
 
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            Detail detail = db.Details.Find(id);
+            Detail detail = detailDao.GetByID(id);
             if (detail == null) return HttpNotFound();
             return View(detail);
         }
@@ -99,18 +78,15 @@ namespace OnlineShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(detail).State = EntityState.Modified;
-                db.SaveChanges();
+                detailDao.Edit(detail);
                 return RedirectToAction("Index", new { id = detail.IdInvoice });
             }
             return View(detail);
         }
 
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            Detail detail = db.Details.Find(id);
+            Detail detail = detailDao.GetByID(id);
             if (detail == null) return HttpNotFound();
             return View(detail);
         }
@@ -119,9 +95,7 @@ namespace OnlineShop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Detail detail = db.Details.Find(id);
-            db.Details.Remove(detail);
-            db.SaveChanges();
+            Detail detail = detailDao.Delete(id);
             return RedirectToAction("Index", new { id = detail.IdInvoice });
         }
 
@@ -134,14 +108,13 @@ namespace OnlineShop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Search1([Bind(Include = "start,end")] Search search)
         {
-            var data = db.Details.Where(x => (x.DaySell >= search.start) && (x.DaySell <= search.end));
-            var data1 = data.GroupBy(x => x.NameProduct)
-                .Select(g => new Statistic
-                {
-                    NameProduct = g.Key,
-                    Amount = g.Sum(y => y.Amount)
-                }
-            );
+            var data = detailDao.FilterByDaySell(search.start, search.end);
+            var data1 = data.GroupBy(x => x.NameProduct).Select(g => new Statistic
+            {
+                NameProduct = g.Key,
+                Amount = g.Sum(y => y.Amount)
+            });
+
             ViewBag.Model = data1;
             ViewBag.Start = search.start;
             ViewBag.End = search.end;
@@ -150,26 +123,26 @@ namespace OnlineShop.Controllers
 
         public ActionResult SearchItem()
         {
-            var data = db.Products;
+            var data = detailDao.DB.Products;
             ViewBag.MASP = data.Select(g => g.NameProduct).Distinct();
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SearchItem_(DateTime start, DateTime end, string TENSP)
+        public ActionResult SearchItem_(DateTime start, DateTime end, string nameProduct)
         {
-            var data = db.Details.Where(x => (x.DaySell >= start) && (x.DaySell <= end) && (x.NameProduct == TENSP));
+            var data = detailDao.FilterByDaySell(start, end, nameProduct);
             ViewBag.Model = data;
             ViewBag.Start = start;
             ViewBag.End = end;
-            ViewBag.Pro = TENSP;
+            ViewBag.Pro = nameProduct;
             return View();
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing) db.Dispose();
+            if (disposing) detailDao.Dispose();
             base.Dispose(disposing);
         }
     }

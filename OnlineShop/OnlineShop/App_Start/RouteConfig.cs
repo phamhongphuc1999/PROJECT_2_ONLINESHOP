@@ -91,6 +91,11 @@ namespace OnlineShop
 
             #region Detail
             routes.MapRoute(
+                name: "Detail_Index",
+                url: "chi-tiet/danh-sach/{id}",
+                defaults: new { controller = "Detail", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Detail_Search",
                 url: "chi-tiet/thong-ke",
                 defaults: new { controller = "Detail", action = "Search", id = UrlParameter.Optional }

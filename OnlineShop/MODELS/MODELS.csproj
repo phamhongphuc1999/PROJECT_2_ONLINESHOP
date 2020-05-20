@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Dao\BaseDao.cs" />
     <Compile Include="Dao\CustomerDao.cs" />
+    <Compile Include="Dao\DetailDao.cs" />
     <Compile Include="Dao\EmployeeDao.cs" />
     <Compile Include="Dao\InvoiceDao.cs" />
     <Compile Include="Dao\ProductDao.cs" />

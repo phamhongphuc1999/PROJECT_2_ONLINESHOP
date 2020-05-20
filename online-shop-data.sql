@@ -101,13 +101,17 @@
 --	   (N'S00043', N'L00004', N'Product43', 100000, 100000, 10, 1000, 20),
 --	   (N'S00044', N'L00004', N'Product44', 2500000, 100000, 10, 1000, 40)
 
-insert into Invoice(IdEmployee, IdCustomer, DaySell)
-values(1, 3, GETDATE()), (1, 7, '2020-03-21'),
-	   (1, 20, '2020-04-20'), (2, 14, '2020-02-10'),
-	   (4, 19, GETDATE()), (7, 30, GETDATE()),
-	   (1, 3, GETDATE()), (1, 7, '2020-03-21'),
-	   (1, 21, '2020-04-20'), (6, 16, '2020-02-10'),
-	   (8, 31, GETDATE()), (16, 28, '2020-01-18'),
-	   (3, 4, GETDATE()), (10, 17, '2020-01-21'),
-	   (1, 20, '2020-04-20'), (2, 14, '2020-02-10'),
-	   (4, 19, GETDATE()), (7, 30, GETDATE())
+--insert into Invoice(IdEmployee, IdCustomer, DaySell)
+--values(1, 3, GETDATE()), (1, 7, '2020-03-21'),
+--	   (1, 20, '2020-04-20'), (2, 14, '2020-02-10'),
+--	   (4, 19, GETDATE()), (7, 30, GETDATE()),
+--	   (1, 3, GETDATE()), (1, 7, '2020-03-21'),
+--	   (1, 21, '2020-04-20'), (6, 16, '2020-02-10'),
+--	   (8, 31, GETDATE()), (16, 28, '2020-01-18'),
+--	   (3, 4, GETDATE()), (10, 17, '2020-01-21'),
+--	   (1, 20, '2020-04-20'), (2, 14, '2020-02-10'),
+--	   (4, 19, GETDATE()), (7, 30, GETDATE())
+
+insert into Detail(IdInvoice, IdProduct, IdPackage, NameProduct, ImportPrice, ExportPrice, Money, DaySell, Amount)
+values(1, N'S00001', N'P00001', N'Product1', 100000, 200000, 100000, GETDATE(), 1000),
+      (2, N'S00002', N'P00001', N'Product2', 200000, 300000, 100000, '2020-03-12', 1000)
