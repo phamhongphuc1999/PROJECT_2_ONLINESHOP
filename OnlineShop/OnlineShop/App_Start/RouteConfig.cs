@@ -48,6 +48,11 @@ namespace OnlineShop
                 defaults: new { controller = "Product", action = "Create", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Product_Edit",
+                url: "san-pham/chinh-sua/{Id}-{IdPackage}",
+                defaults: new { controller = "Product", action = "Edit", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Invoice_Index",
                 url: "hoa-don/danh-sach",
                 defaults: new { controller = "Invoice", action = "Index", id = UrlParameter.Optional }

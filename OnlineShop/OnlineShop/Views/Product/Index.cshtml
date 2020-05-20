@@ -37,7 +37,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Sale)%</td>
                 <td>@Html.DisplayFor(modelItem => item.Guarantee)</td>
                 <td>
-                    @Html.ActionLink("Sửa", "Edit", new { MASP = item.Id, MALO = item.IdPackage }) |
+                    @Html.ActionLink("Sửa", "Edit", new { Id = item.Id, IdPackage = item.IdPackage }) |
                     @Html.ActionLink("Xóa", "Delete", new { MASP = item.Id, MALO = item.IdPackage })|
                     @Html.ActionLink("Thêm lô", "ViewAddLot", new { id = item.Id })
                 </td>

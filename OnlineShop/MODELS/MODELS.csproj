@@ -53,6 +53,7 @@
     <Compile Include="Dao\BaseDao.cs" />
     <Compile Include="Dao\CustomerDao.cs" />
     <Compile Include="Dao\EmployeeDao.cs" />
+    <Compile Include="Dao\ProductDao.cs" />
     <Compile Include="EF\Customer.cs" />
     <Compile Include="EF\DatabaseOnlineShop.cs" />
     <Compile Include="EF\Detail.cs" />

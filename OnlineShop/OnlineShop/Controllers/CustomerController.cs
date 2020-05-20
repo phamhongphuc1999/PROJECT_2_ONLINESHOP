@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using OnlineShop.Common;
 using MODELS.EF;
 using MODELS.Dao;
@@ -14,7 +7,6 @@ namespace OnlineShop.Controllers
 {
     public class CustomerController : Controller
     {
-        private DatabaseOnlineShop db = new DatabaseOnlineShop();
         private CustomerDao customerDao = new CustomerDao();
 
         public ActionResult Index()
