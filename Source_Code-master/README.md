@@ -1,3 +1,1 @@
-# Bài tập lớn project2
-## xây dựng một website quản lý kho hàng
-
+# mã nguồn tham khảo để làm project2
