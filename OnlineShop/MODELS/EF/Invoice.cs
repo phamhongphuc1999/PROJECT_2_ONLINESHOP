@@ -16,5 +16,7 @@ namespace MODELS.EF
         public int IdCustomer { get; set; }
 
         public DateTime? DaySell { get; set; }
+
+        public bool status { get; set; }
     }
 }
