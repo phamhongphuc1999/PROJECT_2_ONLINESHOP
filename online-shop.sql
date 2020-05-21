@@ -20,7 +20,8 @@ create table Invoice(
    Id int IDENTITY(1, 1) primary key,
    IdEmployee int not null,
    IdCustomer int not null,
-   DaySell datetime default getdate()
+   DaySell datetime default getdate(),
+   Status bit not null
 )
 
 create table Customer(
@@ -31,7 +32,8 @@ create table Customer(
    Address nvarchar(200),
    Phone varchar(50),
    Type nvarchar(10),
-   Node nvarchar(100)
+   Node nvarchar(100),
+   Status bit
 )
 
 create table Employee(
@@ -44,6 +46,17 @@ create table Employee(
    Username nvarchar(200),
    Password nvarchar(200),
    Type nvarchar(200),
+   Node nvarchar(100)
+)
+
+create table OldEmployee(
+   Id int IDENTITY(1, 1) primary key,
+   Name nvarchar(200) not null,
+   Birthday datetime,
+   Sex varchar(10),
+   Phone varchar(50),
+   Type nvarchar(200),
+   DayOff datetime,
    Node nvarchar(100)
 )
 
