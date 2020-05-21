@@ -17,13 +17,16 @@ namespace OnlineShop.Controllers
             List<InvoiceModel> invoiceModels = new List<InvoiceModel>();
             foreach(Invoice item in invoiceList)
             {
-                invoiceModels.Add(new InvoiceModel()
+                if(item.status)
                 {
-                    ID = item.Id,
-                    EmployeeName = invoiceDao.DB.Employees.Find(item.IdEmployee).Name,
-                    CustomerName = invoiceDao.DB.Customers.Find(item.IdCustomer).Name,
-                    DaySell = item.DaySell
-                });
+                    invoiceModels.Add(new InvoiceModel()
+                    {
+                        ID = item.Id,
+                        EmployeeName = invoiceDao.DB.Employees.Find(item.IdEmployee).Name,
+                        CustomerName = invoiceDao.DB.Customers.Find(item.IdCustomer).Name,
+                        DaySell = item.DaySell
+                    });
+                }
             }
             var user = (UserLogin)Session[CommonConstants.USER_SEESION];
             ViewBag.UserName = user.Name;
@@ -52,6 +55,7 @@ namespace OnlineShop.Controllers
         {
             var user = (UserLogin)Session[CommonConstants.USER_SEESION];
             invoice.IdEmployee = user.UserID;
+            invoice.DaySell = System.DateTime.Now;
             if (ModelState.IsValid)
             {
                 invoiceDao.Add(invoice);

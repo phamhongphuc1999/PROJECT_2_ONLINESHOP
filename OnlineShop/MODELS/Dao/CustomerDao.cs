@@ -58,6 +58,11 @@ namespace MODELS.Dao
             try
             {
                 Customer customer = GetByID(id);
+                List<Invoice> invoiceList = db.Invoices.Where(x => x.IdCustomer == id).ToList();
+                foreach(Invoice item in invoiceList)
+                {
+                    item.status = false;
+                }
                 db.Customers.Remove(customer);
                 db.SaveChanges();
                 return true;

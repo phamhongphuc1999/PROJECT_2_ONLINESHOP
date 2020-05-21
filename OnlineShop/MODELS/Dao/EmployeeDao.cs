@@ -57,6 +57,11 @@ namespace MODELS.Dao
             try
             {
                 Employee employee = GetByID(id);
+                List<Invoice> invoiceList = db.Invoices.Where(x => x.IdEmployee == id).ToList();
+                foreach(Invoice item in invoiceList)
+                {
+                    item.status = false;
+                }
                 db.Employees.Remove(employee);
                 db.SaveChanges();
                 return true;
