@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using MODELS.EF;
 using MODELS.Dao;
+using OnlineShop.Models;
 
 namespace OnlineShop.Controllers
 {
@@ -45,10 +46,15 @@ namespace OnlineShop.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CREATEADD([Bind(Include = "Id,IdInvoice,Amount,IdProduct,NameProduct,ImportPrice,ExportPrice,Money,DaySell")] Detail detail)
+        public ActionResult CREATEADD(DetailModel detailModel)
         {
-            detail.IdPackage = detail.IdProduct.Substring(6);
-            detail.IdProduct = detail.IdProduct.Substring(0, 6);
+            Detail detail = new Detail()
+            {
+                IdProduct = detailModel.ID.Substring(0, 6),
+                IdPackage = detailModel.ID.Substring(6),
+                Amount = detailModel.Amount,
+                DaySell = detailModel.DaySell
+            };
             var listProduct = detailDao.ListProduct(detail.IdProduct, detail.IdPackage);
             Product product = listProduct.FirstOrDefault();
 

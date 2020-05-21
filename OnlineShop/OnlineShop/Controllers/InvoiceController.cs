@@ -59,11 +59,16 @@ namespace OnlineShop.Controllers
             if (ModelState.IsValid)
             {
                 invoiceDao.Add(invoice);
+                DetailModel detailModel = new DetailModel()
+                {
+                    IdInvoice = invoice.Id,
+                    DaySell = invoice.DaySell
+                };
                 ViewBag.MAHD = invoice.Id;
                 ViewBag.NGAYBAN = invoice.DaySell;
                 ViewBag.MASP = invoiceDao.DB.Products;
                 ViewBag.Model = invoiceDao.ListDetail(invoice.Id);
-                return View();
+                return View(detailModel);
             }
             ViewBag.MAKH = new SelectList(invoiceDao.DB.Customers, "Id", "Name", invoice.IdCustomer);
             ViewBag.MANV = new SelectList(invoiceDao.DB.Employees, "Id", "Name", invoice.IdEmployee);
