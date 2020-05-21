@@ -16,6 +16,7 @@ namespace MODELS.EF
         public virtual DbSet<Detail> Details { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
+        public virtual DbSet<OldEmployee> OldEmployees { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Statistic> Statistics { get; set; }
 
@@ -34,6 +35,14 @@ namespace MODELS.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<Employee>()
+                .Property(e => e.Phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<OldEmployee>()
+                .Property(e => e.Sex)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<OldEmployee>()
                 .Property(e => e.Phone)
                 .IsUnicode(false);
         }

@@ -62,6 +62,7 @@
     <Compile Include="EF\Detail.cs" />
     <Compile Include="EF\Employee.cs" />
     <Compile Include="EF\Invoice.cs" />
+    <Compile Include="EF\OldEmployee.cs" />
     <Compile Include="EF\Product.cs" />
     <Compile Include="EF\Search.cs" />
     <Compile Include="EF\Statistic.cs" />

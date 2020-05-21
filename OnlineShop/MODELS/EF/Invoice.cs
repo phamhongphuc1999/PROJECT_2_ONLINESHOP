@@ -17,6 +17,6 @@ namespace MODELS.EF
 
         public DateTime? DaySell { get; set; }
 
-        public bool status { get; set; }
+        public bool Status { get; set; }
     }
 }

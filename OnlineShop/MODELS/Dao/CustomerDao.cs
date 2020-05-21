@@ -61,7 +61,7 @@ namespace MODELS.Dao
                 List<Invoice> invoiceList = db.Invoices.Where(x => x.IdCustomer == id).ToList();
                 foreach(Invoice item in invoiceList)
                 {
-                    item.status = false;
+                    item.Status = false;
                 }
                 db.Customers.Remove(customer);
                 db.SaveChanges();

@@ -17,7 +17,7 @@ namespace OnlineShop.Controllers
             List<InvoiceModel> invoiceModels = new List<InvoiceModel>();
             foreach(Invoice item in invoiceList)
             {
-                if(item.status)
+                if(item.Status)
                 {
                     invoiceModels.Add(new InvoiceModel()
                     {

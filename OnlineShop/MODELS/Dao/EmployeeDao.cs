@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MODELS.EF;
 
@@ -60,9 +61,20 @@ namespace MODELS.Dao
                 List<Invoice> invoiceList = db.Invoices.Where(x => x.IdEmployee == id).ToList();
                 foreach(Invoice item in invoiceList)
                 {
-                    item.status = false;
+                    item.Status = false;
                 }
+                OldEmployee oldEmployee = new OldEmployee()
+                {
+                    Name = employee.Name,
+                    Birthday = employee.Birthday,
+                    Sex = employee.Sex,
+                    Phone = employee.Phone,
+                    Type = employee.Type,
+                    DayOff = DateTime.Now,
+                    Node = employee.Node
+                };
                 db.Employees.Remove(employee);
+                db.OldEmployees.Add(oldEmployee);
                 db.SaveChanges();
                 return true;
             }
