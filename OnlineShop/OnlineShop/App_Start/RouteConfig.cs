@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace OnlineShop
@@ -114,6 +110,11 @@ namespace OnlineShop
                 name: "Detail_CREATEADD",
                 url: "chi-tiet/tao-moi",
                 defaults: new { controller = "Detail", action = "CREATEADD", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Detail_IndexADD/{id}-{flag}",
+                url: "chi-tiet/tao-moi-hoa-don",
+                defaults: new { controller = "Detail", action = "IndexADD", id = UrlParameter.Optional }
             );
             #endregion
 

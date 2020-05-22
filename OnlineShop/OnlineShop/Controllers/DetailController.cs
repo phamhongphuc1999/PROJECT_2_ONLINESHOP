@@ -50,8 +50,9 @@ namespace OnlineShop.Controllers
         {
             Detail detail = new Detail()
             {
+                IdInvoice = detailModel.IdInvoice,
                 IdProduct = detailModel.ID.Substring(0, 6),
-                IdPackage = detailModel.ID.Substring(6),
+                IdPackage = detailModel.ID.Substring(7),
                 Amount = detailModel.Amount,
                 DaySell = detailModel.DaySell
             };
