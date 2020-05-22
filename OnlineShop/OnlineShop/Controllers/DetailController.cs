@@ -20,12 +20,13 @@ namespace OnlineShop.Controllers
             return View();
         }
 
-        public ActionResult IndexADD(int id, int flag)
+        public ActionResult IndexADD(int id, int flag, string abc)
         {
             ViewBag.Model = detailDao.ListDetail(id);
             ViewBag.MASP = detailDao.DB.Products;
             ViewBag.MAHD = id;
             ViewBag.Flag = flag;
+            ViewBag.ID = abc;
             return View();
         }
 
@@ -66,9 +67,9 @@ namespace OnlineShop.Controllers
             }
             else
             {
-                detailDao.AddByInvoice(detail, product);
                 int flag = 1;
-                return RedirectToAction("IndexADD", new { id = detail.IdInvoice, flag });
+                detailDao.AddByInvoice(detail, product);
+                return RedirectToAction("IndexADD", new { id = detail.IdInvoice, flag, abc = detailModel.ID });
             }
         }
 

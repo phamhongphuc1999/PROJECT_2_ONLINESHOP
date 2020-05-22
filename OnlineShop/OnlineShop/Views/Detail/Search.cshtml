@@ -1,4 +1,4 @@
-﻿@model MODELS.EF.Detail
+﻿@model MODELS.EF.Search
 
 @{
     ViewBag.Title = "Tìm kiếm hóa đơn";
@@ -6,7 +6,7 @@
 <link href="~/Content/themes/StyleSheet1.css" rel="stylesheet" />
 <h2 style="color:#026BB8;">Thống kê mua bán</h2><hr />
 
-@using (Html.BeginForm("Search1", "DETAILs"))
+@using (Html.BeginForm("Search1", "Detail"))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">

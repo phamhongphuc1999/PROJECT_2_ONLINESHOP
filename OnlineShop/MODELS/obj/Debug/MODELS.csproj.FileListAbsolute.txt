@@ -20,4 +20,3 @@ D:\Documents\VisualStudio\project2\PROJECT_2_ONLINESHOP\OnlineShop\MODELS\obj\De
 D:\Documents\VisualStudio\project2\PROJECT_2_ONLINESHOP\OnlineShop\MODELS\obj\Debug\MODELS.csproj.CopyComplete
 D:\Documents\VisualStudio\project2\PROJECT_2_ONLINESHOP\OnlineShop\MODELS\obj\Debug\MODELS.dll
 D:\Documents\VisualStudio\project2\PROJECT_2_ONLINESHOP\OnlineShop\MODELS\obj\Debug\MODELS.pdb
-D:\Documents\VisualStudio\project2\PROJECT_2_ONLINESHOP\OnlineShop\MODELS\obj\Debug\MODELS.csprojAssemblyReference.cache

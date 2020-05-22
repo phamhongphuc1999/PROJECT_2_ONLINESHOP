@@ -1,5 +1,6 @@
 ﻿using MODELS.EF;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MODELS.Dao
@@ -93,21 +94,21 @@ namespace MODELS.Dao
             }
         }
 
-        public IQueryable<Product> ListProduct(string idProduct, string idPackage)
+        public List<Product> ListProduct(string idProduct, string idPackage)
         {
-            return db.Products.Where(x => (x.Id == idProduct) && (x.IdPackage == idPackage));
+            return db.Products.Where(x => (x.Id == idProduct) && (x.IdPackage == idPackage)).ToList();
         }
 
-        public IQueryable<Detail> ListDetail(int id)
+        public List<Detail> ListDetail(int id)
         {
-            return db.Details.Where(x => x.IdInvoice == id);
+            return db.Details.Where(x => x.IdInvoice == id).ToList();
         }
 
-        public IQueryable<Detail> FilterByDaySell(DateTime start, DateTime end, string nameProduct = "")
+        public List<Detail> FilterByDaySell(DateTime start, DateTime end, string nameProduct = "")
         {
-            if (nameProduct == "") return db.Details.Where(x => (x.DaySell >= start) && (x.DaySell <= end));
+            if (nameProduct == "") return db.Details.Where(x => (x.DaySell >= start) && (x.DaySell <= end)).ToList();
             else
-                return db.Details.Where(x => (x.DaySell >= start) && (x.DaySell <= end) && x.NameProduct == nameProduct);
+                return db.Details.Where(x => (x.DaySell >= start) && (x.DaySell <= end) && x.NameProduct == nameProduct).ToList();
         }
 
     }
