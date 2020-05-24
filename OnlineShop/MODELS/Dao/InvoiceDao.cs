@@ -63,9 +63,9 @@ namespace MODELS.Dao
             }
         }
 
-        public IQueryable<Detail> ListDetail(int id)
+        public List<Detail> ListDetail(int id)
         {
-            return db.Details.Where(x => x.IdInvoice == id);
+            return db.Details.Where(x => x.IdInvoice == id).ToList();
         }
     }
 }

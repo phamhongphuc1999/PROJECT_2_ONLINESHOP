@@ -112,7 +112,7 @@ namespace OnlineShop
                 defaults: new { controller = "Detail", action = "CREATEADD", id = UrlParameter.Optional }
             );
             routes.MapRoute(
-                name: "Detail_IndexADD/{id}-{flag}",
+                name: "Detail_IndexADD/{ID}/{IdInvoice}-{flag}",
                 url: "chi-tiet/tao-moi-hoa-don",
                 defaults: new { controller = "Detail", action = "IndexADD", id = UrlParameter.Optional }
             );
