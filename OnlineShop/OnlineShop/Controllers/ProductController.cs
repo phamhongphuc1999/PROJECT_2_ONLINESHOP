@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using MODELS.EF;
 using MODELS.Dao;
+using System.Linq;
 
 namespace OnlineShop.Controllers
 {
@@ -78,23 +79,22 @@ namespace OnlineShop.Controllers
             productDao.Delete(id, idPackage);
             return RedirectToAction("Index");
         }
-        
-        //public ActionResult ViewAddLot(string id)
-        //{
-        //    var product = new Product();
-        //    product.Id = id;
-        //    var listProduct = db.Products.Where(x => x.Id == id);
-        //    var lastLot = listProduct.OrderByDescending(x => x.IdPackage).FirstOrDefault();
-        //    product.NameProduct = lastLot.NameProduct;
-        //    ViewBag.ProName = lastLot.NameProduct;
-        //    if (lastLot == null) product.IdPackage = "L00001";
-        //    else
-        //    {
-        //        product.IdPackage = "L" + (Convert.ToInt32(lastLot.IdPackage.Substring(1, lastLot.IdPackage.Length - 1)) + 1).ToString("D5");
-        //    }
-        //    return View(product);
 
-        //}
+        public ActionResult ViewAddLot(string id)
+        {
+            var product = new Product();
+            product.Id = id;
+            var productList = productDao.DB.Products.Where(x => x.Id == id);
+            var productTemp = productList.FirstOrDefault();
+            if (productTemp == null) product.IdPackage = "L00001";
+            else
+            {
+                product.NameProduct = productTemp.NameProduct;
+                ViewBag.ProName = productTemp.NameProduct;
+                product.IdPackage = productTemp.IdPackage;
+            }
+            return View(product);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -4,7 +4,7 @@
         ViewBag.Title = "Thêm lô";
     }
     <h2 style="color:#026BB8">Nhập thêm lô cho Sản phẩm @ViewBag.ProName</h2>
-    @using (Html.BeginForm("CreateProLot", "SANPHAMs"))
+    @using (Html.BeginForm("CreateProLot", "Product"))
     {
         @Html.AntiForgeryToken()
         <div class="form-horizontal">

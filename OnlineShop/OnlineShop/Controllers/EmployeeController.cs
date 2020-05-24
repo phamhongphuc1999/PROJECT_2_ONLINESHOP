@@ -72,14 +72,15 @@ namespace OnlineShop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Sex,Phone,Birthday,Address,Username,ComfirmOldPassword,NewPassword,ComfirmNewPassword")] EmployeeModel entity)
         {
-            if(entity.ComfirmOldPassword == oldPassword && entity.NewPassword == entity.ComfirmNewPassword)
+            string comfirmOldPassword = Cryptography_MD5.GetHash(entity.ComfirmOldPassword);
+            if(comfirmOldPassword == oldPassword && entity.NewPassword == entity.ComfirmNewPassword)
             {
                 Employee employee = new Employee()
                 {
                     Id = entity.ID,
                     Name = entity.Name,
                     Username = entity.UserName,
-                    Password = entity.NewPassword,
+                    Password = Cryptography_MD5.GetHash(entity.NewPassword),
                     Sex = entity.Sex,
                     Address = entity.Address,
                     Phone = entity.Phone,

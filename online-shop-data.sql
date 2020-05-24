@@ -38,22 +38,22 @@ values (N'customer_1', 'male', '1988-03-04', N'Thanh Hóa', '0000000001','A', NU
 	   (N'customer_35', 'male', '1988-03-04', N'Hải Dương', '0000000035', 'B', NULL, NULL)
 
 insert into Employee(Name, Birthday, Sex, Phone, Address, Username, Password, Type, Node)
-values (N'employee_1', '1970-12-04', 'male', '1234567899', N'Hải Dương', 'username1', '123456', 'manager', NULL),
-       (N'employee_2', '1970-12-04', 'male', '1234567899', N'Hà Nam', 'username2', '123456', 'director', NULL),
-	   (N'employee_3', '1970-12-04', 'male', '1234567899', N'Hà Nội', 'username3', '123456', 'employee', NULL),
-	   (N'employee_4', '1970-12-04', 'male', '1234567899', N'Nam Định', 'username4', '123456', 'employee', NULL),
-	   (N'employee_5', '1970-12-04', 'male', '1234567899', N'Hòa Bình', 'username5', '123456', 'employee', NULL),
-	   (N'employee_6', '1970-12-04', 'male', '1234567899', N'Hòa Bình', 'username6', '123456', 'employee', NULL),
-	   (N'employee_7', '1970-12-04', 'male', '1234567899', N'Thái Bình', 'username7', '123456', 'employee', NULL),
-	   (N'employee_8', '1970-12-04', 'male', '1234567899', N'Thanh Hóa', 'username8', '123456', 'employee', NULL),
-	   (N'employee_9', '1970-12-04', 'male', '1234567899', N'Nghệ An', 'username9', '123456', 'employee', NULL),
-	   (N'employee_10', '1970-12-04', 'male', '1234567899', N'Nghệ An', 'username10', '123456', 'employee', NULL),
-	   (N'employee_11', '1970-12-04', 'male', '1234567899', N'Hưng Yên', 'username11', '123456', 'employee', NULL),
-	   (N'employee_12', '1970-12-04', 'male', '1234567899', N'Hà Tĩnh', 'username12', '123456', 'employee', NULL),
-	   (N'employee_13', '1970-12-04', 'male', '1234567899', N'Lạng Sơn', 'username13', '123456', 'employee', NULL),
-	   (N'employee_14', '1970-12-04', 'male', '1234567899', N'Hải Dương', 'username14', '123456', 'employee', NULL),
-	   (N'employee_15', '1970-12-04', 'male', '1234567899', N'Lào Cai', 'username15', '123456', 'employee', NULL),
-	   (N'employee_16', '1970-12-04', 'male', '1234567899', N'Hải Dương', 'username16', '123456', 'employee', NULL)
+values (N'employee_1', '1970-12-04', 'male', '1234567899', N'Hải Dương', 'username1', 'e10adc3949ba59abbe56e057f20f883e', 'manager', NULL),
+       (N'employee_2', '1970-12-04', 'male', '1234567899', N'Hà Nam', 'username2', 'e10adc3949ba59abbe56e057f20f883e', 'director', NULL),
+	   (N'employee_3', '1970-12-04', 'male', '1234567899', N'Hà Nội', 'username3', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL),
+	   (N'employee_4', '1970-12-04', 'male', '1234567899', N'Nam Định', 'username4', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL),
+	   (N'employee_5', '1970-12-04', 'male', '1234567899', N'Hòa Bình', 'username5', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL),
+	   (N'employee_6', '1970-12-04', 'male', '1234567899', N'Hòa Bình', 'username6', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL),
+	   (N'employee_7', '1970-12-04', 'male', '1234567899', N'Thái Bình', 'username7', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL),
+	   (N'employee_8', '1970-12-04', 'male', '1234567899', N'Thanh Hóa', 'username8', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL),
+	   (N'employee_9', '1970-12-04', 'male', '1234567899', N'Nghệ An', 'username9', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL),
+	   (N'employee_10', '1970-12-04', 'male', '1234567899', N'Nghệ An', 'username10', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL),
+	   (N'employee_11', '1970-12-04', 'male', '1234567899', N'Hưng Yên', 'username11', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL),
+	   (N'employee_12', '1970-12-04', 'male', '1234567899', N'Hà Tĩnh', 'username12', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL),
+	   (N'employee_13', '1970-12-04', 'male', '1234567899', N'Lạng Sơn', 'username13', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL),
+	   (N'employee_14', '1970-12-04', 'male', '1234567899', N'Hải Dương', 'username14', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL),
+	   (N'employee_15', '1970-12-04', 'male', '1234567899', N'Lào Cai', 'username15', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL),
+	   (N'employee_16', '1970-12-04', 'male', '1234567899', N'Hải Dương', 'username16', 'e10adc3949ba59abbe56e057f20f883e', 'employee', NULL)
 
 insert into Product(Id, IdPackage, NameProduct, ImportPrice, Profix, Guarantee, Amount, Sale)
 values (N'S00001', N'L00001', N'Product1', 100000, 10, 10, 1000, 50),

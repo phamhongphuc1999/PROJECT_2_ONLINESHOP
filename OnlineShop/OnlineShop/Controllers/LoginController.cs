@@ -17,7 +17,7 @@ namespace OnlineShop.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new EmployeeDao();
-                var result = dao.Login(model.UserName, model.Password);
+                var result = dao.Login(model.UserName, Cryptography_MD5.GetHash(model.Password));
                 if (result)
                 {
                     var user = dao.GetByName(model.UserName, true);

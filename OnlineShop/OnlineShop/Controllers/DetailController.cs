@@ -11,6 +11,7 @@ namespace OnlineShop.Controllers
     public class DetailController : Controller
     {
         private DetailDao detailDao = new DetailDao();
+        private static int Amount = 0;
 
         public ActionResult Index(int id)
         {
@@ -20,7 +21,7 @@ namespace OnlineShop.Controllers
             return View();
         }
 
-        public ActionResult IndexADD(string ID, int Amount, int IdInvoice)
+        public ActionResult IndexADD(string ID, int IdInvoice, int flag)
         {
             ViewBag.Model = detailDao.ListDetail(IdInvoice);
             ViewBag.MASP = detailDao.DB.Products;
@@ -57,14 +58,19 @@ namespace OnlineShop.Controllers
                 Amount = detailModel.Amount,
                 DaySell = detailModel.DaySell
             };
+            Amount = detailModel.Amount;
             var listProduct = detailDao.ListProduct(detail.IdProduct, detail.IdPackage);
             Product product = listProduct.FirstOrDefault();
             if (product.Amount < detail.Amount)
-                return RedirectToAction("IndexADD", new { ID = detailModel.ID, Amount = detailModel.Amount, IdInvoice = detailModel.IdInvoice });
+            {
+                int flag = 0;
+                return RedirectToAction("IndexADD", new { ID = detailModel.ID, IdInvoice = detailModel.IdInvoice, flag });
+            } 
             else
             {
+                int flag = 1;
                 detailDao.AddByInvoice(detail, product);
-                return RedirectToAction("IndexADD", new { ID = detailModel.ID, Amount = detailModel.Amount, IdInvoice = detailModel.IdInvoice });
+                return RedirectToAction("IndexADD", new { ID = detailModel.ID, IdInvoice = detailModel.IdInvoice, flag });
             }
         }
 
@@ -102,6 +108,7 @@ namespace OnlineShop.Controllers
             return RedirectToAction("Index", new { id = detail.IdInvoice });
         }
 
+        [HttpGet]
         public ActionResult Search()
         {
             return View();
