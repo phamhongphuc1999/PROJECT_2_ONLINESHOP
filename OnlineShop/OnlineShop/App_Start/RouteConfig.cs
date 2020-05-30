@@ -37,6 +37,16 @@ namespace OnlineShop
                 url: "khach-hang/them-khach-hang",
                 defaults: new { controller = "Customer", action = "Create", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Customer_Edit",
+                url: "khach-hang/chinh-sua/{id}",
+                defaults: new { controller = "Customer", action = "Edit", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Customer_Delete",
+                url: "khach-hang/xoa-khach-hang/{id}",
+                defaults: new { controller = "Customer", action = "Delete", id = UrlParameter.Optional }
+            );
             #endregion
 
             #region Product

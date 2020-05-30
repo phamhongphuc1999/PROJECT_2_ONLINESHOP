@@ -51,7 +51,7 @@ namespace OnlineShop.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Address,Phone,Type")] Customer customer)
+        public ActionResult Edit([Bind(Include = "Id,Name,Sex,Birthday,Address,Phone,Type")] Customer customer)
         {
             if (ModelState.IsValid)
             {
