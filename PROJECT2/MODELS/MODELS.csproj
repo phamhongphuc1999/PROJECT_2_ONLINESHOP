@@ -63,6 +63,7 @@
     <Compile Include="EF\Invoice.cs" />
     <Compile Include="EF\OldEmployee.cs" />
     <Compile Include="EF\Product.cs" />
+    <Compile Include="EF\Search.cs" />
     <Compile Include="EF\Statistic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

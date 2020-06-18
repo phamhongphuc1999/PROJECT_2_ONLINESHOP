@@ -34,7 +34,7 @@ namespace ManagementStore
             #region Customer
             routes.MapRoute(
                 name: "Customer_Index",
-                url: "khach-hang/danh-sach",
+                url: "khach-hang/danh-sach-khach-hang",
                 defaults: new { controller = "Customer", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
@@ -57,7 +57,7 @@ namespace ManagementStore
             #region Product
             routes.MapRoute(
                 name: "Product_Index",
-                url: "san-pham/danh-sach",
+                url: "san-pham/danh-sach-san-pham",
                 defaults: new { controller = "Product", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
@@ -90,7 +90,7 @@ namespace ManagementStore
             #region Invoice
             routes.MapRoute(
                 name: "Invoice_Index",
-                url: "hoa-don/danh-sach",
+                url: "hoa-don/danh-sach-hoa-don",
                 defaults: new { controller = "Invoice", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(

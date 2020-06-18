@@ -1,7 +1,7 @@
-﻿@model IEnumerable<MODELS.EF.Employee>
+﻿@model IEnumerable<MODELS.EF.Customer>
 @{
-    ViewBag.Title = "Employee";
-    ViewBag.Link = "/nhan-vien/danh-sach-nhan-vien";
+    ViewBag.Title = "Customer";
+    ViewBag.Link = "/khach-hang/danh-sach-khach-hang";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -34,7 +34,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">The Employee List</h3>
+                    <h3 class="card-title">The Customer List</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -46,7 +46,7 @@
                                 <th>Phone</th>
                                 <th>Birthday</th>
                                 <th>Address</th>
-                                <th>Position</th>
+                                <th>Type</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -54,13 +54,16 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Sex)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Phone)</td>
                                     <td>@Html.ValueFor(modelItem => item.Birthday, "{0:dd/MM/yyyy}")</td>
                                     <td>@Html.DisplayFor(modelItem => item.Address)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Type)</td>
-                                    <td>@Html.ActionLink("Xóa", "Delete", new { id = item.Id })</td>
+                                    <td>
+                                        @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                                        @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+                                    </td>
                                 </tr>
                             }
                         </tbody>
@@ -71,7 +74,7 @@
                                 <th>Phone</th>
                                 <th>Birthday</th>
                                 <th>Address</th>
-                                <th>Position</th>
+                                <th>Type</th>
                                 <th>#</th>
                             </tr>
                         </tfoot>
