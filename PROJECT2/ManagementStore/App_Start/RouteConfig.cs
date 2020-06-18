@@ -29,6 +29,18 @@ namespace ManagementStore
                 url: "nhan-vien/chinh-sua/{Id}",
                 defaults: new { controller = "Employee", action = "Edit", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Employee_Delete",
+                url: "nhan-vien/xoa-nhan-vien/{Id}",
+                defaults: new { controller = "Employee", action = "Delete", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Employee_Create",
+                url: "nhan-vien/them-nhan-vien",
+                defaults: new { controller = "Employee", action = "Create", id = UrlParameter.Optional }
+            );
             #endregion
 
             #region Customer

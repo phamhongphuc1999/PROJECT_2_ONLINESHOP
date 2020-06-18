@@ -30,7 +30,7 @@ namespace ManagementStore.Controllers
         public ActionResult Create()
         {
             var user = (UserLogin)Session[CommonConstants.USER_SEESION];
-            if (user.TypeEmployee == "admin")
+            if (user.TypeEmployee == "manager")
             {
                 ViewBag.UserName = user.Name;
                 return View();
@@ -98,6 +98,7 @@ namespace ManagementStore.Controllers
         {
             Employee employee = employeeDao.GetByID(id);
             if (employee == null) return HttpNotFound();
+            ViewBag.ID = id;
             return View(employee);
         }
 
