@@ -20,6 +20,7 @@ namespace ManagementStore.Controllers
         {
             Customer customer = customerDao.GetByID(id);
             if (customer == null) return HttpNotFound();
+            ViewBag.ID = id;
             return View(customer);
         }
 
@@ -46,6 +47,7 @@ namespace ManagementStore.Controllers
         {
             Customer customer = customerDao.GetByID(id);
             if (customer == null) return HttpNotFound();
+            ViewBag.ID = id;
             return View(customer);
         }
 
@@ -65,6 +67,7 @@ namespace ManagementStore.Controllers
         {
             Customer customer = customerDao.GetByID(id);
             if (customer == null) return HttpNotFound();
+            ViewBag.ID = id;
             return View(customer);
         }
 

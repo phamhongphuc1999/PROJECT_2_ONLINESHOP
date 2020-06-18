@@ -35,6 +35,11 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">The Product List</h3>
+                    <div class="">
+                        <a href="/san-pham/them-san-pham">
+                            <input type="button" value="Add Product" class="btn btn-default" />
+                        </a>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -63,9 +68,15 @@
                                 <td>@Html.DisplayFor(modelItem => item.Sale)%</td>
                                 <td>@Html.DisplayFor(modelItem => item.Guarantee)</td>
                                 <td>
-                                    @Html.ActionLink("Sửa", "Edit", new { Id = item.Id, IdPackage = item.IdPackage }) |
-                                    @Html.ActionLink("Xóa", "Delete", new { Id = item.Id, IdPackage = item.IdPackage })|
-                                    @Html.ActionLink("Thêm lô", "ViewAddLot", new { id = item.Id })
+                                    <a class="btn btn-primary btn-sm" href="/san-pham/chinh-sua/@item.Id-@item.IdPackage">
+                                        <i class="fas fa-pencil-alt"></i>Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="/san-pham/xoa/@item.Id-@item.IdPackage">
+                                        <i class="fas fa-trash"></i>Delete
+                                    </a>
+                                    <a class="btn btn-primary btn-sm" href="/san-pham/them-lo/@item.Id">
+                                        <i class="fas fa-folder"></i>Thêm lô
+                                    </a>
                                 </td>
                             </tr>
                             }

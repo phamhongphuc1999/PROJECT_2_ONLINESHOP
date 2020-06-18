@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace ManagementStore
@@ -29,13 +25,11 @@ namespace ManagementStore
                 url: "nhan-vien/chinh-sua/{Id}",
                 defaults: new { controller = "Employee", action = "Edit", id = UrlParameter.Optional }
             );
-
             routes.MapRoute(
                 name: "Employee_Delete",
                 url: "nhan-vien/xoa-nhan-vien/{Id}",
                 defaults: new { controller = "Employee", action = "Delete", id = UrlParameter.Optional }
             );
-
             routes.MapRoute(
                 name: "Employee_Create",
                 url: "nhan-vien/them-nhan-vien",
@@ -63,6 +57,11 @@ namespace ManagementStore
                 name: "Customer_Delete",
                 url: "khach-hang/xoa-khach-hang/{id}",
                 defaults: new { controller = "Customer", action = "Delete", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Customer_Detail",
+                url: "khach-hang/chi-tiet/{id}",
+                defaults: new { controller = "Customer", action = "Details", id = UrlParameter.Optional }
             );
             #endregion
 
