@@ -58,6 +58,13 @@ namespace ManagementStore
                 "~/dist/js/pages/dashboard.js",
                 "~/dist/js/demo.js"
                 ));
+
+            bundles.Add(new ScriptBundle("~/bundles/data-table").Include(
+                "~//plugins/datatables/jquery.dataTables.min.js",
+                "~/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js",
+                "~/plugins/datatables-responsive/js/dataTables.responsive.min.js",
+                "~/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"
+                ));
         }
     }
 }

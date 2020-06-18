@@ -4,3 +4,9 @@ D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\obj\Debug\MODELS.csproj
 D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\obj\Debug\MODELS.csproj.CoreCompileInputs.cache
 D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\obj\Debug\MODELS.dll
 D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\obj\Debug\MODELS.pdb
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\bin\Debug\MODELS.dll.config
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\bin\Debug\EntityFramework.dll
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\bin\Debug\EntityFramework.SqlServer.dll
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\bin\Debug\EntityFramework.xml
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\bin\Debug\EntityFramework.SqlServer.xml
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\obj\Debug\MODELS.csproj.CopyComplete

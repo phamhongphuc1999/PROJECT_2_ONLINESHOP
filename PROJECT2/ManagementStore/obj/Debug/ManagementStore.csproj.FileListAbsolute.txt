@@ -76,3 +76,11 @@ D:\Documents\VisualStudio\project2\FINAL\PROJECT2\ManagementStore\obj\Debug\Mana
 D:\Documents\VisualStudio\project2\FINAL\PROJECT2\ManagementStore\obj\Debug\ManagementStore.csproj.CopyComplete
 D:\Documents\VisualStudio\project2\FINAL\PROJECT2\ManagementStore\obj\Debug\ManagementStore.dll
 D:\Documents\VisualStudio\project2\FINAL\PROJECT2\ManagementStore\obj\Debug\ManagementStore.pdb
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\ManagementStore\bin\EntityFramework.dll
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\ManagementStore\bin\EntityFramework.SqlServer.dll
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\ManagementStore\bin\MODELS.dll
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\ManagementStore\bin\MODELS.pdb
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\ManagementStore\bin\MODELS.dll.config
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\ManagementStore\bin\EntityFramework.xml
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\ManagementStore\bin\EntityFramework.SqlServer.xml
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\ManagementStore\obj\Debug\ManagementStore.csprojAssemblyReference.cache

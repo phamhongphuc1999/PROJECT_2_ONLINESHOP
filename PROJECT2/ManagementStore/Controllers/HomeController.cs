@@ -1,29 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using ManagementStore.Common;
 using System.Web.Mvc;
 
 namespace ManagementStore.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
+            var user = (UserLogin)Session[CommonConstants.USER_SEESION];
+            if (user == null) return RedirectToAction("Login", "Login");
+            ViewBag.UserName = user.Name;
             return View();
         }
     }
