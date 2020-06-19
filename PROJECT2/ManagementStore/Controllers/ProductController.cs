@@ -15,12 +15,13 @@ namespace ManagementStore.Controllers
             return View(productDao.productList);
         }
 
-        public ActionResult Details(string id)
+        public ActionResult Details(string id, string idPackage)
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            Product product = productDao.GetByID(id);
+            Product product = productDao.GetByID(id, idPackage);
             if (product == null) return HttpNotFound();
+            ViewBag.ID = id; ViewBag.IdPackage = idPackage;
             return View(product);
         }
 
@@ -48,6 +49,7 @@ namespace ManagementStore.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             Product product = productDao.FindByIDAndPackage(id, idPackage);
             if (product == null) return HttpNotFound();
+            ViewBag.ID = id; ViewBag.IdPAckage = idPackage;
             return View(product);
         }
 
@@ -69,6 +71,7 @@ namespace ManagementStore.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             Product product = productDao.FindByIDAndPackage(id, idPackage);
             if (product == null) return HttpNotFound();
+            ViewBag.ID = id; ViewBag.IdPAckage = idPackage;
             return View(product);
         }
 
@@ -91,6 +94,7 @@ namespace ManagementStore.Controllers
             {
                 product.NameProduct = productTemp.NameProduct;
                 ViewBag.ProName = productTemp.NameProduct;
+                ViewBag.ID = id;
                 product.IdPackage = productTemp.IdPackage;
             }
             return View(product);

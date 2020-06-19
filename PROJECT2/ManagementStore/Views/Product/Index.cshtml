@@ -20,7 +20,7 @@
                 "paging": true,
                 "lengthChange": false,
                 "searching": false,
-                "ordering": true,
+                "ordering": false,
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
@@ -68,14 +68,11 @@
                                 <td>@Html.DisplayFor(modelItem => item.Sale)%</td>
                                 <td>@Html.DisplayFor(modelItem => item.Guarantee)</td>
                                 <td>
-                                    <a class="btn btn-primary btn-sm" href="/san-pham/chinh-sua/@item.Id-@item.IdPackage">
-                                        <i class="fas fa-pencil-alt"></i>Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="/san-pham/xoa/@item.Id-@item.IdPackage">
-                                        <i class="fas fa-trash"></i>Delete
+                                    <a class="btn btn-danger btn-sm" href="/san-pham/chi-tiet-san-pham/@item.Id-@item.IdPackage">
+                                        <i class="fas fa-folder"></i>Detail
                                     </a>
                                     <a class="btn btn-primary btn-sm" href="/san-pham/them-lo/@item.Id">
-                                        <i class="fas fa-folder"></i>Thêm lô
+                                        <i class="fas fa-pencil-alt"></i>Thêm lô
                                     </a>
                                 </td>
                             </tr>

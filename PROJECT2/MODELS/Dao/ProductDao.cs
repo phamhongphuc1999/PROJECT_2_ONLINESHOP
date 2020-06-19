@@ -14,9 +14,9 @@ namespace MODELS.Dao
             productList = db.Products.ToList();
         }
 
-        public Product GetByID(string id)
+        public Product GetByID(string id, string idPackage)
         {
-            return db.Products.Find(id);
+            return db.Products.Find(id, idPackage);
         }
 
         public Product FindByIDAndPackage(string id, string idPackage)

@@ -96,6 +96,11 @@ namespace ManagementStore
                 url: "san-pham/them-lo",
                 defaults: new { controller = "Product", action = "CreateProLot", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Product_Detail",
+                url: "san-pham/chi-tiet-san-pham/{Id}-{IdPackage}",
+                defaults: new { controller = "Product", action = "Details", id = UrlParameter.Optional }
+            );
             #endregion
 
             #region Invoice
@@ -123,6 +128,11 @@ namespace ManagementStore
                 name: "Invoice_Delete",
                 url: "hoa-don/xoa/{id}",
                 defaults: new { controller = "Invoice", action = "Delete", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Invoice_Detail",
+                url: "hoa-don/them-hoa-don/{id}",
+                defaults: new { controller = "Invoice", action = "Details", id = UrlParameter.Optional }
             );
             #endregion
 

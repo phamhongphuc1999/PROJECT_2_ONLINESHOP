@@ -1,18 +1,37 @@
 ﻿@model MODELS.EF.Product
 @{
-    ViewBag.Title = "Product/Edit";
-    ViewBag.Link = "/san-pham/chinh-sua/" + ViewBag.ID + "-" + ViewBag.IdPackage;
+    ViewBag.Title = "Product/AddLot";
+    ViewBag.Link = "/san-pham/them-lo/" + ViewBag.ID;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Edit", "Product"))
+@using (Html.BeginForm("CreateProLot", "Product"))
 {
+    @Html.AntiForgeryToken()
     <form class="form-horizontal">
         <div class="card-body">
             <div class="form-group row">
+                @Html.Label("inputEmail3", "Id Product", new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.Id, new { id = "inputEmail3", @class = "form-control", placeholder = "Id" })
+                    @Html.HiddenFor(model => model.Id)
+                    @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.Label("inputEmail3", "Id Package", new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.IdPackage, new { id = "inputEmail3", @class = "form-control", placeholder = "Id Package" })
+                    @Html.HiddenFor(model => model.IdPackage)
+                    @Html.ValidationMessageFor(model => model.IdPackage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
                 @Html.Label("inputEmail3", "Name Product", new { @class = "col-sm-2 col-form-label" })
                 <div class="col-sm-10">
-                    @Html.TextBoxFor(model => model.NameProduct, new { id = "inputEmail3", @class = "form-control", placeholder = "Name Product" })
+                    @Html.PasswordFor(model => model.NameProduct, new { id = "inputEmail3", @class = "form-control", placeholder = "Name Product" })
                     @Html.ValidationMessageFor(model => model.NameProduct, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -28,23 +47,15 @@
             <div class="form-group row">
                 @Html.Label("inputEmail3", "Profix(%)", new { @class = "col-sm-2 col-form-label" })
                 <div class="col-sm-10">
-                    @Html.PasswordFor(model => model.Profix, new { id = "inputEmail3", @class = "form-control", placeholder = "Profix" })
+                    @Html.TextBoxFor(model => model.Profix, new { id = "inputEmail3", @class = "form-control", placeholder = "Profix" })
                     @Html.ValidationMessageFor(model => model.Profix, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group row">
-                @Html.Label("inputEmail3", "Sale(%)", new { @class = "col-sm-2 col-form-label" })
-                <div class="col-sm-10">
-                    @Html.PasswordFor(model => model.Sale, new { id = "inputEmail3", @class = "form-control", placeholder = "Sale" })
-                    @Html.ValidationMessageFor(model => model.Sale, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group row">
                 @Html.Label("inputEmail3", "Amount", new { @class = "col-sm-2 col-form-label" })
                 <div class="col-sm-10">
-                    @Html.PasswordFor(model => model.Amount, new { id = "inputEmail3", @class = "form-control", placeholder = "Amount" })
+                    @Html.TextBoxFor(model => model.Amount, new { id = "inputEmail3", @class = "form-control", placeholder = "Amount" })
                     @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -56,11 +67,20 @@
                     @Html.ValidationMessageFor(model => model.Guarantee, "", new { @class = "text-danger" })
                 </div>
             </div>
+
+            <div class="form-group row">
+                @Html.Label("inputEmail3", "Sale(%)", new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.Sale, new { id = "inputEmail3", @class = "form-control", placeholder = "Sale" })
+                    @Html.ValidationMessageFor(model => model.Sale, "", new { @class = "text-danger" })
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Edit" class="btn btn-default" />
+                <input type="submit" value="Add Package" class="btn btn-default" />
             </div>
         </div>
     </form>
 }
+

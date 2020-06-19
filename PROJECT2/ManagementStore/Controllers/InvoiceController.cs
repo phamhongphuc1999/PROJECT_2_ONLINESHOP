@@ -79,8 +79,9 @@ namespace ManagementStore.Controllers
         {
             Invoice invoice = invoiceDao.GetByID(id);
             if (invoice == null) return HttpNotFound();
-            ViewBag.MAKH = new SelectList(invoiceDao.DB.Customers, "Id", "Name", invoice.IdCustomer);
-            ViewBag.MANV = new SelectList(invoiceDao.DB.Employees, "Id", "Name", invoice.IdEmployee);
+            ViewBag.IdCustomer = new SelectList(invoiceDao.DB.Customers, "Id", "Name", invoice.IdCustomer);
+            ViewBag.IdEmployee = new SelectList(invoiceDao.DB.Employees, "Id", "Name", invoice.IdEmployee);
+            ViewBag.ID = id;
             return View(invoice);
         }
 

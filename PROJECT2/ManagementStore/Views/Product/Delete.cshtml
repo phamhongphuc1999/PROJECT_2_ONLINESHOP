@@ -1,11 +1,11 @@
 ﻿@model MODELS.EF.Product
 @{
-    ViewBag.Title = "Product/Edit";
-    ViewBag.Link = "/san-pham/chinh-sua/" + ViewBag.ID + "-" + ViewBag.IdPackage;
+    ViewBag.Title = "Product/Delete";
+    ViewBag.Link = "/san-pham/xoa/" + ViewBag.ID + "-" + ViewBag.IdPackage;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Edit", "Product"))
+@using (Html.BeginForm("Delete", "Product"))
 {
     <form class="form-horizontal">
         <div class="card-body">
@@ -59,7 +59,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Edit" class="btn btn-default" />
+                <input type="submit" value="Delete" class="btn btn-default" />
             </div>
         </div>
     </form>
