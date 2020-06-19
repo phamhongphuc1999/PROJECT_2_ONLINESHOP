@@ -4,6 +4,7 @@ using MODELS.EF;
 using MODELS.Dao;
 using ManagementStore.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ManagementStore.Controllers
 {
@@ -35,9 +36,17 @@ namespace ManagementStore.Controllers
 
         public ActionResult Details(int id)
         {
-            Invoice invoice = invoiceDao.GetByID(id);
-            if (invoice == null) return HttpNotFound();
-            return View(invoice);
+            InvoiceDetailModel invoiceDetailModel = new InvoiceDetailModel();
+            invoiceDetailModel.invoice = invoiceDao.GetByID(id);
+            if (invoiceDetailModel.invoice == null) return HttpNotFound();
+            invoiceDetailModel.productList = new List<Product>();
+            invoiceDetailModel.customer = invoiceDao.DB.Customers.Find(invoiceDetailModel.invoice.IdCustomer);
+            invoiceDetailModel.employee = invoiceDao.DB.Employees.Find(invoiceDetailModel.invoice.IdEmployee);
+            List<Detail> detailList = invoiceDao.DB.Details.Where(x => x.IdInvoice == id).ToList();
+            foreach (Detail item in detailList)
+                invoiceDetailModel.productList.Add(invoiceDao.DB.Products.Find(item.IdProduct, item.IdPackage));
+            ViewBag.ID = id;
+            return View(invoiceDetailModel);
         }
 
         public ActionResult Create()

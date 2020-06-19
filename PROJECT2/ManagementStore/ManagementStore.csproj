@@ -143,6 +143,7 @@
     </Compile>
     <Compile Include="Models\DetailModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
+    <Compile Include="Models\InvoiceDetailModel.cs" />
     <Compile Include="Models\InvoiceModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1878,7 +1879,7 @@
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Product\ViewAddLot.cshtml" />
-    <Content Include="Views\Invoice\Edit.cshtml" />
+    <Content Include="Views\Invoice\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

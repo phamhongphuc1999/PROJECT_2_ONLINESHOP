@@ -94,14 +94,14 @@ namespace MODELS.Dao
             }
         }
 
-        public List<Product> ListProduct(string idProduct, string idPackage)
+        public Product FindProduct(string idProduct, string idPackage)
         {
-            return db.Products.Where(x => (x.Id == idProduct) && (x.IdPackage == idPackage)).ToList();
+            return db.Products.Find(idProduct, idPackage);
         }
 
-        public List<Detail> ListDetail(int id)
+        public List<Detail> ListDetail(int idInvoice)
         {
-            return db.Details.Where(x => x.IdInvoice == id).ToList();
+            return db.Details.Where(x => x.IdInvoice == idInvoice).ToList();
         }
 
         public List<Detail> FilterByDaySell(DateTime start, DateTime end, string nameProduct = "")

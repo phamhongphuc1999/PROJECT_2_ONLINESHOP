@@ -131,7 +131,7 @@ namespace ManagementStore
             );
             routes.MapRoute(
                 name: "Invoice_Detail",
-                url: "hoa-don/them-hoa-don/{id}",
+                url: "hoa-don/chi-tiet-hoa-don/{id}",
                 defaults: new { controller = "Invoice", action = "Details", id = UrlParameter.Optional }
             );
             #endregion

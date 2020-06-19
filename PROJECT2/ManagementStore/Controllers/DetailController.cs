@@ -59,8 +59,7 @@ namespace ManagementStore.Controllers
                 DaySell = detailModel.DaySell
             };
             Amount = detailModel.Amount;
-            var listProduct = detailDao.ListProduct(detail.IdProduct, detail.IdPackage);
-            Product product = listProduct.FirstOrDefault();
+            Product product = detailDao.FindProduct(detail.IdProduct, detail.IdPackage);
             if (product.Amount < detail.Amount)
             {
                 int flag = 0;
