@@ -9,26 +9,18 @@ namespace MODELS.EF
     [Table("Product")]
     public partial class Product
     {
-        [Key]
-        [Column(Order = 0)]
-        [StringLength(100)]
-        public string Id { get; set; }
-
-        [Key]
-        [Column(Order = 1)]
-        [StringLength(100)]
-        public string IdPackage { get; set; }
+        public int Id { get; set; }
 
         [StringLength(200)]
         public string NameProduct { get; set; }
+
+        public int Amount { get; set; }
 
         public int ImportPrice { get; set; }
 
         public int Profix { get; set; }
 
         public int Guarantee { get; set; }
-
-        public int Amount { get; set; }
 
         public int Sale { get; set; }
     }

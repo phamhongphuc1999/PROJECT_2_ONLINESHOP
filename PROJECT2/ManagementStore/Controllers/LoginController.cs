@@ -25,7 +25,7 @@ namespace ManagementStore.Controllers
                     userSeesion.Username = user.Username;
                     userSeesion.UserID = user.Id;
                     userSeesion.Name = user.Name;
-                    userSeesion.TypeEmployee = user.Type;
+                    userSeesion.TypeEmployee = user.Position;
 
                     Session.Add(CommonConstants.USER_SEESION, userSeesion);
                     return RedirectToAction("Index", "Home");

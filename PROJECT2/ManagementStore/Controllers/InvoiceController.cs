@@ -11,6 +11,7 @@ namespace ManagementStore.Controllers
     public class InvoiceController : Controller
     {
         private InvoiceDao invoiceDao = new InvoiceDao();
+        private DetailDao detailDao = new DetailDao();
 
         public ActionResult Index()
         {
@@ -39,88 +40,41 @@ namespace ManagementStore.Controllers
             InvoiceDetailModel invoiceDetailModel = new InvoiceDetailModel();
             invoiceDetailModel.invoice = invoiceDao.GetByID(id);
             if (invoiceDetailModel.invoice == null) return HttpNotFound();
-            invoiceDetailModel.productList = new List<Product>();
+            invoiceDetailModel.productList = new List<KeyValuePair<int, Product>>();
             invoiceDetailModel.customer = invoiceDao.DB.Customers.Find(invoiceDetailModel.invoice.IdCustomer);
             invoiceDetailModel.employee = invoiceDao.DB.Employees.Find(invoiceDetailModel.invoice.IdEmployee);
             List<Detail> detailList = invoiceDao.DB.Details.Where(x => x.IdInvoice == id).ToList();
             foreach (Detail item in detailList)
-                invoiceDetailModel.productList.Add(invoiceDao.DB.Products.Find(item.IdProduct, item.IdPackage));
+            {
+                Product temp = invoiceDao.DB.Products.Find(item.IdProduct);
+                invoiceDetailModel.productList.Add(new KeyValuePair<int, Product>(item.Amount, temp));
+            }
+            invoiceDetailModel.money = 0;
+            foreach(KeyValuePair<int, Product> item in invoiceDetailModel.productList)
+            {
+                invoiceDetailModel.money += item.Key * item.Value.ImportPrice * (100 - item.Value.Sale) / 100;
+            }
             ViewBag.ID = id;
             return View(invoiceDetailModel);
         }
 
-        public ActionResult Create()
-        {
-            ViewBag.IdCustomer = new SelectList(invoiceDao.DB.Customers, "Id", "Name");
-            ViewBag.IdEmployee = new SelectList(invoiceDao.DB.Employees, "Id", "Name");
-            var user = (UserLogin)Session[CommonConstants.USER_SEESION];
-            ViewBag.UserName = user.Name;
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ADD([Bind(Include = "Id,IdEmployee,IdCustomer,DaySell")] Invoice invoice)
-        {
-            var user = (UserLogin)Session[CommonConstants.USER_SEESION];
-            invoice.IdEmployee = user.UserID;
-            invoice.DaySell = System.DateTime.Now;
-            if (ModelState.IsValid)
-            {
-                invoiceDao.Add(invoice);
-                DetailModel detailModel = new DetailModel()
-                {
-                    IdInvoice = invoice.Id,
-                    DaySell = invoice.DaySell
-                };
-                ViewBag.MAHD = invoice.Id;
-                ViewBag.NGAYBAN = invoice.DaySell;
-                ViewBag.MASP = invoiceDao.DB.Products;
-                ViewBag.Model = invoiceDao.ListDetail(invoice.Id);
-                return View(detailModel);
-            }
-            ViewBag.MAKH = new SelectList(invoiceDao.DB.Customers, "Id", "Name", invoice.IdCustomer);
-            ViewBag.MANV = new SelectList(invoiceDao.DB.Employees, "Id", "Name", invoice.IdEmployee);
-            return View(invoice);
-        }
-
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            Invoice invoice = invoiceDao.GetByID(id);
-            if (invoice == null) return HttpNotFound();
-            ViewBag.IdCustomer = new SelectList(invoiceDao.DB.Customers, "Id", "Name", invoice.IdCustomer);
-            ViewBag.IdEmployee = new SelectList(invoiceDao.DB.Employees, "Id", "Name", invoice.IdEmployee);
-            ViewBag.ID = id;
-            return View(invoice);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,IdEmployee,IdCustomer,DaySell")] Invoice invoice)
-        {
-            if (ModelState.IsValid)
+            InvoiceDetailModel invoiceDetailModel = new InvoiceDetailModel();
+            invoiceDetailModel.invoice = invoiceDao.GetByID(id);
+            if (invoiceDetailModel.invoice == null) return HttpNotFound();
+            invoiceDetailModel.productList = new List<KeyValuePair<int, Product>>();
+            invoiceDetailModel.customer = invoiceDao.DB.Customers.Find(invoiceDetailModel.invoice.IdCustomer);
+            invoiceDetailModel.employee = invoiceDao.DB.Employees.Find(invoiceDetailModel.invoice.IdEmployee);
+            List<Detail> detailList = invoiceDao.DB.Details.Where(x => x.IdInvoice == id).ToList();
+            foreach (Detail item in detailList)
             {
-                invoiceDao.Edit(invoice);
-                return RedirectToAction("Index");
+                Product temp = invoiceDao.DB.Products.Find(item.IdProduct);
+                invoiceDetailModel.productList.Add(new KeyValuePair<int, Product>(item.Amount, temp));
             }
-            ViewBag.MAKH = new SelectList(invoiceDao.DB.Customers, "Id", "Name", invoice.IdCustomer);
-            ViewBag.MANV = new SelectList(invoiceDao.DB.Employees, "Id", "Name", invoice.IdEmployee);
-            return View(invoice);
-        }
-
-        public ActionResult Delete(int id)
-        {
-            Invoice invoice = invoiceDao.GetByID(id);
-            if (invoice == null) return HttpNotFound();
-            return View(invoice);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            invoiceDao.Delete(id);
-            return RedirectToAction("Index");
+            ViewBag.ID = id;
+            return View(invoiceDetailModel);
         }
 
         protected override void Dispose(bool disposing)

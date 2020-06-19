@@ -22,10 +22,6 @@ namespace MODELS.Dao
             try
             {
                 Product product = db.Products.Find(entity.IdProduct);
-                entity.ImportPrice = product.ImportPrice;
-                entity.ExportPrice = product.ImportPrice * product.Profix / 100;
-                entity.Money = entity.ExportPrice * entity.Amount;
-                entity.NameProduct = product.NameProduct;
                 db.Details.Add(entity);
                 db.SaveChanges();
                 return true;
@@ -41,11 +37,6 @@ namespace MODELS.Dao
             try
             {
                 Invoice invoice = new InvoiceDao().GetByID(entity.IdInvoice);
-                entity.DaySell = invoice.DaySell;
-                entity.ImportPrice = product.ImportPrice;
-                entity.ExportPrice = (((product.ImportPrice * (product.Profix + 100)) / 100) * ((100 - product.Sale))) / 100;
-                entity.Money = entity.ExportPrice * entity.Amount;
-                entity.NameProduct = product.NameProduct;
                 product.Amount = product.Amount - entity.Amount;
                 db.Details.Add(entity);
                 db.SaveChanges();
@@ -63,13 +54,8 @@ namespace MODELS.Dao
             {
                 Detail detail = GetByID(entity.Id);
                 detail.IdInvoice = entity.IdInvoice;
-                detail.IdPackage = entity.IdPackage;
                 detail.IdProduct = entity.IdProduct;
-                detail.NameProduct = entity.NameProduct;
-                detail.ImportPrice = entity.ImportPrice;
-                detail.ExportPrice = entity.ExportPrice;
                 detail.Money = entity.Money;
-                detail.DaySell = entity.DaySell;
                 db.SaveChanges();
                 return true;
             }
@@ -104,12 +90,13 @@ namespace MODELS.Dao
             return db.Details.Where(x => x.IdInvoice == idInvoice).ToList();
         }
 
-        public List<Detail> FilterByDaySell(DateTime start, DateTime end, string nameProduct = "")
-        {
-            if (nameProduct == "") return db.Details.Where(x => (x.DaySell >= start) && (x.DaySell <= end)).ToList();
-            else
-                return db.Details.Where(x => (x.DaySell >= start) && (x.DaySell <= end) && x.NameProduct == nameProduct).ToList();
-        }
+        //public List<Detail> FilterByDaySell(DateTime start, DateTime end, string nameProduct = "")
+        //{
+        //    Invoice invoice = db.Invoices.Find()
+        //    if (nameProduct == "") return db.Details.Where(x => (x.DaySell >= start) && (x.DaySell <= end)).ToList();
+        //    else
+        //        return db.Details.Where(x => (x.DaySell >= start) && (x.DaySell <= end) && x.NameProduct == nameProduct).ToList();
+        //}
 
     }
 }

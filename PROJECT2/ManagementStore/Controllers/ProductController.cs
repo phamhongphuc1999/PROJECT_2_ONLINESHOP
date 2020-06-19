@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using MODELS.EF;
 using MODELS.Dao;
-using System.Linq;
 
 namespace ManagementStore.Controllers
 {
@@ -15,13 +14,11 @@ namespace ManagementStore.Controllers
             return View(productDao.productList);
         }
 
-        public ActionResult Details(string id, string idPackage)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            Product product = productDao.GetByID(id, idPackage);
+            Product product = productDao.GetByID(id);
             if (product == null) return HttpNotFound();
-            ViewBag.ID = id; ViewBag.IdPackage = idPackage;
+            ViewBag.ID = id;
             return View(product);
         }
 
@@ -43,13 +40,11 @@ namespace ManagementStore.Controllers
             return View(product);
         }
 
-        public ActionResult Edit(string id, string idPackage)
+        public ActionResult Edit(int id)
         {
-            if (id == null || idPackage == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            Product product = productDao.FindByIDAndPackage(id, idPackage);
+            Product product = productDao.GetByID(id);
             if (product == null) return HttpNotFound();
-            ViewBag.ID = id; ViewBag.IdPAckage = idPackage;
+            ViewBag.ID = id;
             return View(product);
         }
 
@@ -65,38 +60,30 @@ namespace ManagementStore.Controllers
             return View(product);
         }
 
-        public ActionResult Delete(string id, string idPackage)
+        public ActionResult Delete(int id)
         {
-            if (id == null || idPackage == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            Product product = productDao.FindByIDAndPackage(id, idPackage);
+            Product product = productDao.GetByID(id);
             if (product == null) return HttpNotFound();
-            ViewBag.ID = id; ViewBag.IdPAckage = idPackage;
+            ViewBag.ID = id;
             return View(product);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id, string idPackage)
+        public ActionResult DeleteConfirmed(int id)
         {
-            productDao.Delete(id, idPackage);
+            productDao.Delete(id);
             return RedirectToAction("Index");
         }
 
-        public ActionResult ViewAddLot(string id)
+        public ActionResult ViewAddLot(int id)
         {
             var product = new Product();
             product.Id = id;
-            var productList = productDao.DB.Products.Where(x => x.Id == id);
-            var productTemp = productList.FirstOrDefault();
-            if (productTemp == null) product.IdPackage = "L00001";
-            else
-            {
-                product.NameProduct = productTemp.NameProduct;
-                ViewBag.ProName = productTemp.NameProduct;
-                ViewBag.ID = id;
-                product.IdPackage = productTemp.IdPackage;
-            }
+            var productTemp = productDao.DB.Products.Find(id);
+            product.NameProduct = productTemp.NameProduct;
+            ViewBag.ProName = productTemp.NameProduct;
+            ViewBag.ID = id;
             return View(product);
         }
 

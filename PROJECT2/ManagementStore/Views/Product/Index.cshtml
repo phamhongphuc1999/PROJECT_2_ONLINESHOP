@@ -60,7 +60,7 @@
                             @foreach (var item in Model)
                             {
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => item.Id)-@Html.DisplayFor(modelItem => item.IdPackage)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Id)</td>
                                 <td>@Html.DisplayFor(modelItem => item.NameProduct)</td>
                                 <td>@Html.DisplayFor(modelItem => item.Amount)</td>
                                 <td>@Html.DisplayFor(modelItem => item.ImportPrice)</td>
@@ -68,7 +68,7 @@
                                 <td>@Html.DisplayFor(modelItem => item.Sale)%</td>
                                 <td>@Html.DisplayFor(modelItem => item.Guarantee)</td>
                                 <td>
-                                    <a class="btn btn-danger btn-sm" href="/san-pham/chi-tiet-san-pham/@item.Id-@item.IdPackage">
+                                    <a class="btn btn-danger btn-sm" href="/san-pham/chi-tiet-san-pham/@item.Id">
                                         <i class="fas fa-folder"></i>Detail
                                     </a>
                                     <a class="btn btn-primary btn-sm" href="/san-pham/them-lo/@item.Id">

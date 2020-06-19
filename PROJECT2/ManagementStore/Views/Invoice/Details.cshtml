@@ -13,7 +13,6 @@
                     Detail Invoice
                 </div>
 
-
                 <!-- Main content -->
                 <div class="invoice p-3 mb-3">
                     <!-- title row -->
@@ -35,7 +34,7 @@
                                 <b>User Name: </b>@Model.employee.Username<br>
                                 <b>Sex: </b>@Model.employee.Sex<br>
                                 <b>Phone: </b>@Model.employee.Phone<br>
-                                <b>Type: </b>@Model.employee.Type
+                                <b>Type: </b>@Model.employee.Position
                             </address>
                         </div>
                         <!-- /.col -->
@@ -66,6 +65,7 @@
                                 <thead>
                                     <tr>
                                         <th>Name Product</th>
+                                        <th>Amount</th>
                                         <th>Import Price</th>
                                         <th>Sale(%)</th>
                                         <th>Guarantee(%)</th>
@@ -76,10 +76,11 @@
                                     @foreach(var item in Model.productList)
                                     {
                                         <tr>
-                                            <th>@item.NameProduct</th>
-                                            <th>@item.ImportPrice</th>
-                                            <th>@item.Sale%</th>
-                                            <th>@item.Guarantee%</th>
+                                            <th>@item.Value.NameProduct</th>
+                                            <th>@item.Key</th>
+                                            <th>@item.Value.ImportPrice</th>
+                                            <th>@item.Value.Sale%</th>
+                                            <th>@item.Value.Guarantee</th>
                                         </tr>
                                     }
                                 </tbody>
@@ -88,13 +89,24 @@
                         <!-- /.col -->
                     </div>
                     <!-- /.row -->
-
+                    <div class="row">
+                        <div class="col-12 table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th>Money</th>
+                                        <th>@Model.money</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     
                     <!-- /.row -->
                     <!-- this row will not appear when printing -->
                     <div class="row no-print">
                         <div class="col-12">
-                            <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+                            <a href="#" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
                             <button type="button" class="btn btn-success float-right">
                                 <i class="far fa-credit-card"></i>
                                 Add Product

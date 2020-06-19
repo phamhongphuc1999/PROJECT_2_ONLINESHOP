@@ -6,14 +6,9 @@ go
 create table Detail(
    Id int IDENTITY(1,1) primary key,
    IdInvoice int not null,
+   IdProduct int,
    Amount int not null,
-   IdProduct nvarchar(250),
-   NameProduct nvarchar(250),
-   IdPackage nvarchar(250),
-   ImportPrice int,
-   ExportPrice int,
-   Money int,
-   DaySell datetime default getdate()
+   Money int
 )
 
 create table Invoice(
@@ -45,7 +40,7 @@ create table Employee(
    Address nvarchar(200),
    Username nvarchar(200),
    Password nvarchar(200),
-   Type nvarchar(200),
+   Position nvarchar(200),
    Node nvarchar(100)
 )
 
@@ -61,15 +56,13 @@ create table OldEmployee(
 )
 
 create table Product(
-   Id nvarchar(100) not null,
-   IdPackage nvarchar(100) not null,
+   Id int IDENTITY(1, 1) primary key,
    NameProduct nvarchar(200),
+   Amount int not null,
    ImportPrice int not null,
    Profix int not null,
    Guarantee int not null,
-   Amount int not null,
    Sale int not null
-   constraint pk_ct primary key(Id, IdPackage)
 )
 
 create table Statistic(

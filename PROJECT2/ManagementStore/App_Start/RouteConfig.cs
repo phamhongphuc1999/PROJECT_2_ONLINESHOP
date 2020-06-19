@@ -72,18 +72,23 @@ namespace ManagementStore
                 defaults: new { controller = "Product", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Product_Detail",
+                url: "san-pham/chi-tiet-san-pham/{Id}",
+                defaults: new { controller = "Product", action = "Details", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Product_Create",
                 url: "san-pham/them-san-pham",
                 defaults: new { controller = "Product", action = "Create", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "Product_Edit",
-                url: "san-pham/chinh-sua/{Id}-{IdPackage}",
+                url: "san-pham/chinh-sua/{Id}",
                 defaults: new { controller = "Product", action = "Edit", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "Product_Delete",
-                url: "san-pham/xoa/{Id}-{IdPackage}",
+                url: "san-pham/xoa/{Id}",
                 defaults: new { controller = "Product", action = "Delete", id = UrlParameter.Optional }
             );
             routes.MapRoute(
@@ -96,11 +101,6 @@ namespace ManagementStore
                 url: "san-pham/them-lo",
                 defaults: new { controller = "Product", action = "CreateProLot", id = UrlParameter.Optional }
             );
-            routes.MapRoute(
-                name: "Product_Detail",
-                url: "san-pham/chi-tiet-san-pham/{Id}-{IdPackage}",
-                defaults: new { controller = "Product", action = "Details", id = UrlParameter.Optional }
-            );
             #endregion
 
             #region Invoice
@@ -108,6 +108,16 @@ namespace ManagementStore
                 name: "Invoice_Index",
                 url: "hoa-don/danh-sach-hoa-don",
                 defaults: new { controller = "Invoice", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Invoice_Detail",
+                url: "hoa-don/chi-tiet-hoa-don/{id}",
+                defaults: new { controller = "Invoice", action = "Details", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Invoice_Edit",
+                url: "hoa-don/chinh-sua-hoa-don/{id}",
+                defaults: new { controller = "Invoice", action = "Edit", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "Invoice_Create",
@@ -119,20 +129,11 @@ namespace ManagementStore
                 url: "hoa-don/them-moi-hoa-don",
                 defaults: new { controller = "Invoice", action = "Add", id = UrlParameter.Optional }
             );
-            routes.MapRoute(
-                name: "Invoice_Edit",
-                url: "hoa-don/chinh-sua/{id}",
-                defaults: new { controller = "Invoice", action = "Edit", id = UrlParameter.Optional }
-            );
+            
             routes.MapRoute(
                 name: "Invoice_Delete",
                 url: "hoa-don/xoa/{id}",
                 defaults: new { controller = "Invoice", action = "Delete", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Invoice_Detail",
-                url: "hoa-don/chi-tiet-hoa-don/{id}",
-                defaults: new { controller = "Invoice", action = "Details", id = UrlParameter.Optional }
             );
             #endregion
 

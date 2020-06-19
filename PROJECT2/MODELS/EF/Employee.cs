@@ -33,7 +33,7 @@ namespace MODELS.EF
         public string Password { get; set; }
 
         [StringLength(200)]
-        public string Type { get; set; }
+        public string Position { get; set; }
 
         [StringLength(100)]
         public string Node { get; set; }

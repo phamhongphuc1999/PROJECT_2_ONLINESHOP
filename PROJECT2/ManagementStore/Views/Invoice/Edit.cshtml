@@ -1,0 +1,111 @@
+﻿@model ManagementStore.Models.InvoiceDetailModel
+@{
+    ViewBag.Title = "Invoice/Edit";
+    ViewBag.Link = "hoa-don/chinh-sua-hoa-don/" + ViewBag.ID;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="callout callout-info">
+                <h5><i class="fas fa-info"></i> Note:</h5>
+                Detail Invoice
+            </div>
+
+            <!-- Main content -->
+            <div class="invoice p-3 mb-3">
+                <!-- title row -->
+                <div class="row">
+                    <div class="col-12">
+                        <h4>
+                            <i class="fas fa-globe"></i> Infomation
+                            <small class="float-right">Date: @DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year</small>
+                        </h4>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- info row -->
+                <div class="row invoice-info">
+                    <div class="col-sm-4 invoice-col">
+                        Employee
+                        <address>
+                            <strong>Name: @Model.employee.Name</strong><br>
+                            <b>User Name: </b>@Model.employee.Username<br>
+                            <b>Sex: </b>@Model.employee.Sex<br>
+                            <b>Phone: </b>@Model.employee.Phone<br>
+                            <b>Type: </b>@Model.employee.Position
+                        </address>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 invoice-col">
+                        Customer
+                        <address>
+                            <strong>Name: @Model.customer.Name</strong><br>
+                            <b>Sex: </b>@Model.customer.Sex<br>
+                            <b>Address: </b>@Model.customer.Address<br>
+                            <b>Phone: </b>@Model.customer.Phone<br>
+                            <b>Type: </b>@Model.customer.Type
+                        </address>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 invoice-col">
+                        <b>Invoice @Model.invoice.Id</b><br>
+                        <br>
+                        <b>Order ID:</b> @Model.invoice.Id<br>
+                        <b>Payment Due:</b> @Model.invoice.DaySell.Value.ToString("dd/mm/yyyy")<br>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <!-- Table row -->
+                <div class="row">
+                    <div class="col-12 table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name Product</th>
+                                    <th>Amount</th>
+                                    <th>Import Price</th>
+                                    <th>Sale(%)</th>
+                                    <th>Guarantee(%)</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.productList)
+                                {
+                                    <tr>
+                                        <th>@item.Value.NameProduct</th>
+                                        <th>@item.Key</th>
+                                        <th>@item.Value.ImportPrice</th>
+                                        <th>@item.Value.Sale%</th>
+                                        <th>@item.Value.Guarantee</th>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <!-- /.row -->
+                <!-- this row will not appear when printing -->
+                <div class="row no-print">
+                    <div class="col-12">
+                        <a href="#" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+                        <button type="button" class="btn btn-success float-right">
+                            <i class="far fa-credit-card"></i>
+                            Add Product
+                        </button>
+                        <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                            <i class="fas fa-pencil-alt"></i>
+                            Edit
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.invoice -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.container-fluid -->
