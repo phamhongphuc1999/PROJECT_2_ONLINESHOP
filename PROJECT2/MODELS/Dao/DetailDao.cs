@@ -89,14 +89,5 @@ namespace MODELS.Dao
         {
             return db.Details.Where(x => x.IdInvoice == idInvoice).ToList();
         }
-
-        //public List<Detail> FilterByDaySell(DateTime start, DateTime end, string nameProduct = "")
-        //{
-        //    Invoice invoice = db.Invoices.Find()
-        //    if (nameProduct == "") return db.Details.Where(x => (x.DaySell >= start) && (x.DaySell <= end)).ToList();
-        //    else
-        //        return db.Details.Where(x => (x.DaySell >= start) && (x.DaySell <= end) && x.NameProduct == nameProduct).ToList();
-        //}
-
     }
 }

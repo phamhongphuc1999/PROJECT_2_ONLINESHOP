@@ -77,6 +77,21 @@ namespace ManagementStore.Controllers
             return View(invoiceDetailModel);
         }
 
+        [HttpGet]
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SearchResult([Bind(Include = "start,end")] Search search)
+        {
+            var listInvoice = invoiceDao.FilterByDaySell(search.start, search.end);
+            ViewBag.SEARCH = search;
+            return View(listInvoice);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing) invoiceDao.Dispose();

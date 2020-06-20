@@ -1,0 +1,123 @@
+﻿@model IEnumerable<ManagementStore.Models.InvoiceModel>
+@{
+    ViewBag.Title = "SearchResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var search = ViewBag.SEARCH;
+}
+
+@section scripts {
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Content/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#start,#end").datepicker({
+
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });</script>
+}
+
+<div class="form-horizontal">
+    <h4>Thời gian</h4>
+    <hr />
+    <div class="col-12 align-items-stretch">
+        @*<div class="row">
+                <div class="form-group col-6">
+                    @Html.Label("start", "Từ ngày", new { @class = "control-label col-md-3" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.start, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    @Html.Label("end", "Đến ngày", new { @class = "control-label col-md-3" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.end, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.end, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>*@
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">The Invoice List</h3>
+                    <div class="">
+                        <a href="/hoa-don/tao-moi-hoa-don">
+                            <input type="button" value="Add Invoice" class="btn btn-default" />
+                        </a>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Employee Name</th>
+                                <th>Created Day</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.CustomerName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.EmployeeName)</td>
+                                    <td>@Html.ValueFor(modelItem => item.DaySell, "{0:dd/MM/yyyy}")</td>
+                                    <td>
+                                        <a class="btn btn-danger btn-sm" href="/hoa-don/chi-tiet-hoa-don/@item.ID">
+                                            <i class="fas fa-folder"></i>Detail
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Employee Name</th>
+                                <th>Created Day</th>
+                                <th>#</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+

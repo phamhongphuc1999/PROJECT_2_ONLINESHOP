@@ -1,6 +1,7 @@
 ﻿using MODELS.EF;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace MODELS.Dao
 {
@@ -66,6 +67,13 @@ namespace MODELS.Dao
         public List<Detail> ListDetail(int id)
         {
             return db.Details.Where(x => x.IdInvoice == id).ToList();
+        }
+
+        public List<Invoice> FilterByDaySell(DateTime start, DateTime end, string nameProduct = "")
+        {
+            if (nameProduct == "") return db.Invoices.Where(x => (x.DaySell >= start) && (x.DaySell <= end)).ToList();
+            else
+                return db.Invoices.Where(x => (x.DaySell >= start) && (x.DaySell <= end)).ToList();
         }
     }
 }

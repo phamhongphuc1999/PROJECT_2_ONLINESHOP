@@ -137,6 +137,19 @@ namespace ManagementStore
             );
             #endregion
 
+            #region Category
+            routes.MapRoute(
+                name: "Invoice_Search",
+                url: "hoa-don/thong-ke-theo-ngay",
+                defaults: new { controller = "Invoice", action = "Search", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Invoice_Searchresult",
+                url: "hoa-don/thong-ke-theo-ngay/ket-qua",
+                defaults: new { controller = "Invoice", action = "SearchResult", id = UrlParameter.Optional }
+            );
+            #endregion
+
             #region Detail
             routes.MapRoute(
                 name: "Detail_Index",
@@ -184,6 +197,12 @@ namespace ManagementStore
                 defaults: new { controller = "Detail", action = "Delete", id = UrlParameter.Optional }
             );
             #endregion
+
+            routes.MapRoute(
+                name: "Calendar_Index",
+                url: "lich/",
+                defaults: new { controller = "Calendar", action = "Index", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",

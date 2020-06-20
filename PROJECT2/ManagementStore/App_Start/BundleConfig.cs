@@ -60,11 +60,20 @@ namespace ManagementStore
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/data-table").Include(
-                "~//plugins/datatables/jquery.dataTables.min.js",
+                "~/plugins/datatables/jquery.dataTables.min.js",
                 "~/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js",
                 "~/plugins/datatables-responsive/js/dataTables.responsive.min.js",
                 "~/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"
                 ));
+
+            bundles.Add(new ScriptBundle("~/bundles/calendar").Include(
+                "~/plugins/fullcalendar/main.min.js",
+                "~/plugins/moment/moment.min.js",
+                "~/plugins/fullcalendar-daygrid/main.min.js",
+                "~/plugins/fullcalendar-timegrid/main.min.js",
+                "~/plugins/fullcalendar-interaction/main.min.js",
+                "~/plugins/fullcalendar-bootstrap/main.min.js"
+               ));
         }
     }
 }

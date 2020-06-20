@@ -56,7 +56,6 @@
     <Compile Include="Dao\EmployeeDao.cs" />
     <Compile Include="Dao\InvoiceDao.cs" />
     <Compile Include="Dao\ProductDao.cs" />
-    <Compile Include="Dao\Seach.cs" />
     <Compile Include="EF\Customer.cs" />
     <Compile Include="EF\DatabaseOnlineShop.cs" />
     <Compile Include="EF\Detail.cs" />
@@ -64,6 +63,7 @@
     <Compile Include="EF\Invoice.cs" />
     <Compile Include="EF\OldEmployee.cs" />
     <Compile Include="EF\Product.cs" />
+    <Compile Include="EF\Search.cs" />
     <Compile Include="EF\Statistic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
