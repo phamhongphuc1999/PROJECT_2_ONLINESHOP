@@ -12,7 +12,7 @@ namespace ManagementStore
             #region Employee
             routes.MapRoute(
                 name: "Employee_Details",
-                url: "nhan-vien/thong-tin-ca-nhan",
+                url: "nhan-vien/thong-tin-ca-nhan/{id}",
                 defaults: new { controller = "Employee", action = "Details", id = UrlParameter.Optional }
             );
             routes.MapRoute(

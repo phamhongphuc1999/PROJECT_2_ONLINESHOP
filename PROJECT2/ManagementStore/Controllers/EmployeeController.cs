@@ -18,11 +18,13 @@ namespace ManagementStore.Controllers
             return View(employeeDao.employeeList);
         }
 
-        public ActionResult Details()
+        public ActionResult Details(int id)
         {
             var user = (UserLogin)Session[CommonConstants.USER_SEESION];
-            Employee employee = employeeDao.GetByID(user.UserID);
+            Employee employee = employeeDao.GetByID(id);
             if (employee == null) return HttpNotFound();
+            ViewBag.session = user.UserID;
+            ViewBag.ID = id;
             return View(employee);
         }
 

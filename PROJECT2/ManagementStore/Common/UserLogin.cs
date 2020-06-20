@@ -9,6 +9,7 @@ namespace ManagementStore.Common
     public class UserLogin
     {
         public int UserID { get; set; }
+
         public string Username { get; set; }
 
         public string Name { get; set; }

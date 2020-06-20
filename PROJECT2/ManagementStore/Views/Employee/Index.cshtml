@@ -66,6 +66,9 @@
                                     <td>@Html.DisplayFor(modelItem => item.Address)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Position)</td>
                                     <td>
+                                        <a class="btn btn-primary btn-sm" href="/nhan-vien/thong-tin-ca-nhan/@item.Id">
+                                            <i class="fas fa-folder"></i>Detail
+                                        </a>
                                         <a class="btn btn-danger btn-sm" href="/nhan-vien/xoa-nhan-vien/@item.Id">
                                             <i class="fas fa-trash"></i>Delete
                                         </a>
