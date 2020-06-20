@@ -14,9 +14,14 @@ namespace MODELS.EF
         [StringLength(200)]
         public string NameProduct { get; set; }
 
+        [StringLength(200)]
+        public string Image { get; set; }
+
         public int Amount { get; set; }
 
         public int ImportPrice { get; set; }
+
+        public int ExportPrice { get; set; }
 
         public int Profix { get; set; }
 

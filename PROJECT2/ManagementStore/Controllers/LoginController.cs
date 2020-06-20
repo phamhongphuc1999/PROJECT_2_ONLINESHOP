@@ -23,6 +23,8 @@ namespace ManagementStore.Controllers
                     var user = dao.GetByName(model.UserName, true);
                     var userSeesion = new UserLogin();
                     userSeesion.Username = user.Username;
+                    userSeesion.Password = user.Password;
+                    userSeesion.Image = user.Image;
                     userSeesion.UserID = user.Id;
                     userSeesion.Name = user.Name;
                     userSeesion.TypeEmployee = user.Position;

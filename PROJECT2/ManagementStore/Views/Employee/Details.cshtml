@@ -5,71 +5,68 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form class="form-horizontal">
-    <div class="card-body">
-
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Name" readonly value="@Model.Name">
+    <form class="form-horizontal">
+        <div class="col-12 align-items-stretch">
+            <div class="card bg-light">
+                <div class="card-body pt-0">
+                    <div class="row">
+                        <div class="col-5 text-center">
+                            <img src="@Model.Image" alt="user-avatar" class="img-circle img-fluid">
+                        </div>
+                        <div class="col-7">
+                            <h2 class="lead"><b>@Model.Name</b></h2>
+                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                <li class="text-md"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: @Model.Address</li>
+                                <li class="text-md"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: @Model.Phone</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">User Name</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="User Name" readonly value="@Model.Username">
+                </div>
+            </div>
 
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">User Name</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="User Name" readonly value="@Model.Username">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Sex</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Sex" readonly value="@Model.Sex">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Birthday</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Birthday" readonly value="@Model.Birthday.Value.ToString("dd/MM/yyyy")">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Position</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Position" readonly value="@Model.Position">
+                </div>
             </div>
         </div>
-
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Sex</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Sex" readonly value="@Model.Sex">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Phone</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Phone" readonly value="@Model.Phone">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Birthday</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Birthday" readonly value="@Model.Birthday.Value.ToString("dd/MM/yyyy")">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Address</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Address" readonly value="@Model.Address">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Position</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Position" readonly value="@Model.Position">
-            </div>
-        </div>
-    </div>
-    <!-- /.card-body -->
-    <div class="card-footer">
-        @{
-            if (ViewBag.ID == ViewBag.session)
-            {
-                @Html.ActionLink("Edit | ", "Edit", new { id = Model.Id });
-                @Html.ActionLink("Return Employee List", "Index", "Employee");
+        <!-- /.card-body -->
+        <div class="card-footer">
+            @{
+                if (ViewBag.ID == ViewBag.session)
+                {
+                    @Html.ActionLink("Edit | ", "Edit", new { id = Model.Id });
+                    @Html.ActionLink("Return Employee List", "Index", "Employee");
+                }
+                else
+                {
+                    @Html.ActionLink("Return Employee List", "Index", "Employee");
+                }
             }
-            else
-            {
-                @Html.ActionLink("Return Employee List", "Index", "Employee");
-            }
-        }
-    </div>
-    <!-- /.card-footer -->
-</form>
+        </div>
+        <!-- /.card-footer -->
+    </form>

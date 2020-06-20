@@ -52,7 +52,7 @@ namespace ManagementStore.Controllers
             invoiceDetailModel.money = 0;
             foreach(KeyValuePair<int, Product> item in invoiceDetailModel.productList)
             {
-                invoiceDetailModel.money += item.Key * item.Value.ImportPrice * (100 - item.Value.Sale) / 100;
+                invoiceDetailModel.money += item.Key * item.Value.ExportPrice * (100 - item.Value.Sale) / 100;
             }
             ViewBag.ID = id;
             return View(invoiceDetailModel);

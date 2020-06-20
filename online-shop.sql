@@ -34,12 +34,13 @@ create table Customer(
 create table Employee(
    Id int IDENTITY(1, 1) primary key,
    Name nvarchar(200) not null,
+   Username nvarchar(200),
+   Password nvarchar(200),
+   Image nvarchar(200),
    Birthday datetime,
    Sex varchar(10),
    Phone varchar(50),
    Address nvarchar(200),
-   Username nvarchar(200),
-   Password nvarchar(200),
    Position nvarchar(200),
    Node nvarchar(100)
 )
@@ -58,8 +59,10 @@ create table OldEmployee(
 create table Product(
    Id int IDENTITY(1, 1) primary key,
    NameProduct nvarchar(200),
+   Image nvarchar(200),
    Amount int not null,
    ImportPrice int not null,
+   ExportPrice int not null,
    Profix int not null,
    Guarantee int not null,
    Sale int not null
