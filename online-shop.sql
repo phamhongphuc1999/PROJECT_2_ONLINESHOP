@@ -51,7 +51,7 @@ create table OldEmployee(
    Birthday datetime,
    Sex varchar(10),
    Phone varchar(50),
-   Type nvarchar(200),
+   Position nvarchar(200),
    DayOff datetime,
    Node nvarchar(100)
 )
@@ -65,7 +65,8 @@ create table Product(
    ExportPrice int not null,
    Profix int not null,
    Guarantee int not null,
-   Sale int not null
+   Sale int not null,
+   Status varchar(30)
 )
 
 create table Statistic(

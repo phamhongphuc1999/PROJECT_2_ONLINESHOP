@@ -45,6 +45,10 @@ namespace MODELS.EF
             modelBuilder.Entity<OldEmployee>()
                 .Property(e => e.Phone)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.Status)
+                .IsUnicode(false);
         }
     }
 }

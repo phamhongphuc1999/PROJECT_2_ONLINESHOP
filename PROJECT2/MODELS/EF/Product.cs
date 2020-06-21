@@ -28,5 +28,8 @@ namespace MODELS.EF
         public int Guarantee { get; set; }
 
         public int Sale { get; set; }
+
+        [StringLength(30)]
+        public string Status { get; set; }
     }
 }

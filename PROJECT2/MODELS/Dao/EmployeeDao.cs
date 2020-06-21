@@ -69,7 +69,7 @@ namespace MODELS.Dao
                     Birthday = employee.Birthday,
                     Sex = employee.Sex,
                     Phone = employee.Phone,
-                    Type = employee.Position,
+                    Position = employee.Position,
                     DayOff = DateTime.Now,
                     Node = employee.Node
                 };

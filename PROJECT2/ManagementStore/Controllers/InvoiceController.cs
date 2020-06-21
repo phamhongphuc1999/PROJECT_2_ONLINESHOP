@@ -87,9 +87,23 @@ namespace ManagementStore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SearchResult([Bind(Include = "start,end")] Search search)
         {
-            var listInvoice = invoiceDao.FilterByDaySell(search.start, search.end);
+            List<Invoice> listInvoice = invoiceDao.FilterByDaySell(search.start, search.end);
+            List<InvoiceModel> invoiceModels = new List<InvoiceModel>();
+            foreach (Invoice item in listInvoice)
+            {
+                if (item.Status)
+                {
+                    invoiceModels.Add(new InvoiceModel()
+                    {
+                        ID = item.Id,
+                        EmployeeName = invoiceDao.DB.Employees.Find(item.IdEmployee).Name,
+                        CustomerName = invoiceDao.DB.Customers.Find(item.IdCustomer).Name,
+                        DaySell = item.DaySell
+                    });
+                }
+            }
             ViewBag.SEARCH = search;
-            return View(listInvoice);
+            return View(invoiceModels);
         }
 
         protected override void Dispose(bool disposing)

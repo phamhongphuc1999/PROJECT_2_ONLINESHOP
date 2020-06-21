@@ -19,7 +19,7 @@ namespace ManagementStore.Controllers
             foreach(Product item in temp)
             {
                 productList.Add(item);
-                if (count++ == 4) break;
+                if (count++ == 7) break;
             }
             ViewBag.ListProduct = productList;
             return View();

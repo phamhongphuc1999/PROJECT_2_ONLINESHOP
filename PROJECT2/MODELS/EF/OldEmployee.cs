@@ -24,7 +24,7 @@ namespace MODELS.EF
         public string Phone { get; set; }
 
         [StringLength(200)]
-        public string Type { get; set; }
+        public string Position { get; set; }
 
         public DateTime? DayOff { get; set; }
 
