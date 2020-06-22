@@ -5,6 +5,7 @@ using MODELS.Dao;
 using ManagementStore.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace ManagementStore.Controllers
 {
@@ -13,9 +14,13 @@ namespace ManagementStore.Controllers
         private InvoiceDao invoiceDao = new InvoiceDao();
         private DetailDao detailDao = new DetailDao();
 
-        public ActionResult Index()
+        public ActionResult Index(Search search)
         {
-            List<Invoice> invoiceList = invoiceDao.invoiceList;
+            List<Invoice> invoiceList = new List<Invoice>();
+            bool a1 = (search.start == DateTime.MinValue);
+            bool a2 = (search.end == DateTime.MinValue);
+            if (a1 && a2) invoiceList = invoiceDao.invoiceList;
+            else invoiceList = invoiceDao.FilterByDaySell(search.start, search.end);
             List<InvoiceModel> invoiceModels = new List<InvoiceModel>();
             foreach (Invoice item in invoiceList)
             {
@@ -32,7 +37,8 @@ namespace ManagementStore.Controllers
             }
             var user = (UserLogin)Session[CommonConstants.USER_SEESION];
             ViewBag.UserName = user.Name;
-            return View(invoiceModels);
+            ViewBag.InvoiceModels = invoiceModels;
+            return View();
         }
 
         public ActionResult Details(int id)
@@ -75,35 +81,6 @@ namespace ManagementStore.Controllers
             }
             ViewBag.ID = id;
             return View(invoiceDetailModel);
-        }
-
-        [HttpGet]
-        public ActionResult Search()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult SearchResult([Bind(Include = "start,end")] Search search)
-        {
-            List<Invoice> listInvoice = invoiceDao.FilterByDaySell(search.start, search.end);
-            List<InvoiceModel> invoiceModels = new List<InvoiceModel>();
-            foreach (Invoice item in listInvoice)
-            {
-                if (item.Status)
-                {
-                    invoiceModels.Add(new InvoiceModel()
-                    {
-                        ID = item.Id,
-                        EmployeeName = invoiceDao.DB.Employees.Find(item.IdEmployee).Name,
-                        CustomerName = invoiceDao.DB.Customers.Find(item.IdCustomer).Name,
-                        DaySell = item.DaySell
-                    });
-                }
-            }
-            ViewBag.SEARCH = search;
-            return View(invoiceModels);
         }
 
         protected override void Dispose(bool disposing)

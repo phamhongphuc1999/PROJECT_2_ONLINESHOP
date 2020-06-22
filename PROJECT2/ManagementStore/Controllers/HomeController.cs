@@ -4,6 +4,7 @@ using MODELS.Dao;
 using MODELS.EF;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace ManagementStore.Controllers
 {
@@ -14,14 +15,17 @@ namespace ManagementStore.Controllers
             var user = (UserLogin)Session[CommonConstants.USER_SEESION];
             if (user == null) return RedirectToAction("Login", "Login");
             List<Product> temp = new BaseDao().DB.Products.ToList();
-            int count = 0;
-            List<Product> productList = new List<Product>();
+            int countNew = 0, countHigh = 0;
+            List<Product> productNew = new List<Product>();
+            List<Product> productHighlight = new List<Product>();
             foreach(Product item in temp)
             {
-                productList.Add(item);
-                if (count++ == 7) break;
+                if (countNew == 7 && countHigh == 4) break;
+                if (item.Status == "new") productNew.Add(item);
+                else if (item.Status == "highlight") productHighlight.Add(item);
             }
-            ViewBag.ListProduct = productList;
+            ViewBag.ProductNew = productNew;
+            ViewBag.ProductHigh = productHighlight;
             return View();
         }
     }

@@ -76,29 +76,6 @@ namespace ManagementStore.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult ViewAddLot(int id)
-        {
-            var product = new Product();
-            product.Id = id;
-            var productTemp = productDao.DB.Products.Find(id);
-            product.NameProduct = productTemp.NameProduct;
-            ViewBag.ProName = productTemp.NameProduct;
-            ViewBag.ID = id;
-            return View(product);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateProLot([Bind(Include = "Id,NameProduct,IdPackage,ImportPrice,Profix,Amount,Guarantee,Sale")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                productDao.Insert(product);
-                return RedirectToAction("Index");
-            }
-            return View(product);
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing) productDao.Dispose();

@@ -91,16 +91,6 @@ namespace ManagementStore
                 url: "san-pham/xoa/{Id}",
                 defaults: new { controller = "Product", action = "Delete", id = UrlParameter.Optional }
             );
-            routes.MapRoute(
-                name: "Product_ViewAddLot",
-                url: "san-pham/them-lo/{id}",
-                defaults: new { controller = "Product", action = "ViewAddLot", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Product_CreateProLot",
-                url: "san-pham/them-lo",
-                defaults: new { controller = "Product", action = "CreateProLot", id = UrlParameter.Optional }
-            );
             #endregion
 
             #region Invoice
@@ -129,72 +119,11 @@ namespace ManagementStore
                 url: "hoa-don/them-moi-hoa-don",
                 defaults: new { controller = "Invoice", action = "Add", id = UrlParameter.Optional }
             );
-            
+
             routes.MapRoute(
                 name: "Invoice_Delete",
                 url: "hoa-don/xoa/{id}",
                 defaults: new { controller = "Invoice", action = "Delete", id = UrlParameter.Optional }
-            );
-            #endregion
-
-            #region Category
-            routes.MapRoute(
-                name: "Invoice_Search",
-                url: "hoa-don/thong-ke-theo-ngay",
-                defaults: new { controller = "Invoice", action = "Search", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Invoice_Searchresult",
-                url: "hoa-don/thong-ke-theo-ngay/ket-qua",
-                defaults: new { controller = "Invoice", action = "SearchResult", id = UrlParameter.Optional }
-            );
-            #endregion
-
-            #region Detail
-            routes.MapRoute(
-                name: "Detail_Index",
-                url: "chi-tiet/danh-sach/{id}",
-                defaults: new { controller = "Detail", action = "Index", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Detail_Search",
-                url: "chi-tiet/thong-ke",
-                defaults: new { controller = "Detail", action = "Search", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Detail_Search1",
-                url: "chi-tiet/thong-ke/ket-qua-thong-ke",
-                defaults: new { controller = "Detail", action = "Search1", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Detail_SearchItem",
-                url: "chi-tiet/thong-ke/san-pham",
-                defaults: new { controller = "Detail", action = "SearchItem", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Detail_CREATEADD",
-                url: "chi-tiet/tao-moi",
-                defaults: new { controller = "Detail", action = "CREATEADD", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Detail_IndexADD",
-                url: "chi-tiet/tao-moi-hoa-don/{ID}/{IdInvoice}-{flag}",
-                defaults: new { controller = "Detail", action = "IndexADD", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Detail_Details",
-                url: "chi-tiet/xem-chi-tiet/{id}",
-                defaults: new { controller = "Detail", action = "Details", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Detail_Edit",
-                url: "chi-tiet/chinh-sua/{id}",
-                defaults: new { controller = "Detail", action = "Edit", id = UrlParameter.Optional }
-            );
-            routes.MapRoute(
-                name: "Detail_Delete",
-                url: "chi-tiet/xoa/{id}",
-                defaults: new { controller = "Detail", action = "Delete", id = UrlParameter.Optional }
             );
             #endregion
 

@@ -1,8 +1,10 @@
-﻿@model IEnumerable<ManagementStore.Models.InvoiceModel>
+﻿@using ManagementStore.Models;
+@model MODELS.EF.Search
 @{
     ViewBag.Title = "Invoice";
     ViewBag.Link = "/hoa-don/danh-sach-hoa-don";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    List<InvoiceModel> invoiceModels = ViewBag.InvoiceModels;
 }
 
 @section scripts {
@@ -34,50 +36,82 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">The Invoice List</h3>
-                    <div class="">
-                        <a href="/hoa-don/tao-moi-hoa-don">
-                            <input type="button" value="Add Invoice" class="btn btn-default" />
-                        </a>
+                    <div class="row">
+                        <div class="col-2 table-responsive">
+                            <h3 class="card-title">The Invoice List</h3>
+                        </div>
+                        <div class="col-10 table-responsive">
+                            @using (Html.BeginForm("Index", "Invoice"))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="row">
+                                    <div class="col-3">
+                                        @Html.TextBoxFor(model => model.start, new { @class = "form-control", placeholder = "Start" })
+                                        @Html.ValidationMessageFor(model => model.start, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-3">
+                                        @Html.TextBoxFor(model => model.end, new { @class = "form-control", placeholder = "End" })
+                                        @Html.ValidationMessageFor(model => model.end, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Search" class="btn btn-default" />
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <a href="/hoa-don/danh-sach-hoa-don" class="btn btn-default">View All Product</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <table id="example2" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Customer Name</th>
-                                <th>Employee Name</th>
-                                <th>Created Day</th>
-                                <th>#</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
+                @if (invoiceModels.Count() > 0)
+                {
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
                                 <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.CustomerName)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.EmployeeName)</td>
-                                    <td>@Html.ValueFor(modelItem => item.DaySell, "{0:dd/MM/yyyy}")</td>
-                                    <td>
-                                        <a class="btn btn-danger btn-sm" href="/hoa-don/chi-tiet-hoa-don/@item.ID">
-                                            <i class="fas fa-folder"></i>Detail
-                                        </a>
-                                    </td>
+                                    <th>Customer Name</th>
+                                    <th>Employee Name</th>
+                                    <th>Created Day</th>
+                                    <th>#</th>
                                 </tr>
-                            }
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Customer Name</th>
-                                <th>Employee Name</th>
-                                <th>Created Day</th>
-                                <th>#</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <!-- /.card-body -->
+                            </thead>
+                            <tbody>
+                                @foreach (var item in invoiceModels)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.CustomerName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EmployeeName)</td>
+                                        <td>@Html.ValueFor(modelItem => item.DaySell, "{0:dd/MM/yyyy}")</td>
+                                        <td>
+                                            <a class="btn btn-danger btn-sm" href="/hoa-don/chi-tiet-hoa-don/@item.ID">
+                                                <i class="fas fa-folder"></i>Detail
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Customer Name</th>
+                                    <th>Employee Name</th>
+                                    <th>Created Day</th>
+                                    <th>#</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="card-body">
+                        <strong>Data Not Found</strong>
+                    </div>
+                }
             </div>
             <!-- /.card -->
         </div>

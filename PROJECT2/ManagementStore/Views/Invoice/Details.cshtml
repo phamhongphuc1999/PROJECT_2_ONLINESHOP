@@ -53,7 +53,7 @@
                             <b>Invoice @Model.invoice.Id</b><br>
                             <br>
                             <b>Order ID:</b> @Model.invoice.Id<br>
-                            <b>Payment Due:</b> @Model.invoice.DaySell.Value.ToString("dd/mm/yyyy")<br>
+                            <b>Payment Due:</b> @Model.invoice.DaySell.Value.ToString("0:dd/MM/yyyy")<br>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -86,9 +86,8 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.col -->
                     </div>
-                    <!-- /.row -->
+
                     <div class="row">
                         <div class="col-12 table-responsive">
                             <table class="table table-striped">
@@ -102,8 +101,6 @@
                         </div>
                     </div>
                     
-                    <!-- /.row -->
-                    <!-- this row will not appear when printing -->
                     <div class="row no-print">
                         <div class="col-12">
                             <a href="#" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>

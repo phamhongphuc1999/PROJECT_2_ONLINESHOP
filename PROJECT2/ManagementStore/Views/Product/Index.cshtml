@@ -59,25 +59,26 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    <img src="@item.Image" height="50", width="50"/>
-                                </td>
-                                <td>@Html.DisplayFor(modelItem => item.NameProduct)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Amount)</td>
-                                <td>@Html.DisplayFor(modelItem => item.ExportPrice)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Profix)%</td>
-                                <td>@Html.DisplayFor(modelItem => item.Sale)%</td>
-                                <td>@Html.DisplayFor(modelItem => item.Guarantee)</td>
-                                <td>
-                                    <a class="btn btn-danger btn-sm" href="/san-pham/chi-tiet-san-pham/@item.Id">
-                                        <i class="fas fa-folder"></i>Detail
-                                    </a>
-                                    <a class="btn btn-primary btn-sm" href="/san-pham/them-lo/@item.Id">
-                                        <i class="fas fa-pencil-alt"></i>Thêm lô
-                                    </a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        <img src="@item.Image" height="50" , width="50" />
+                                    </td>
+                                    <td>@Html.DisplayFor(modelItem => item.NameProduct)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.ExportPrice)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Profix)%</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Sale)%</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Guarantee)</td>
+                                    <td>
+                                        <a class="btn btn-danger btn-sm" href="/san-pham/chi-tiet-san-pham/@item.Id">
+                                            <i class="fas fa-folder"></i>Detail
+                                        </a>
+                                        @if (item.Status == "new")
+                                        {
+                                            <p><span class="right badge badge-warning">New</span></p>
+                                        }
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                         <tfoot>
