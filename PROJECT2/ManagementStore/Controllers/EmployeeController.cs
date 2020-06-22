@@ -3,6 +3,7 @@ using MODELS.Dao;
 using MODELS.EF;
 using ManagementStore.Common;
 using ManagementStore.Models;
+using System.Collections.Generic;
 
 namespace ManagementStore.Controllers
 {
@@ -11,11 +12,14 @@ namespace ManagementStore.Controllers
         private EmployeeDao employeeDao = new EmployeeDao();
         private static string oldPassword = "";
 
-        public ActionResult Index()
+        public ActionResult Index(string stringSearch = "")
         {
             var user = (UserLogin)Session[CommonConstants.USER_SEESION];
+            List<Employee> employeeList = new List<Employee>();
+            if (stringSearch == "") employeeList = employeeDao.employeeList;
+            else employeeList = employeeDao.SearchEmployee(stringSearch);
             ViewBag.UserName = user.Name;
-            return View(employeeDao.employeeList);
+            return View(employeeList);
         }
 
         public ActionResult Details(int id)

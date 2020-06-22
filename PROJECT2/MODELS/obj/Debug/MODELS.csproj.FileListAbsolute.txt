@@ -9,3 +9,4 @@ D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\bin\Debug\EntityFramewo
 D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\bin\Debug\EntityFramework.xml
 D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\bin\Debug\EntityFramework.SqlServer.xml
 D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\obj\Debug\MODELS.csproj.CopyComplete
+D:\Documents\VisualStudio\project2\FINAL\PROJECT2\MODELS\obj\Debug\MODELS.csprojAssemblyReference.cache

@@ -72,5 +72,10 @@ namespace MODELS.Dao
                 return false;
             }
         }
+
+        public List<Customer> SearchCustomer(string stringSearch)
+        {
+            return db.Customers.Where(x => x.Name.Contains(stringSearch)).ToList();
+        }
     }
 }

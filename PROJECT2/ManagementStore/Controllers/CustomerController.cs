@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using ManagementStore.Common;
+using System.Collections.Generic;
 using MODELS.EF;
 using MODELS.Dao;
 
@@ -9,11 +10,14 @@ namespace ManagementStore.Controllers
     {
         private CustomerDao customerDao = new CustomerDao();
 
-        public ActionResult Index()
+        public ActionResult Index(string stringSearch = "")
         {
             var user = (UserLogin)Session[CommonConstants.USER_SEESION];
+            List<Customer> customerList = new List<Customer>();
+            if (stringSearch == "") customerList = customerDao.customerList;
+            else customerList = customerDao.SearchCustomer(stringSearch);
             ViewBag.UserName = user.Name;
-            return View(customerDao.customerList);
+            return View(customerList);
         }
 
         public ActionResult Details(int id)

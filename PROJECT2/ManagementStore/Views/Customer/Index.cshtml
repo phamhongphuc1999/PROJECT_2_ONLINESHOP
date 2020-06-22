@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Customer";
     ViewBag.Link = "/khach-hang/danh-sach-khach-hang";
+    ViewBag.Description = "Customer List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -34,65 +35,95 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">The Customer List</h3>
-                    <div class="">
-                        <a href="/khach-hang/them-khach-hang">
-                            <input type="button" value="Add Customer" class="btn btn-default" />
-                        </a>
+                    <div class="row">
+                        <div class="col-12 table-responsive">
+                            @using (Html.BeginForm("Index", "Customer", FormMethod.Get))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input type="text" name="stringSearch" />
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Search" class="btn btn-default" />
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <a href="/khach-hang/danh-sach-khach-hang" class="btn btn-default">View All Customer</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <a href="/khach-hang/them-khach-hang" class="btn btn-default">Add Customer</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
-                    <table id="example2" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Sex</th>
-                                <th>Phone</th>
-                                <th>Birthday</th>
-                                <th>Address</th>
-                                <th>Type</th>
-                                <th>#</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
+                @if (Model.Count() > 0)
+                {
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
                                 <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Sex)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Phone)</td>
-                                    <td>@Html.ValueFor(modelItem => item.Birthday, "{0:dd/MM/yyyy}")</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Type)</td>
-                                    <td>
-                                        <a class="btn btn-primary btn-sm" href="/khach-hang/chi-tiet/@item.Id">
-                                            <i class="fas fa-folder"></i>Detail
-                                        </a>
-                                        <a class="btn btn-primary btn-sm" href="/khach-hang/chinh-sua/@item.Id">
-                                            <i class="fas fa-pencil-alt"></i>Edit
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="/khach-hang/xoa-khach-hang/@item.Id">
-                                            <i class="fas fa-trash"></i>Delete
-                                        </a>
-                                    </td>
+                                    <th>Name</th>
+                                    <th>Sex</th>
+                                    <th>Phone</th>
+                                    <th>Birthday</th>
+                                    <th>Address</th>
+                                    <th>Type</th>
+                                    <th>#</th>
                                 </tr>
-                            }
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Sex</th>
-                                <th>Phone</th>
-                                <th>Birthday</th>
-                                <th>Address</th>
-                                <th>Type</th>
-                                <th>#</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <!-- /.card-body -->
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Sex)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                                        <td>@Html.ValueFor(modelItem => item.Birthday, "{0:dd/MM/yyyy}")</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                                        <td>
+                                            <a class="btn btn-primary btn-sm" href="/khach-hang/chi-tiet/@item.Id">
+                                                <i class="fas fa-folder"></i>Detail
+                                            </a>
+                                            <a class="btn btn-primary btn-sm" href="/khach-hang/chinh-sua/@item.Id">
+                                                <i class="fas fa-pencil-alt"></i>Edit
+                                            </a>
+                                            <a class="btn btn-danger btn-sm" href="/khach-hang/xoa-khach-hang/@item.Id">
+                                                <i class="fas fa-trash"></i>Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Sex</th>
+                                    <th>Phone</th>
+                                    <th>Birthday</th>
+                                    <th>Address</th>
+                                    <th>Type</th>
+                                    <th>#</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="card-body">
+                        Data Not Found
+                    </div>
+                }
             </div>
             <!-- /.card -->
         </div>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using MODELS.EF;
 
 namespace MODELS.Dao
@@ -97,6 +98,11 @@ namespace MODELS.Dao
                 return true;
             }
             else return false;
+        }
+
+        public List<Employee> SearchEmployee(string stringSearch)
+        {
+            return db.Employees.Where(x => x.Name.Contains(stringSearch)).ToList();
         }
     }
 }

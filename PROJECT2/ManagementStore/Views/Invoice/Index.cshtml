@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Invoice";
     ViewBag.Link = "/hoa-don/danh-sach-hoa-don";
+    ViewBag.Description = "Invoice List";
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<InvoiceModel> invoiceModels = ViewBag.InvoiceModels;
 }
@@ -37,10 +38,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-2 table-responsive">
-                            <h3 class="card-title">The Invoice List</h3>
-                        </div>
-                        <div class="col-10 table-responsive">
+                        <div class="col-12 table-responsive">
                             @using (Html.BeginForm("Index", "Invoice"))
                             {
                                 @Html.AntiForgeryToken()
@@ -53,14 +51,14 @@
                                         @Html.TextBoxFor(model => model.end, new { @class = "form-control", placeholder = "End" })
                                         @Html.ValidationMessageFor(model => model.end, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="col-md-offset-2 col-md-10">
                                             <input type="submit" value="Search" class="btn btn-default" />
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="col-md-offset-2 col-md-10">
-                                            <a href="/hoa-don/danh-sach-hoa-don" class="btn btn-default">View All Product</a>
+                                            <a href="/hoa-don/danh-sach-hoa-don" class="btn btn-default">View All Invoice</a>
                                         </div>
                                     </div>
                                 </div>
@@ -68,6 +66,7 @@
                         </div>
                     </div>
                 </div>
+
                 @if (invoiceModels.Count() > 0)
                 {
                     <div class="card-body">
