@@ -73,9 +73,63 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Customer Name</th>
-                                    <th>Employee Name</th>
-                                    <th>Created Day</th>
+                                    <th>
+                                        <a class="nav-link" data-toggle="dropdown" href="#">
+                                            Customer Name
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                                            <span class="dropdown-item dropdown-header">Search By Customer Name</span>
+                                            <div class="dropdown-divider"></div>
+                                            <div class="dropdown-item">
+                                                <form class="form-inline ml-3">
+                                                    @using (Html.BeginForm("Index", "Invoice", FormMethod.Get))
+                                                    {
+                                                        @Html.AntiForgeryToken()
+                                                        <div class="input-group input-group-sm">
+                                                            <input class="form-control form-control-navbar" name="CustomerName" type="search" placeholder="Search" aria-label="Search">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-navbar" type="submit">
+                                                                    <i class="fas fa-search"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </th>
+
+                                    <th>
+                                        <a class="nav-link" data-toggle="dropdown" href="#">
+                                            Employee Name
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                                            <span class="dropdown-item dropdown-header">Search By Employee Name</span>
+                                            <div class="dropdown-divider"></div>
+                                            <div class="dropdown-item">
+                                                <form class="form-inline ml-3">
+                                                    @using (Html.BeginForm("Index", "Invoice", FormMethod.Get))
+                                                    {
+                                                        @Html.AntiForgeryToken()
+                                                        <div class="input-group input-group-sm">
+                                                            <input class="form-control form-control-navbar" name="EmployeeName" type="search" placeholder="Search" aria-label="Search">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-navbar" type="submit">
+                                                                    <i class="fas fa-search"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </th>
+
+                                    <th>
+                                        <a class="nav-link" data-toggle="dropdown" href="#">
+                                            Created Day
+                                        </a>
+                                    </th>
                                     <th>#</th>
                                 </tr>
                             </thead>

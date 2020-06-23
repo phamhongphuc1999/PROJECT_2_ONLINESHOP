@@ -49,10 +49,10 @@
                 <li class="nav-item dropdown">
                     <div class="header-user">
                         <div class="user-content">
-                            @using (Html.BeginForm("Logout", "Login", new { @class = "user-name" }))
+                            @using (Html.BeginForm("Logout", "Login", new { @class = "btn btn-default" }))
                             {
                                 @Html.AntiForgeryToken()
-                                <input type="submit" value="Đăng xuất" class="logout" />
+                                <input type="submit" value="Logout" class="logout" />
                             }
                         </div>
                     </div>

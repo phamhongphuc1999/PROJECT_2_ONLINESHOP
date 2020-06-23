@@ -14,7 +14,7 @@ namespace ManagementStore.Controllers
         private InvoiceDao invoiceDao = new InvoiceDao();
         private DetailDao detailDao = new DetailDao();
 
-        public ActionResult Index(Search search)
+        public ActionResult Index(Search search, string CustomerName = "", string EmployeeName = "")
         {
             List<Invoice> invoiceList = new List<Invoice>();
             bool a1 = (search.start == DateTime.MinValue);
@@ -26,13 +26,21 @@ namespace ManagementStore.Controllers
             {
                 if (item.Status)
                 {
-                    invoiceModels.Add(new InvoiceModel()
+                    string customerName = invoiceDao.DB.Customers.Find(item.IdCustomer).Name;
+                    string employeeName = invoiceDao.DB.Employees.Find(item.IdEmployee).Name;
+                    bool check1 = true, check2 = true;
+                    if (CustomerName != "") check1 = customerName.Contains(CustomerName);
+                    if (EmployeeName != "") check2 = employeeName.Contains(EmployeeName);
+                    if(check1 && check2)
                     {
-                        ID = item.Id,
-                        EmployeeName = invoiceDao.DB.Employees.Find(item.IdEmployee).Name,
-                        CustomerName = invoiceDao.DB.Customers.Find(item.IdCustomer).Name,
-                        DaySell = item.DaySell
-                    });
+                        invoiceModels.Add(new InvoiceModel()
+                        {
+                            ID = item.Id,
+                            EmployeeName = employeeName,
+                            CustomerName = customerName,
+                            DaySell = item.DaySell
+                        });
+                    }
                 }
             }
             var user = (UserLogin)Session[CommonConstants.USER_SEESION];
