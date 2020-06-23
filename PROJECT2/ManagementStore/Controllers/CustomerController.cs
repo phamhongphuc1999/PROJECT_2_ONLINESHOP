@@ -3,21 +3,32 @@ using ManagementStore.Common;
 using System.Collections.Generic;
 using MODELS.EF;
 using MODELS.Dao;
+using System.Linq;
 
 namespace ManagementStore.Controllers
 {
     public class CustomerController : Controller
     {
         private CustomerDao customerDao = new CustomerDao();
+        private static List<Customer> customers;
 
-        public ActionResult Index(string stringSearch = "")
+        public ActionResult Index(string NameSearch = "", string SexSearch = "", string PhoneSearch = "",
+            string BirthdaySearch = "", string AddressSearch = "", string TypeSearch = "")
         {
             var user = (UserLogin)Session[CommonConstants.USER_SEESION];
-            List<Customer> customerList = new List<Customer>();
-            if (stringSearch == "") customerList = customerDao.customerList;
-            else customerList = customerDao.SearchCustomer(stringSearch);
+            string check = NameSearch + SexSearch + PhoneSearch + BirthdaySearch + AddressSearch + TypeSearch;
+            if (check != "")
+            {
+                if (NameSearch != "") customers = customers.Where(x => x.Name.Contains(NameSearch)).ToList();
+                if (SexSearch != "") customers = customers.Where(x => x.Sex == SexSearch).ToList();
+                if (PhoneSearch != "") customers = customers.Where(x => x.Phone == PhoneSearch).ToList();
+                if (BirthdaySearch != "") customers = customers.Where(x => x.Birthday.Value.ToString("0:dd/MM/yyyy") == BirthdaySearch).ToList();
+                if (AddressSearch != "") customers = customers.Where(x => x.Address.Contains(AddressSearch)).ToList();
+                if (TypeSearch != "") customers = customers.Where(x => x.Type == TypeSearch).ToList();
+            }
+            else customers = customerDao.customerList;
             ViewBag.UserName = user.Name;
-            return View(customerList);
+            return View(customers);
         }
 
         public ActionResult Details(int id)

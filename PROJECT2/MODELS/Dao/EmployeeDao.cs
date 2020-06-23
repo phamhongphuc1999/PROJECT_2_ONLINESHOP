@@ -99,10 +99,5 @@ namespace MODELS.Dao
             }
             else return false;
         }
-
-        public List<Employee> SearchEmployee(string stringSearch)
-        {
-            return db.Employees.Where(x => x.Name.Contains(stringSearch)).ToList();
-        }
     }
 }

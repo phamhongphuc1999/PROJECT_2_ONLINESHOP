@@ -4,6 +4,7 @@ using MODELS.EF;
 using ManagementStore.Common;
 using ManagementStore.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ManagementStore.Controllers
 {
@@ -11,15 +12,25 @@ namespace ManagementStore.Controllers
     {
         private EmployeeDao employeeDao = new EmployeeDao();
         private static string oldPassword = "";
+        private static List<Employee> employees;
 
-        public ActionResult Index(string stringSearch = "")
+        public ActionResult Index(string NameSearch = "", string SexSearch = "", string PhoneSearch = "", 
+            string BirthdaySearch = "", string AddressSearch = "", string PositionSearch = "")
         {
             var user = (UserLogin)Session[CommonConstants.USER_SEESION];
-            List<Employee> employeeList = new List<Employee>();
-            if (stringSearch == "") employeeList = employeeDao.employeeList;
-            else employeeList = employeeDao.SearchEmployee(stringSearch);
+            string check = NameSearch + SexSearch + PhoneSearch + BirthdaySearch + AddressSearch + PositionSearch;
+            if (check != "")
+            {
+                if (NameSearch != "") employees = employees.Where(x => x.Name.Contains(NameSearch)).ToList();
+                if (SexSearch != "") employees = employees.Where(x => x.Sex == SexSearch).ToList();
+                if (PhoneSearch != "") employees = employees.Where(x => x.Phone == PhoneSearch).ToList();
+                if (BirthdaySearch != "") employees = employees.Where(x => x.Birthday.Value.ToString("0:dd/MM/yyyy") == BirthdaySearch).ToList();
+                if (AddressSearch != "") employees = employees.Where(x => x.Address.Contains(AddressSearch)).ToList();
+                if (PositionSearch != "") employees = employees.Where(x => x.Position.Contains(PositionSearch)).ToList();
+            }
+            else employees = employeeDao.employeeList;
             ViewBag.UserName = user.Name;
-            return View(employeeList);
+            return View(employees);
         }
 
         public ActionResult Details(int id)

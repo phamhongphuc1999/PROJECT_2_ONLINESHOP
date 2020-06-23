@@ -37,30 +37,18 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-12 table-responsive">
-                            @using (Html.BeginForm("Index", "Employee", FormMethod.Get))
-                            {
-                                @Html.AntiForgeryToken()
-                                <div class="row">
-                                    <div class="col-4">
-                                        <input type="text" name="stringSearch" />
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Search" class="btn btn-default" />
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <a href="/nhan-vien/danh-sach-nhan-vien" class="btn btn-default">View All Employee</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <a href="/nhan-vien/them-nhan-vien" class="btn btn-default">Add Employee</a>
-                                        </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <a href="/nhan-vien/danh-sach-nhan-vien" class="btn btn-default">View All Employee</a>
                                     </div>
                                 </div>
-                            }
+                                <div class="col-6">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <a href="/nhan-vien/them-nhan-vien" class="btn btn-default">Add Employee</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -69,12 +57,161 @@
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Sex</th>
-                                <th>Phone</th>
-                                <th>Birthday</th>
-                                <th>Address</th>
-                                <th>Position</th>
+                                <th>
+                                    <a class="nav-link" data-toggle="dropdown" href="#">
+                                        Name
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                                        <span class="dropdown-item dropdown-header">Search By Name</span>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-item">
+                                            <form class="form-inline ml-3">
+                                                @using (Html.BeginForm("Index", "Employee", FormMethod.Get))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <div class="input-group input-group-sm">
+                                                        <input class="form-control form-control-navbar" name="NameSearch" type="search" placeholder="Search" aria-label="Search">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-navbar" type="submit">
+                                                                <i class="fas fa-search"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </form>
+                                        </div>
+                                    </div>
+                                </th>
+
+                                <th>
+                                    <a class="nav-link" data-toggle="dropdown" href="#">
+                                        Sex
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                                        <span class="dropdown-item dropdown-header">Search By Sex</span>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-item">
+                                            <form class="form-inline ml-3">
+                                                @using (Html.BeginForm("Index", "Employee", FormMethod.Get))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <div class="input-group input-group-sm">
+                                                        <input class="form-control form-control-navbar" name="SexSearch" type="search" placeholder="Search" aria-label="Search">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-navbar" type="submit">
+                                                                <i class="fas fa-search"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </form>
+                                        </div>
+                                    </div>
+                                </th>
+
+                                <th>
+                                    <a class="nav-link" data-toggle="dropdown" href="#">
+                                        Phone
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                                        <span class="dropdown-item dropdown-header">Search By Name</span>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-item">
+                                            <form class="form-inline ml-3">
+                                                @using (Html.BeginForm("Index", "Employee", FormMethod.Get))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <div class="input-group input-group-sm">
+                                                        <input class="form-control form-control-navbar" name="PhoneSearch" type="search" placeholder="Search" aria-label="Search">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-navbar" type="submit">
+                                                                <i class="fas fa-search"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </form>
+                                        </div>
+                                    </div>
+                                </th>
+
+                                <th>
+                                    <a class="nav-link" data-toggle="dropdown" href="#">
+                                        Birthday
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                                        <span class="dropdown-item dropdown-header">Search By Birthday</span>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-item">
+                                            <form class="form-inline ml-3">
+                                                @using (Html.BeginForm("Index", "Employee", FormMethod.Get))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <div class="input-group input-group-sm">
+                                                        <input class="form-control form-control-navbar" name="BirthdaySearch" type="search" placeholder="Search" aria-label="Search">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-navbar" type="submit">
+                                                                <i class="fas fa-search"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </form>
+                                        </div>
+                                    </div>
+                                </th>
+
+                                <th>
+                                    <a class="nav-link" data-toggle="dropdown" href="#">
+                                        Address
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                                        <span class="dropdown-item dropdown-header">Search By Address</span>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-item">
+                                            <form class="form-inline ml-3">
+                                                @using (Html.BeginForm("Index", "Employee", FormMethod.Get))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <div class="input-group input-group-sm">
+                                                        <input class="form-control form-control-navbar" name="AddressSearch" type="search" placeholder="Search" aria-label="Search">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-navbar" type="submit">
+                                                                <i class="fas fa-search"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </form>
+                                        </div>
+                                    </div>
+                                </th>
+
+                                <th>
+                                    <a class="nav-link" data-toggle="dropdown" href="#">
+                                        Position
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                                        <span class="dropdown-item dropdown-header">Search By Position</span>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-item">
+                                            <form class="form-inline ml-3">
+                                                @using (Html.BeginForm("Index", "Employee", FormMethod.Get))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <div class="input-group input-group-sm">
+                                                        <input class="form-control form-control-navbar" name="PositionSearch" type="search" placeholder="Search" aria-label="Search">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-navbar" type="submit">
+                                                                <i class="fas fa-search"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </form>
+                                        </div>
+                                    </div>
+                                </th>
                                 <th>#</th>
                             </tr>
                         </thead>
