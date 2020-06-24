@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using MODELS.EF;
 using MODELS.Dao;
 using System.Linq;
+using ManagementStore.Filter;
 
 namespace ManagementStore.Controllers
 {
     public class CustomerController : Controller
     {
         private CustomerDao customerDao = new CustomerDao();
-        private static List<Customer> customers;
+        private static CustomerSearch customerSearch = new CustomerSearch();
 
         public ActionResult Index(string NameSearch = "", string SexSearch = "", string PhoneSearch = "",
             string BirthdaySearch = "", string AddressSearch = "", string TypeSearch = "")
@@ -19,16 +20,45 @@ namespace ManagementStore.Controllers
             string check = NameSearch + SexSearch + PhoneSearch + BirthdaySearch + AddressSearch + TypeSearch;
             if (check != "")
             {
-                if (NameSearch != "") customers = customers.Where(x => x.Name.Contains(NameSearch)).ToList();
-                if (SexSearch != "") customers = customers.Where(x => x.Sex == SexSearch).ToList();
-                if (PhoneSearch != "") customers = customers.Where(x => x.Phone == PhoneSearch).ToList();
-                if (BirthdaySearch != "") customers = customers.Where(x => x.Birthday.Value.ToString("0:dd/MM/yyyy") == BirthdaySearch).ToList();
-                if (AddressSearch != "") customers = customers.Where(x => x.Address.Contains(AddressSearch)).ToList();
-                if (TypeSearch != "") customers = customers.Where(x => x.Type == TypeSearch).ToList();
+                if (NameSearch != "")
+                {
+                    customerSearch.customerList = customerSearch.customerList.Where(x => x.Name.Contains(NameSearch)).ToList();
+                    customerSearch.NameSearch = NameSearch;
+                }
+                if (SexSearch != "")
+                {
+                    customerSearch.customerList = customerSearch.customerList.Where(x => x.Sex == SexSearch).ToList();
+                    customerSearch.SexSearch = SexSearch;
+                }
+                if (PhoneSearch != "")
+                {
+                    customerSearch.customerList = customerSearch.customerList.Where(x => x.Phone == PhoneSearch).ToList();
+                    customerSearch.PhoneSearch = PhoneSearch;
+                }
+                if (BirthdaySearch != "")
+                {
+                    customerSearch.customerList = customerSearch.customerList.Where(x => x.Birthday.Value.ToString("0:dd/MM/yyyy") == BirthdaySearch).ToList();
+                    customerSearch.BirthdaySearch = BirthdaySearch;
+                }
+                if (AddressSearch != "")
+                {
+                    customerSearch.customerList = customerSearch.customerList.Where(x => x.Address.Contains(AddressSearch)).ToList();
+                    customerSearch.AddressSearch = AddressSearch;
+                }
+                if (TypeSearch != "")
+                {
+                    customerSearch.customerList = customerSearch.customerList.Where(x => x.Type == TypeSearch).ToList();
+                    customerSearch.TypeSearch = TypeSearch;
+                }
             }
-            else customers = customerDao.customerList;
+            else
+            {
+                customerSearch.customerList = customerDao.customerList;
+                customerSearch.CleanSearch();
+            }
             ViewBag.UserName = user.Name;
-            return View(customers);
+            ViewBag.SEARCH = customerSearch;
+            return View(customerSearch.customerList);
         }
 
         public ActionResult Details(int id)

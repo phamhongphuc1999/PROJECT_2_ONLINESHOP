@@ -1,9 +1,11 @@
-﻿@model IEnumerable<MODELS.EF.Customer>
+﻿@using ManagementStore.Filter;
+@model IEnumerable<MODELS.EF.Customer>
 @{
     ViewBag.Title = "Customer";
     ViewBag.Link = "/khach-hang/danh-sach-khach-hang";
     ViewBag.Description = "Customer List";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    CustomerSearch customerSearch = ViewBag.SEARCH;
 }
 
 @section scripts {
@@ -47,6 +49,34 @@
                                     <div class="col-md-offset-2 col-md-10">
                                         <a href="/khach-hang/them-khach-hang" class="btn btn-default">Add Customer</a>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="">Name</label>
+                                    <input type="text" class="" value="@customerSearch.NameSearch" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="">Sex</label>
+                                    <input type="text" class="" value="@customerSearch.SexSearch" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="">Phone</label>
+                                    <input type="text" class="" value="@customerSearch.PhoneSearch" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="">Birthday</label>
+                                    <input type="text" class="" value="@customerSearch.BirthdaySearch" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="">Address</label>
+                                    <input type="text" class="" value="@customerSearch.AddressSearch" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="">Type</label>
+                                    <input type="text" class="" value="@customerSearch.TypeSearch" />
                                 </div>
                             </div>
                         </div>

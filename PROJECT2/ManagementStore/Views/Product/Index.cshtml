@@ -1,9 +1,11 @@
-﻿@model IEnumerable<MODELS.EF.Product>
+﻿@using ManagementStore.Filter;
+@model IEnumerable<MODELS.EF.Product>
 @{
     ViewBag.Title = "Product";
     ViewBag.Link = "/san-pham/danh-sach-san-pham";
     ViewBag.Description = "Product List";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ProductSearch productSearch = ViewBag.SEARCH;
 }
 
 @section scripts {
@@ -50,10 +52,31 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        
-                                    </div>
+                                <div class="col-4">
+                                    <label class="">Name Product</label>
+                                    <input type="text" class="" value="@productSearch.NameSearch" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="">Amount</label>
+                                    <input type="text" class="" value="@productSearch.AmountLow - @productSearch.AmountUp" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="">Price</label>
+                                    <input type="text" class="" value="@productSearch.PriceLow - @productSearch.PriceUp" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="">Profix</label>
+                                    <input type="text" class="" value="@productSearch.ProfixLow - @productSearch.ProfixUp" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="">Sale</label>
+                                    <input type="text" class="" value="@productSearch.SaleLow - @productSearch.SaleUp" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="">Guarantee</label>
+                                    <input type="text" class="" value="@productSearch.GuaranteeLow - @productSearch.GuaranteeUp" />
                                 </div>
                             </div>
                         </div>
