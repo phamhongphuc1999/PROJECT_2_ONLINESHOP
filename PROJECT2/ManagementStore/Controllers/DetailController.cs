@@ -1,10 +1,5 @@
-﻿using System;
-using System.Data;
-using System.Linq;
-using System.Web.Mvc;
-using MODELS.EF;
+﻿using System.Web.Mvc;
 using MODELS.Dao;
-using ManagementStore.Models;
 
 namespace ManagementStore.Controllers
 {

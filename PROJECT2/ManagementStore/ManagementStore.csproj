@@ -140,6 +140,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Filter\CustomerSearch.cs" />
+    <Compile Include="Filter\InvoiceSearch.cs" />
     <Compile Include="Filter\ProductSearch.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -10,7 +10,7 @@ namespace ManagementStore.Controllers
     public class ProductController : Controller
     {
         private ProductDao productDao = new ProductDao();
-        private ProductSearch productSearch = new ProductSearch();
+        private static ProductSearch productSearch = new ProductSearch();
 
         public ActionResult Index(string NameSearch = "", string AmountLow = "", string AmountUp = "", string PriceLow = "",
             string PriceUp = "", string ProfixLow = "", string ProfixUp = "", string SaleLow = "", string SaleUp = "",
@@ -20,6 +20,7 @@ namespace ManagementStore.Controllers
                 SaleUp + GuaranteeLow + GuaranteeUp;
             if (check != "")
             {
+                int intUp = 0, intLow = 0;
                 if (NameSearch != "")
                 {
                     productSearch.productList = productSearch.productList.Where(x => x.NameProduct.Contains(NameSearch)).ToList();
@@ -27,7 +28,6 @@ namespace ManagementStore.Controllers
                 }
                 if (AmountUp != "" && AmountLow != "")
                 {
-                    int intUp = 0, intLow = 0;
                     bool check1 = Int32.TryParse(AmountLow, out intLow);
                     bool check2 = Int32.TryParse(AmountUp, out intUp);
                     if (check1 && check2)
@@ -39,7 +39,6 @@ namespace ManagementStore.Controllers
                 }
                 if (PriceLow != "" && PriceUp != "")
                 {
-                    int intUp = 0, intLow = 0;
                     bool check1 = Int32.TryParse(PriceLow, out intLow);
                     bool check2 = Int32.TryParse(PriceUp, out intUp);
                     if (check1 && check2)
@@ -51,7 +50,6 @@ namespace ManagementStore.Controllers
                 }
                 if (ProfixLow != "" && ProfixUp != "")
                 {
-                    int intUp = 0, intLow = 0;
                     bool check1 = Int32.TryParse(ProfixLow, out intLow);
                     bool check2 = Int32.TryParse(ProfixUp, out intUp);
                     if (check1 && check2)
@@ -63,7 +61,6 @@ namespace ManagementStore.Controllers
                 }
                 if (SaleLow != "" && SaleUp != "")
                 {
-                    int intUp = 0, intLow = 0;
                     bool check1 = Int32.TryParse(SaleLow, out intLow);
                     bool check2 = Int32.TryParse(SaleUp, out intUp);
                     if (check1 && check2)
@@ -75,7 +72,6 @@ namespace ManagementStore.Controllers
                 }
                 if (GuaranteeLow != "" && GuaranteeUp != "")
                 {
-                    int intUp = 0, intLow = 0;
                     bool check1 = Int32.TryParse(GuaranteeLow, out intLow);
                     bool check2 = Int32.TryParse(GuaranteeUp, out intUp);
                     if (check1 && check2)

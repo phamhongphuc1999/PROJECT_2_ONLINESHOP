@@ -1,11 +1,10 @@
 ﻿using System.Web.Mvc;
-using ManagementStore.Common;
 using MODELS.EF;
 using MODELS.Dao;
 using ManagementStore.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System;
+using ManagementStore.Filter;
 
 namespace ManagementStore.Controllers
 {
@@ -13,39 +12,35 @@ namespace ManagementStore.Controllers
     {
         private InvoiceDao invoiceDao = new InvoiceDao();
         private DetailDao detailDao = new DetailDao();
+        private static InvoiceSearch invoiceSearch = new InvoiceSearch();
 
         public ActionResult Index(Search search, string CustomerName = "", string EmployeeName = "")
         {
-            List<Invoice> invoiceList = new List<Invoice>();
-            bool a1 = (search.start == DateTime.MinValue);
-            bool a2 = (search.end == DateTime.MinValue);
-            if (a1 && a2) invoiceList = invoiceDao.invoiceList;
-            else invoiceList = invoiceDao.FilterByDaySell(search.start, search.end);
-            List<InvoiceModel> invoiceModels = new List<InvoiceModel>();
-            foreach (Invoice item in invoiceList)
+            string check = CustomerName + EmployeeName;
+            if(check != "" || invoiceSearch.IsInvalidSearch(search))
             {
-                if (item.Status)
+                if (invoiceSearch.IsInvalidSearch(search))
                 {
-                    string customerName = invoiceDao.DB.Customers.Find(item.IdCustomer).Name;
-                    string employeeName = invoiceDao.DB.Employees.Find(item.IdEmployee).Name;
-                    bool check1 = true, check2 = true;
-                    if (CustomerName != "") check1 = customerName.Contains(CustomerName);
-                    if (EmployeeName != "") check2 = employeeName.Contains(EmployeeName);
-                    if(check1 && check2)
-                    {
-                        invoiceModels.Add(new InvoiceModel()
-                        {
-                            ID = item.Id,
-                            EmployeeName = employeeName,
-                            CustomerName = customerName,
-                            DaySell = item.DaySell
-                        });
-                    }
+                    invoiceSearch.invoiceList = invoiceSearch.invoiceList.Where(x => x.DaySell >= search.start && x.DaySell <= search.end).ToList();
+                    invoiceSearch.search = search;
                 }
+                if (CustomerName != "")
+                {
+                    invoiceSearch.invoiceList = invoiceSearch.invoiceList.Where(x => x.CustomerName.Contains(CustomerName)).ToList();
+                    invoiceSearch.CustomerName = CustomerName;
+                }  
+                if (EmployeeName != "")
+                {
+                    invoiceSearch.invoiceList = invoiceSearch.invoiceList.Where(x => x.EmployeeName.Contains(EmployeeName)).ToList();
+                    invoiceSearch.EmployeeName = EmployeeName;
+                }   
             }
-            var user = (UserLogin)Session[CommonConstants.USER_SEESION];
-            ViewBag.UserName = user.Name;
-            ViewBag.InvoiceModels = invoiceModels;
+            else
+            {
+                invoiceSearch.invoiceList = invoiceSearch.CreateInvoiceList();
+                invoiceSearch.CleanSearch();
+            }
+            ViewBag.SEARCH = invoiceSearch;
             return View();
         }
 
