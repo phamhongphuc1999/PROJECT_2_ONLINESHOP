@@ -27,21 +27,21 @@
                     <a href="/" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                    <a href="/nhan-vien/thong-tin-ca-nhan/@user.UserID" class="nav-link">Personal</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/nhan-vien/danh-sach-nhan-vien" class="nav-link">Employee</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/khach-hang/danh-sach-khach-hang" class="nav-link">Customer</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/san-pham/danh-sach-san-pham" class="nav-link">Product</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/hoa-don/danh-sach-hoa-don" class="nav-link">Invoice</a>
                 </li>
             </ul>
-
-            <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
-                <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -52,7 +52,7 @@
                             @using (Html.BeginForm("Logout", "Login", new { @class = "btn btn-default" }))
                             {
                                 @Html.AntiForgeryToken()
-                                <input type="submit" value="Logout" class="logout" />
+                                <input type="submit" value="Logout" class="logout form-control form-control-navbar" />
                             }
                         </div>
                     </div>
@@ -159,13 +159,6 @@
                             <a href="/hoa-don/danh-sach-hoa-don" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>Invoice List</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/lich/" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>Calender</p>
                             </a>
                         </li>
                     </ul>
