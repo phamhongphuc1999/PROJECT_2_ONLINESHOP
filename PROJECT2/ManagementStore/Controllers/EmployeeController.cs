@@ -85,8 +85,7 @@ namespace ManagementStore.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create( Employee employee)
+        public ActionResult Create(Employee employee)
         {
             employeeDao.Insert(employee);
             return RedirectToAction("Index");
@@ -116,7 +115,7 @@ namespace ManagementStore.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit( EmployeeModel entity)
+        public ActionResult Edit(EmployeeModel entity)
         {
             string comfirmOldPassword = Cryptography_MD5.GetHash(entity.ComfirmOldPassword);
             if (comfirmOldPassword == oldPassword && entity.NewPassword == entity.ComfirmNewPassword)
@@ -156,7 +155,6 @@ namespace ManagementStore.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             bool check = employeeDao.Delete(id);

@@ -76,7 +76,6 @@ namespace ManagementStore.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Address,Phone,Type")] Customer customer)
         {
             if (ModelState.IsValid)
@@ -96,8 +95,7 @@ namespace ManagementStore.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Sex,Birthday,Address,Phone,Type")] Customer customer)
+        public ActionResult Edit(Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +114,6 @@ namespace ManagementStore.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             customerDao.Delete(id);
