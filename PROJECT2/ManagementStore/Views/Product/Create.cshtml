@@ -11,18 +11,9 @@
     <form class="form-horizontal">
         <div class="card-body">
             <div class="form-group row">
-                @Html.Label("inputEmail3", "Id Product", new { @class = "col-sm-2 col-form-label" })
-                <div class="col-sm-10">
-                    @Html.TextBoxFor(model => model.Id, new { id = "inputEmail3", @class = "form-control", placeholder = "Id" })
-                    @Html.HiddenFor(model => model.Id)
-                    @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group row">
                 @Html.Label("inputEmail3", "Name Product", new { @class = "col-sm-2 col-form-label" })
                 <div class="col-sm-10">
-                    @Html.PasswordFor(model => model.NameProduct, new { id = "inputEmail3", @class = "form-control", placeholder = "Name Product" })
+                    @Html.TextBoxFor(model => model.NameProduct, new { id = "inputEmail3", @class = "form-control", placeholder = "Name Product" })
                     @Html.ValidationMessageFor(model => model.NameProduct, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -32,6 +23,14 @@
                 <div class="col-sm-10">
                     @Html.TextBoxFor(model => model.ImportPrice, new { id = "inputEmail3", @class = "form-control", placeholder = "Import Price" })
                     @Html.ValidationMessageFor(model => model.ImportPrice, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.Label("inputEmail3", "Export Price", new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.ImportPrice, new { id = "inputEmail3", @class = "form-control", placeholder = "Import Price" })
+                    @Html.ValidationMessageFor(model => model.ExportPrice, "", new { @class = "text-danger" })
                 </div>
             </div>
 

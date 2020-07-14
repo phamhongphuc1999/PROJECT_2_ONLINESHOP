@@ -34,7 +34,7 @@
                                 <b>User Name: </b>@Model.employee.Username<br>
                                 <b>Sex: </b>@Model.employee.Sex<br>
                                 <b>Phone: </b>@Model.employee.Phone<br>
-                                <b>Type: </b>@Model.employee.Position
+                                <b>Type: </b>@Model.employee.Position<br>
                             </address>
                         </div>
                         <!-- /.col -->
@@ -45,7 +45,7 @@
                                 <b>Sex: </b>@Model.customer.Sex<br>
                                 <b>Address: </b>@Model.customer.Address<br>
                                 <b>Phone: </b>@Model.customer.Phone<br>
-                                <b>Type: </b>@Model.customer.Type
+                                <b>Type: </b>@Model.customer.Type<br>
                             </address>
                         </div>
                         <!-- /.col -->
@@ -53,7 +53,9 @@
                             <b>Invoice @Model.invoice.Id</b><br>
                             <br>
                             <b>Order ID:</b> @Model.invoice.Id<br>
-                            <b>Payment Due:</b> @Model.invoice.DaySell.Value.ToString("0:dd/MM/yyyy")<br>
+                            <b>Payment Due:</b> @Model.invoice.DaySell.Value.ToString("dd/MM/yyyy")<br>
+                            <a href="/nhan-vien/thong-tin-ca-nhan/@Model.employee.Id"><b>Detail Employee</b></a><br>
+                            <a href="/khach-hang/chi-tiet/@Model.customer.Id"><b>Detail Customer</b></a>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -98,20 +100,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                    
-                    <div class="row no-print">
-                        <div class="col-12">
-                            <a href="#" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                            <button type="button" class="btn btn-success float-right">
-                                <i class="far fa-credit-card"></i>
-                                Add Product
-                            </button>
-                            <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                                <i class="fas fa-pencil-alt"></i>
-                                Edit
-                            </button>
                         </div>
                     </div>
                 </div>

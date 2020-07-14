@@ -86,7 +86,7 @@ namespace ManagementStore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Sex,Phone,Birthday,Address,Username,Password,Type")] Employee employee)
+        public ActionResult Create( Employee employee)
         {
             employeeDao.Insert(employee);
             return RedirectToAction("Index");
@@ -116,8 +116,7 @@ namespace ManagementStore.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Sex,Phone,Birthday,Address,Username,ComfirmOldPassword,NewPassword,ComfirmNewPassword")] EmployeeModel entity)
+        public ActionResult Edit( EmployeeModel entity)
         {
             string comfirmOldPassword = Cryptography_MD5.GetHash(entity.ComfirmOldPassword);
             if (comfirmOldPassword == oldPassword && entity.NewPassword == entity.ComfirmNewPassword)
@@ -134,7 +133,15 @@ namespace ManagementStore.Controllers
                     Birthday = entity.Birthday
                 };
                 bool check = employeeDao.Edit(employee);
-                if (check) return RedirectToAction("Details");
+                if (check)
+                {
+                    UserLogin user = ((UserLogin)Session[CommonConstants.USER_SEESION]);
+                    user.UserID = entity.ID;
+                    user.Username = entity.UserName;
+                    user.Password = entity.NewPassword;
+                    Session[CommonConstants.USER_SEESION] = user;
+                    return RedirectToAction("Details");
+                }
             }
             return RedirectToAction("Edit");
         }

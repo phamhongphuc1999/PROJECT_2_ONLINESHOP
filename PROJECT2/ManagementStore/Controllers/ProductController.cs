@@ -98,25 +98,27 @@ namespace ManagementStore.Controllers
             ViewBag.ID = id;
             return View(product);
         }
-
+        
+        [HttpGet]
         public ActionResult Create()
         {
-            Product product = productDao.CreateNewProduct();
-            return View(product);
+            return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,NameProduct,IdPackage,ImportPrice,Profix,Amount,Guarantee,Sale")] Product product)
+        public ActionResult Create(Product product)
         {
             if (ModelState.IsValid)
             {
+                product.Image = "/dist/img/product/p1.jpg";
+                product.Status = "new";
                 productDao.Insert(product);
                 return RedirectToAction("Index");
             }
             return View(product);
         }
 
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             Product product = productDao.GetByID(id);
@@ -126,8 +128,7 @@ namespace ManagementStore.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,NameProduct,IdPackage,ImportPrice,Profix,Amount,Guarantee,Sale")] Product product)
+        public ActionResult Edit( Product product)
         {
             if (ModelState.IsValid)
             {

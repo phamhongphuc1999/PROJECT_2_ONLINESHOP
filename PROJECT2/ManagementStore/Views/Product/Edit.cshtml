@@ -28,7 +28,7 @@
             <div class="form-group row">
                 @Html.Label("inputEmail3", "Profix(%)", new { @class = "col-sm-2 col-form-label" })
                 <div class="col-sm-10">
-                    @Html.PasswordFor(model => model.Profix, new { id = "inputEmail3", @class = "form-control", placeholder = "Profix" })
+                    @Html.TextBoxFor(model => model.Profix, new { id = "inputEmail3", @class = "form-control", placeholder = "Profix" })
                     @Html.ValidationMessageFor(model => model.Profix, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -36,7 +36,7 @@
             <div class="form-group row">
                 @Html.Label("inputEmail3", "Sale(%)", new { @class = "col-sm-2 col-form-label" })
                 <div class="col-sm-10">
-                    @Html.PasswordFor(model => model.Sale, new { id = "inputEmail3", @class = "form-control", placeholder = "Sale" })
+                    @Html.TextBoxFor(model => model.Sale, new { id = "inputEmail3", @class = "form-control", placeholder = "Sale" })
                     @Html.ValidationMessageFor(model => model.Sale, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -44,7 +44,7 @@
             <div class="form-group row">
                 @Html.Label("inputEmail3", "Amount", new { @class = "col-sm-2 col-form-label" })
                 <div class="col-sm-10">
-                    @Html.PasswordFor(model => model.Amount, new { id = "inputEmail3", @class = "form-control", placeholder = "Amount" })
+                    @Html.TextBoxFor(model => model.Amount, new { id = "inputEmail3", @class = "form-control", placeholder = "Amount" })
                     @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
                 </div>
             </div>
