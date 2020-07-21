@@ -14,6 +14,36 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     @Styles.Render("~/bundles/CSS")
     @RenderSection("Style", required: false)
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '627328234574376');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=627328234574376&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <script type="text/javascript">
+        $('.search-button').click(function() {
+            fbq('track', 'Search', {objectSearch: "", typeSearch: ""});
+        })
+        $('.sidebar-event').click(function () {
+            fbq('trackCustom', 'TestEvent', { name: 'phuc event' });
+        })
+    </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -24,22 +54,22 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
+                <li class="nav-item d-none d-sm-inline-block sidebar-event">
                     <a href="/" class="nav-link">Home</a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
+                <li class="nav-item d-none d-sm-inline-block sidebar-event">
                     <a href="/nhan-vien/thong-tin-ca-nhan/@user.UserID" class="nav-link">Personal</a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
+                <li class="nav-item d-none d-sm-inline-block sidebar-event">
                     <a href="/nhan-vien/danh-sach-nhan-vien" class="nav-link">Employee</a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
+                <li class="nav-item d-none d-sm-inline-block sidebar-event">
                     <a href="/khach-hang/danh-sach-khach-hang" class="nav-link">Customer</a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
+                <li class="nav-item d-none d-sm-inline-block sidebar-event">
                     <a href="/san-pham/danh-sach-san-pham" class="nav-link">Product</a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
+                <li class="nav-item d-none d-sm-inline-block sidebar-event">
                     <a href="/hoa-don/danh-sach-hoa-don" class="nav-link">Invoice</a>
                 </li>
             </ul>

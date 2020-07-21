@@ -18,6 +18,28 @@
     <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '627328234574376');
+        fbq('track', 'PageView');
+        fbq('trackCustom', 'Login', { username: "username1", password: "123456" });
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=627328234574376&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
@@ -61,7 +83,12 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit" id="login-button" class="btn btn-primary btn-block">Sign In</button>
+                            <script type="text/javascript">
+                                $('#login-button').click(function () {
+                                    fbq('trackCustom', 'Login', { username: "username1", password: "123456" });
+                                })
+                            </script>
                         </div>
                         <!-- /.col -->
                     </div>
