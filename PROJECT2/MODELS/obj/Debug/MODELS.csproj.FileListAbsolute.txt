@@ -17,7 +17,6 @@ D:\Documents\VisualStudio\Project2\PROJECT2\MODELS\bin\Debug\EntityFramework.dll
 D:\Documents\VisualStudio\Project2\PROJECT2\MODELS\bin\Debug\EntityFramework.SqlServer.dll
 D:\Documents\VisualStudio\Project2\PROJECT2\MODELS\bin\Debug\EntityFramework.xml
 D:\Documents\VisualStudio\Project2\PROJECT2\MODELS\bin\Debug\EntityFramework.SqlServer.xml
-D:\Documents\VisualStudio\Project2\PROJECT2\MODELS\obj\Debug\MODELS.csprojAssemblyReference.cache
 D:\Documents\VisualStudio\Project2\PROJECT2\MODELS\obj\Debug\MODELS.csproj.CoreCompileInputs.cache
 D:\Documents\VisualStudio\Project2\PROJECT2\MODELS\obj\Debug\MODELS.csproj.CopyComplete
 D:\Documents\VisualStudio\Project2\PROJECT2\MODELS\obj\Debug\MODELS.dll

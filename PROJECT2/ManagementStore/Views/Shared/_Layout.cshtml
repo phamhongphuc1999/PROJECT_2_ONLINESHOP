@@ -1,5 +1,4 @@
 ﻿@using ManagementStore.Common;
-@using System.Threading;
 @{
     UserLogin user = (UserLogin)Session[CommonConstants.USER_SEESION];
 }
@@ -29,6 +28,9 @@
             'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '627328234574376');
         fbq('track', 'PageView');
+        $('.sidebar-event').click(function () {
+            fbq('trackCustom', 'TestEvent', { name: 'phuc event' });
+        })
     </script>
     <noscript>
         <img height="1" width="1" style="display:none"
@@ -39,9 +41,6 @@
     <script type="text/javascript">
         $('.search-button').click(function() {
             fbq('track', 'Search', {objectSearch: "", typeSearch: ""});
-        })
-        $('.sidebar-event').click(function () {
-            fbq('trackCustom', 'TestEvent', { name: 'phuc event' });
         })
     </script>
 </head>
