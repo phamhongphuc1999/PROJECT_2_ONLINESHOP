@@ -1,0 +1,205 @@
+﻿@using ManagementStore.Filter;
+@model MODELS.EF.Search
+@{
+    ViewBag.Title = "Invoice";
+    ViewBag.Link = "/hoa-don/danh-sach-hoa-don";
+    ViewBag.Description = "Invoice List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    InvoiceSearch invoiceSearch = ViewBag.SEARCH;
+}
+
+@section scripts {
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-12 table-responsive">
+                            @using (Html.BeginForm("Index", "Invoice"))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="row">
+                                    <div class="col-3">
+                                        @Html.TextBoxFor(model => model.start, new { @class = "form-control", placeholder = "Start" })
+                                        @Html.ValidationMessageFor(model => model.start, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-3">
+                                        @Html.TextBoxFor(model => model.end, new { @class = "form-control", placeholder = "End" })
+                                        @Html.ValidationMessageFor(model => model.end, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Search" class="btn btn-default" />
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <a href="/hoa-don/danh-sach-hoa-don" class="btn btn-default">View All Invoice</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Employee Name</th>
+                                        <th>Day Sell</th>
+                                        <th>#</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>@invoiceSearch.CustomerName</th>
+                                        <th>@invoiceSearch.EmployeeName</th>
+                                        @{
+                                            if (invoiceSearch.search.start > DateTime.MinValue && invoiceSearch.search.end < DateTime.MaxValue)
+                                            {
+                                                <th>
+                                                    @invoiceSearch.search.start.ToString("dd/MM/yyyy") - @invoiceSearch.search.end.ToString("dd/MM/yyyy")
+                                                </th>
+                                            }
+                                            else
+                                            {
+                                                <th></th>
+                                            }
+
+                                        }
+                                        <th>#</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+                @if (invoiceSearch.invoiceList.Count() > 0)
+                {
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <a class="nav-link" data-toggle="dropdown" href="#">
+                                            Customer Name
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                                            <span class="dropdown-item dropdown-header">Search By Customer Name</span>
+                                            <div class="dropdown-divider"></div>
+                                            <div class="dropdown-item">
+                                                <form class="form-inline ml-3">
+                                                    @using (Html.BeginForm("Index", "Invoice", FormMethod.Get))
+                                                    {
+                                                        @Html.AntiForgeryToken()
+                                                        <div class="input-group input-group-sm">
+                                                            <input class="form-control form-control-navbar" name="CustomerName" type="search" placeholder="Search" aria-label="Search">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-navbar" type="submit">
+                                                                    <i class="fas fa-search"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </th>
+
+                                    <th>
+                                        <a class="nav-link" data-toggle="dropdown" href="#">
+                                            Employee Name
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                                            <span class="dropdown-item dropdown-header">Search By Employee Name</span>
+                                            <div class="dropdown-divider"></div>
+                                            <div class="dropdown-item">
+                                                <form class="form-inline ml-3">
+                                                    @using (Html.BeginForm("Index", "Invoice", FormMethod.Get))
+                                                    {
+                                                        @Html.AntiForgeryToken()
+                                                        <div class="input-group input-group-sm">
+                                                            <input class="form-control form-control-navbar" name="EmployeeName" type="search" placeholder="Search" aria-label="Search">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-navbar" type="submit">
+                                                                    <i class="fas fa-search"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </th>
+
+                                    <th>
+                                        <a class="nav-link" data-toggle="dropdown" href="#">
+                                            Created Day
+                                        </a>
+                                    </th>
+                                    <th>#</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in invoiceSearch.invoiceList)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.CustomerName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EmployeeName)</td>
+                                        <td>@Html.ValueFor(modelItem => item.DaySell, "{0:dd/MM/yyyy}")</td>
+                                        <td>
+                                            <a class="btn btn-danger btn-sm" href="/hoa-don/chi-tiet-hoa-don/@item.ID">
+                                                <i class="fas fa-folder"></i>Detail
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Customer Name</th>
+                                    <th>Employee Name</th>
+                                    <th>Created Day</th>
+                                    <th>#</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="card-body">
+                        <strong>Data Not Found</strong>
+                    </div>
+                }
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>

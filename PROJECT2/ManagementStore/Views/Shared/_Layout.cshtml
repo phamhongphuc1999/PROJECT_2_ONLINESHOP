@@ -1,0 +1,249 @@
+﻿@using ManagementStore.Common;
+@{
+    UserLogin user = (UserLogin)Session[CommonConstants.USER_SEESION];
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Managerment Store</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    @Styles.Render("~/bundles/CSS")
+    @RenderSection("Style", required: false)
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '627328234574376');
+        fbq('track', 'PageView');
+        $('.sidebar-event').click(function () {
+            fbq('trackCustom', 'TestEvent', { name: 'phuc event' });
+        })
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=627328234574376&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <script type="text/javascript">
+        $('.search-button').click(function() {
+            fbq('track', 'Search', {objectSearch: "", typeSearch: ""});
+        })
+    </script>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block sidebar-event">
+                    <a href="/" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block sidebar-event">
+                    <a href="/nhan-vien/thong-tin-ca-nhan/@user.UserID" class="nav-link">Personal</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block sidebar-event">
+                    <a href="/nhan-vien/danh-sach-nhan-vien" class="nav-link">Employee</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block sidebar-event">
+                    <a href="/khach-hang/danh-sach-khach-hang" class="nav-link">Customer</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block sidebar-event">
+                    <a href="/san-pham/danh-sach-san-pham" class="nav-link">Product</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block sidebar-event">
+                    <a href="/hoa-don/danh-sach-hoa-don" class="nav-link">Invoice</a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <div class="header-user">
+                        <div class="user-content">
+                            @using (Html.BeginForm("Logout", "Login", new { @class = "btn btn-default" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="submit" value="Logout" class="logout form-control form-control-navbar" />
+                            }
+                        </div>
+                    </div>
+                </li>
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                        <span class="badge badge-warning navbar-badge">15</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> 4 new messages
+                            <span class="float-right text-muted text-sm">3 mins</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-users mr-2"></i> 8 friend requests
+                            <span class="float-right text-muted text-sm">12 hours</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-file mr-2"></i> 3 new reports
+                            <span class="float-right text-muted text-sm">2 days</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                        <i class="fas fa-th-large"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="/" class="brand-link">
+                <img src="~/dist/img/AdminLTELogo.png" alt="10Ofice" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">10Office</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <a href="/nhan-vien/thong-tin-ca-nhan/@user.UserID" class="d-block">
+                        <div class="image">
+                            <img src="@user.Image" class="img-circle elevation-2" alt="User Image">
+                        </div>
+                        <div class="info">
+                            <a href="/nhan-vien/thong-tin-ca-nhan/@user.UserID" class="d-block">@user.Username</a>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Home Page
+                                    <span class="right badge badge-danger">New</span>
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/nhan-vien/thong-tin-ca-nhan/@user.UserID" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>Presonal Infomation</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/nhan-vien/danh-sach-nhan-vien" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>Employees</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/khach-hang/danh-sach-khach-hang" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>Customers</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/san-pham/danh-sach-san-pham" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>Products</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/hoa-don/danh-sach-hoa-don" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>Invoice List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">@ViewBag.Description</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item active"><a href="@ViewBag.Link">@ViewBag.Title</a></li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+            <!-- Main content -->
+            <section class="content">
+                @RenderBody()
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; @DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year - Copyright by PHP</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Hotline:</b>0772368898<b style="margin-left:8px"> Email:</b>phuc.ph173303@sis.hust.edu.vn
+            </div>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    @Scripts.Render("~/bundles/JQUERY_NEW")
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    @Scripts.Render("~/bundles/JS")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

@@ -1,0 +1,109 @@
+﻿@model ManagementStore.Models.InvoiceDetailModel
+    @{
+        ViewBag.Title = "Invoice/Detail";
+        ViewBag.Link = "/hoa-don/them-hoa-don/" + ViewBag.ID;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="callout callout-info">
+                    <h5><i class="fas fa-info"></i> Note:</h5>
+                    Detail Invoice
+                </div>
+
+                <!-- Main content -->
+                <div class="invoice p-3 mb-3">
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>
+                                <i class="fas fa-globe"></i> Infomation
+                                <small class="float-right">Date: @DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year</small>
+                            </h4>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row invoice-info">
+                        <div class="col-sm-4 invoice-col">
+                            Employee
+                            <address>
+                                <strong>Name: @Model.employee.Name</strong><br>
+                                <b>User Name: </b>@Model.employee.Username<br>
+                                <b>Sex: </b>@Model.employee.Sex<br>
+                                <b>Phone: </b>@Model.employee.Phone<br>
+                                <b>Type: </b>@Model.employee.Position<br>
+                            </address>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4 invoice-col">
+                            Customer
+                            <address>
+                                <strong>Name: @Model.customer.Name</strong><br>
+                                <b>Sex: </b>@Model.customer.Sex<br>
+                                <b>Address: </b>@Model.customer.Address<br>
+                                <b>Phone: </b>@Model.customer.Phone<br>
+                                <b>Type: </b>@Model.customer.Type<br>
+                            </address>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4 invoice-col">
+                            <b>Invoice @Model.invoice.Id</b><br>
+                            <br>
+                            <b>Order ID:</b> @Model.invoice.Id<br>
+                            <b>Payment Due:</b> @Model.invoice.DaySell.Value.ToString("dd/MM/yyyy")<br>
+                            <a href="/nhan-vien/thong-tin-ca-nhan/@Model.employee.Id"><b>Detail Employee</b></a><br>
+                            <a href="/khach-hang/chi-tiet/@Model.customer.Id"><b>Detail Customer</b></a>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <!-- Table row -->
+                    <div class="row">
+                        <div class="col-12 table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name Product</th>
+                                        <th>Amount</th>
+                                        <th>Price</th>
+                                        <th>Sale(%)</th>
+                                        <th>Guarantee(%)</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach(var item in Model.productList)
+                                    {
+                                        <tr>
+                                            <th>@item.Value.NameProduct</th>
+                                            <th>@item.Key</th>
+                                            <th>@item.Value.ExportPrice</th>
+                                            <th>@item.Value.Sale%</th>
+                                            <th>@item.Value.Guarantee</th>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th>Money</th>
+                                        <th>@Model.money</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.invoice -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
