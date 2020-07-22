@@ -21,3 +21,4 @@ D:\Documents\VisualStudio\Project2\PROJECT2\MODELS\obj\Debug\MODELS.csproj.CoreC
 D:\Documents\VisualStudio\Project2\PROJECT2\MODELS\obj\Debug\MODELS.csproj.CopyComplete
 D:\Documents\VisualStudio\Project2\PROJECT2\MODELS\obj\Debug\MODELS.dll
 D:\Documents\VisualStudio\Project2\PROJECT2\MODELS\obj\Debug\MODELS.pdb
+D:\Documents\VisualStudio\Project2\PROJECT2\MODELS\obj\Debug\MODELS.csprojAssemblyReference.cache
