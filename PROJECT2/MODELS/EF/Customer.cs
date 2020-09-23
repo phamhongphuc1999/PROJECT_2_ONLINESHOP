@@ -1,10 +1,8 @@
 namespace MODELS.EF
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Customer")]
     public partial class Customer
@@ -15,6 +13,7 @@ namespace MODELS.EF
         [StringLength(200)]
         public string Name { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime? Birthday { get; set; }
 
         [Required]
@@ -24,7 +23,7 @@ namespace MODELS.EF
         [StringLength(200)]
         public string Address { get; set; }
 
-        [StringLength(50)]
+        [Phone]
         public string Phone { get; set; }
 
         [StringLength(10)]
